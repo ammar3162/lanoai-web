@@ -157,6 +157,7 @@ const FULL_MENU = [
           { name: "بستا لانو الاصليه ", price: 0.0 },
           { name: "بدون دجاج", price: 0.0 },
           { name: "  بدون بروكلي", price: 0.0 },
+          { name: "  بدون سبايسي", price: 0.0 },
         ],
       },
       {
@@ -166,7 +167,7 @@ const FULL_MENU = [
         min_selection: 0,
         options: [
           { name: "زيادة دجاج إضافي", price: 5.0 },
-          { name: "زيادة مشروم", price: 5.0 },
+          { name: "زيادة بروكلي", price: 5.0 },
         ],
       },
     ],
