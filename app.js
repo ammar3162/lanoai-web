@@ -154,6 +154,7 @@ const FULL_MENU = [
         title: "اختر نوع الباستا",
         min_selection: 1,
         options: [
+          { name: "بستا لانو الاصليه ", price: 0.0 },
           { name: "بدون دجاج", price: 0.0 },
           { name: "  بدون بروكلي", price: 0.0 },
         ],
