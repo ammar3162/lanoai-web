@@ -207,9 +207,10 @@ const FULL_MENU = [
         title: "درجة الحرارة (إجباري)",
         min_selection: 1,
         options: [
-          { name: "عادي (بدون حرارة)", price: 0.0 },
-          { name: "حرارة خفيفة", price: 0.0 },
-          { name: "حرارة متوسطة", price: 0.0 },
+          { name: "بنك باستا الاصليه", price: 0.0 },
+          { name: " بدون دجاج ", price: 0.0 },
+          { name: " بدون بروكلي", price: 0.0 },
+          { name: " بدون سبايسي", price: 0.0 },
         ],
       },
       {
@@ -395,7 +396,7 @@ const FULL_MENU = [
     id: 20,
     name: "مشروبات غازية",
     price: 5.0,
-    desc: "اختر نوع المشروب: أوشن كولا أو سبرايت.",
+    desc: "اختر نوع المشروب:  كولا أو سبرايت.",
     img: "images/مشروبات_غازية_17518899084159798.jpg",
     modifiers: [
       {
@@ -404,7 +405,7 @@ const FULL_MENU = [
         title: "اختر نوع المشروب",
         min_selection: 1, 
         options: [
-          { name: "أوشن كولا", price: 0.0 },
+          { name: " كولا", price: 0.0 },
           { name: "سبرايت", price: 0.0 },
         ],
       },
