@@ -2,6 +2,10 @@
 //  إعدادات عامة
 // ================================
 const RESTAURANT_PHONE = "966582003125";
+// تعديل: المتغيرات أصبحت تُحدَّث بناءً على اختيار المستخدم
+let orderType = "takeaway"; // القيمة الافتراضية
+let tableNumber = ""; // رقم الطاولة (فقط للمحلي)
+
 
 // ================================
 //  1) نظام التوصية الذكية
@@ -154,7 +158,6 @@ const FULL_MENU = [
         title: "اختر نوع الباستا",
         min_selection: 1,
         options: [
-          { name: "بستا لانو الاصليه ", price: 0.0 },
           { name: "بدون دجاج", price: 0.0 },
           { name: "  بدون بروكلي", price: 0.0 },
           { name: "  بدون سبايسي", price: 0.0 },
@@ -182,7 +185,7 @@ const FULL_MENU = [
       {
         id: "heat_level",
         type: "single",
-        title: "درجة حرارة الصوص",
+        title: "النوع  ",
         min_selection: 1,
         options: [
           { name: "سادة ", price: 0.0 },
@@ -204,13 +207,12 @@ const FULL_MENU = [
       {
         id: "heat_level",
         type: "single",
-        title: "درجة الحرارة (إجباري)",
+        title: "النوع",
         min_selection: 1,
         options: [
-          { name: "بنك باستا الاصليه", price: 0.0 },
-          { name: " بدون دجاج ", price: 0.0 },
-          { name: " بدون بروكلي", price: 0.0 },
-          { name: " بدون سبايسي", price: 0.0 },
+          { name: "عادي", price: 0.0 },
+          { name: "بدون دجاج ", price: 0.0 },
+          { name: "بدون بروكلي", price: 0.0 },
         ],
       },
       {
@@ -396,7 +398,7 @@ const FULL_MENU = [
     id: 20,
     name: "مشروبات غازية",
     price: 5.0,
-    desc: "اختر نوع المشروب:  كولا أو سبرايت.",
+    desc: "اختر نوع المشروب: أوشن كولا أو سبرايت.",
     img: "images/مشروبات_غازية_17518899084159798.jpg",
     modifiers: [
       {
@@ -715,6 +717,10 @@ function renderCart() {
 window.updateItemQuantity = updateItemQuantity;
 window.removeItem = removeItem;
 
+/**
+ * دالة إرسال الطلب عبر واتساب.
+ * تحديث: تم تعديل رسالة النهاية بناءً على نوع الطلب (سفري/محلي).
+ */
 function sendWhatsAppOrder() {
   const nameInput = document.getElementById("clientNameCart");
   const phoneInput = document.getElementById("clientPhoneCart");
@@ -733,6 +739,14 @@ function sendWhatsAppOrder() {
     statusEl.textContent = "❌ الرجاء إدخال الاسم ورقم الجوال بشكل صحيح.";
     return;
   }
+  
+  // التحقق الإضافي لطلب "محلي"
+  if (orderType === "dinein" && !tableNumber) {
+    statusEl.style.display = "block";
+    statusEl.style.backgroundColor = "#c62828";
+    statusEl.textContent = "❌ الرجاء اختيار رقم الطاولة للطلب المحلي.";
+    return;
+  }
 
   if (!cart.length) {
     statusEl.style.display = "block";
@@ -742,7 +756,19 @@ function sendWhatsAppOrder() {
   }
 
   let text = "✨ طلب جديد من صفحة لانو التفاعلية ✨\n\n";
-  text += "👤 بيانات العميل:\n";
+  
+  // إضافة نوع الطلب ورقم الطاولة في البداية
+  let typeText;
+  if (orderType === "takeaway") {
+      typeText = "سفري (Takeaway)";
+  } else {
+      typeText = `محلي (Dine-In) - الطاولة رقم: ${tableNumber}`;
+  }
+  
+  text += `**🏷️ نوع الطلب:** ${typeText}\n`;
+  text += "---" // فاصل واضح للكاشير
+  
+  text += "\n👤 بيانات العميل:\n";
   text += `الاسم: ${name}\n`;
   text += `الجوال: ${phone}\n`;
   text += `ملاحظات: ${notes || "لا يوجد"}\n\n`;
@@ -766,7 +792,16 @@ function sendWhatsAppOrder() {
     text += `\n🧠 ملخص التوصية الذكية:\n${answers.join(" | ")}\n`;
   }
 
-  text += "\n📢 للاستلام خلال 30 دقيقة إن أمكن.\n🤍 شكراً لاختياركم لانو 🤍";
+  // المنطق الجديد لرسالة النهاية بناءً على نوع الطلب
+  let finalMessage;
+  if (orderType === "takeaway") {
+    finalMessage = "📢 للاستلام خلال 30 دقيقة إن أمكن.";
+  } else {
+    // محلي (Dine-In)
+    finalMessage = "💛 سيتم تجهيز طلبك في أسرع وقت ممكن بكل حب.";
+  }
+  
+  text += `\n${finalMessage}\n🤍 شكراً لاختياركم لانو 🤍`;
 
   const encoded = encodeURIComponent(text);
   const url = `https://wa.me/${RESTAURANT_PHONE}?text=${encoded}`;
@@ -791,25 +826,41 @@ function initSmartRecommender() {
   showQuestion();
 }
 
+/**
+ * تحديث: تم إضافة منطق التعامل مع خياري (سفري/محلي) وتحديث رقم الطاولة.
+ */
 function initPage() {
-  // زر بدء التوصية الذكية
-  const startSmartBtn = document.getElementById("start-smart-btn");
-  if (startSmartBtn) {
-    startSmartBtn.addEventListener("click", () => {
-      document
-        .querySelector("#smart")
-        .scrollIntoView({ behavior: "smooth", block: "start" });
+  // 1. منطق نوع الطلب (سفري/محلي)
+  const orderTypeInputs = document.querySelectorAll('input[name="orderType"]');
+  const tableBox = document.getElementById("table-select-box");
+  const tableSelect = document.getElementById("tableNumber");
+  
+  // تهيئة الواجهة لطلب سفري افتراضياً
+  if (tableBox) tableBox.style.display = "none";
+  
+  orderTypeInputs.forEach(i => {
+    i.addEventListener("change", () => {
+      orderType = i.value;
+  
+      if (orderType === "dinein") {
+        if (tableBox) tableBox.style.display = "block";
+        tableNumber = tableSelect.value; // تحديث الرقم عند التبديل
+      } else {
+        if (tableBox) tableBox.style.display = "none";
+        tableNumber = "";
+        if (tableSelect) tableSelect.value = ""; // مسح الاختيار عند التحويل لسفري
+      }
+    });
+  });
+  
+  if (tableSelect) {
+    tableSelect.addEventListener("change", () => {
+      tableNumber = tableSelect.value;
     });
   }
 
-  // زر إرسال الطلب
-  const confirmBtn = document.getElementById("confirm-order-btn");
-  if (confirmBtn) {
-    confirmBtn.addEventListener("click", sendWhatsAppOrder);
-  }
-
-  // تهيئة التوصية والمنيو والسلة
-  initSmartRecommender();
+  // 2. تهيئة باقي محتويات الصفحة
+  initSmartRecommender(); // تصحيح الخطأ الإملائي
   renderInteractiveMenu();
   renderCart();
 }
