@@ -3,14 +3,14 @@
 =========================== */
 :root {
   --main-beige: #f3e9dd;
-  --dark-green: #662020; /* بني يميل للأحمر يعطي إحساس إيطالي فاخر */
+  --dark-green: #a34444; /* بني يميل للأحمر يعطي إحساس إيطالي فاخر */
   --gold: #c8a951;
   --highlight-yellow: #ffc107;
   --white: #ffffff;
   --gray: #666666;
   --upsell-bg: #fff7e0;
   --success-green: #28a745;
-  --danger-red: #c62828;
+  --danger-red: ب#9e4242;
   --input-bg: #f9f9f9;
   --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
@@ -760,4 +760,166 @@ body {
   .smart-box {
     padding-inline: 16px;
   }
+}
+/* ===========================
+   آراء العملاء (Testimonials)
+=========================== */
+.testimonials {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--upsell-bg); /* استخدام لون فاتح مميز */
+}
+
+.testimonials .section-title {
+    font-size: 30px;
+    margin-bottom: 5px;
+    color: var(--dark-green);
+}
+
+.testimonials .section-subtitle {
+    color: var(--gray);
+    margin-bottom: 30px;
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto; /* تفعيل التمرير الأفقي */
+  padding-bottom: 20px; /* مساحة لظل التمرير */
+  -ms-overflow-style: none; /* إخفاء شريط التمرير في IE/Edge */
+  scrollbar-width: none; /* إخفاء شريط التمرير في Firefox */
+  scroll-snap-type: x mandatory; /* تثبيت الشرائح عند التمرير */
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none; /* إخفاء شريط التمرير في Chrome/Safari */
+}
+
+.testimonial-carousel {
+  display: flex;
+  gap: 20px;
+  padding: 5px 10px;
+  justify-content: flex-start; /* بدء الشرائح من اليمين (لغة عربية) */
+}
+
+.testimonial-card {
+  flex: 0 0 350px; /* عرض ثابت لكل شريحة */
+  max-width: 80vw; /* ضمان التجاوب على الجوال */
+  padding: 25px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  text-align: right;
+  scroll-snap-align: start; /* تثبيت الشريحة في بداية العرض */
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  font-size: 16px;
+  color: var(--dark-green);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.testimonial-card .author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #eee;
+  padding-top: 10px;
+}
+
+.testimonial-card .author .name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.testimonial-card .author .stars {
+  color: var(--gold); /* تلوين النجوم باللون الذهبي */
+  font-size: 16px;
+}
+
+/* تعديل التجاوب على الجوالات الصغيرة */
+@media (max-width: 600px) {
+    .testimonial-card {
+        flex: 0 0 90%; /* على الجوال، تصبح الشريحة بعرض أكبر */
+        margin-right: 10px;
+    }
+    .testimonial-carousel {
+        padding-right: 15px; /* لتظهر بداية الشريحة بشكل أفضل */
+    }
+}
+/* هذا التنسيق يضمن أن الأيقونة تكون دائرية وواضحة */
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* حجم الأيقونة */
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.instagram-icon {
+    /* لون خلفية فاتح مناسب */
+    background-color: #f0f0f0; 
+}
+
+.instagram-icon span {
+    /* لون النص/الإيموجي، استخدم اللون الأساسي للمطعم */
+    color: var(--primary-red); 
+
+}
+/* ===== أزرار السوشال والاتصال ===== */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 15px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fff;
+  color: #5a0000;
+  border: 2px solid #d7b98f;
+  transition: 0.25s;
+}
+
+/* تأثير عند التمرير */
+.action-btn:hover {
+  background: #d7b98f;
+  color: #5a0000;
+  transform: translateY(-2px);
+}
+
+/* ألوان خاصة لكل زر */
+.call-btn {
+  background: #ffd54f;
+}
+
+.instagram-btn {
+  background: #ffe9e9;
+}
+
+.whatsapp-btn {
+  background: #e7ffe9;
+}
+
+.location-btn {
+  background: #e9f3ff;
 }
