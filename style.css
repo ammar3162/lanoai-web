@@ -335,10 +335,10 @@ body {
 
 .menu-item__desc {
     color: var(--gray);
-    font-size: 12px; /* تم تصغير حجم الخط من 14px إلى 12px */
+    font-size: 11px; /* تم تصغير حجم الخط من 14px إلى 12px */
     height: 38px; /* ارتفاع ثابت لسطرين ونصف تقريباً بهذا الحجم */
     overflow: hidden; /* إخفاء النص الزائد */
-    margin-bottom: 10px;
+    margin-bottom: 11px;
     line-height: 1.5; /* تحديد تباعد الأسطر لمزيد من التحكم */
     text-overflow: ellipsis; /* إضافة نقاط (...) عند الاقتطاع */
     display: -webkit-box; /* تفعيل نمط العرض لتقييد عدد الأسطر */
