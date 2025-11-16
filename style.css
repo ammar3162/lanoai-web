@@ -1,11 +1,5 @@
-/*
- * =================================================================
- * ملف CSS النهائي - دمج التنسيقات الأساسية والتجاوب للهواتف
- * =================================================================
- */
-
 /* ===========================
-   1. أساسيات عامة ومتغيرات
+   أساسيات عامة
 =========================== */
 :root {
   --main-beige: #f3e9dd;
@@ -14,9 +8,9 @@
   --highlight-yellow: #ffc107;
   --white: #ffffff;
   --gray: #666666;
-  --upsell-bg: #fff7e0; /* خلفية قسم التوصية والآراء */
+  --upsell-bg: #fff7e0;
   --success-green: #28a745;
-  --danger-red: #9e4242; /* تم تصحيح الخطأ الإملائي في المتغير */
+  --danger-red: ب#9e4242;
   --input-bg: #f9f9f9;
   --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
@@ -35,17 +29,14 @@ body {
 
 body {
   background: var(--main-beige);
-  /* يجب إضافة الخط "Tajawal" عبر رابط أو استيراد */
   font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: var(--dark-green);
   line-height: 1.6;
-  /* إضافة بادينج في الأسفل للمساحة التي سيشغلها زر الاتصال العائم على الجوال */
-  padding-bottom: 70px; 
 }
 
 /* ===========================
-   2. أزرار عامة
+   أزرار عامة
 =========================== */
 .btn {
   display: inline-flex;
@@ -95,6 +86,11 @@ body {
   background: #e6b302;
 }
 
+.btn--call-footer {
+  background: var(--highlight-yellow);
+  color: var(--dark-green);
+}
+
 .btn--confirm {
   background: var(--success-green);
   color: var(--white);
@@ -111,25 +107,8 @@ body {
   width: 100%;
 }
 
-/* زر اتصال عائم (مخصص للهاتف) */
-.btn--call-floating {
-  display: none; /* إخفاء افتراضيًا */
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
-  background: var(--highlight-yellow);
-  color: var(--dark-green);
-  width: calc(100% - 40px);
-  max-width: 400px;
-  box-shadow: var(--shadow-soft);
-  padding: 14px 22px; /* تكبير الزر العائم */
-  font-size: 17px;
-}
-
 /* ===========================
-   3. الهيدر (Header)
+   الهيدر
 =========================== */
 .l-header {
   position: sticky;
@@ -169,8 +148,23 @@ body {
   border-color: var(--gold);
 }
 
+/* زر اتصال مثبت في الجوال */
+.btn--call-floating {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background: var(--highlight-yellow);
+  color: var(--dark-green);
+  width: calc(100% - 40px);
+  max-width: 400px;
+  box-shadow: var(--shadow-soft);
+}
+
 /* ===========================
-   4. HERO
+   HERO
 =========================== */
 .hero {
   padding: 120px 20px 80px;
@@ -196,7 +190,7 @@ body {
 }
 
 /* ===========================
-   5. SMART BOX (التوصية الذكية)
+   SMART BOX
 =========================== */
 .smart {
   padding: 0 20px 40px;
@@ -228,10 +222,9 @@ body {
 }
 
 .options button {
-  /* التعديل: جعل أزرار الخيارات عريضة على الجوال */
   min-width: 140px;
   margin: 6px;
-  padding: 12px 18px; /* زيادة حجم الضغط */
+  padding: 9px 18px;
   border-radius: 999px;
   border: 2px solid var(--dark-green);
   background: var(--white);
@@ -270,7 +263,7 @@ body {
 }
 
 /* ===========================
-   6. MENU + CART LAYOUT
+   MENU + CART LAYOUT
 =========================== */
 .menu {
   padding: 60px 20px 40px;
@@ -301,8 +294,7 @@ body {
 .menu-grid {
   flex: 3;
   display: grid;
-  /* التجاوب على الشاشات الكبيرة */
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 22px;
 }
 
@@ -377,8 +369,7 @@ body {
 }
 
 .cart__client-info input,
-.cart__client-info textarea,
-#table-select-box select {
+.cart__client-info textarea {
   width: 100%;
   padding: 9px 10px;
   margin-bottom: 8px;
@@ -393,8 +384,6 @@ body {
   margin-top: 10px;
   border-top: 1px solid #eee;
   padding-top: 10px;
-  /* للسماح بتمرير العناصر داخل السلة على الهاتف */
-  overflow-y: auto; 
 }
 
 .cart__title {
@@ -458,9 +447,6 @@ body {
   cursor: pointer;
   background: var(--dark-green);
   color: #fff;
-  /* تكبير أزرار التحكم بالكمية على الجوال */
-  min-width: 30px; 
-  height: 30px;
 }
 
 .cart-item__controls span {
@@ -500,7 +486,44 @@ body {
 }
 
 /* ===========================
-   7. POPUP (المُعدّلات)
+   CONTACT
+=========================== */
+.contact {
+  padding: 50px 20px 60px;
+  background: #ede0d4;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-top: 0;
+  font-size: 26px;
+}
+
+.contact p {
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+
+.contact__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background: var(--dark-green);
+  color: #fff;
+  text-align: center;
+  padding: 14px 10px;
+  font-size: 13px;
+}
+
+/* ===========================
+   POPUP
 =========================== */
 .popup-overlay {
   position: fixed;
@@ -546,6 +569,10 @@ body {
   color: var(--gray);
 }
 
+.popup__close-btn:hover {
+  color: var(--danger-red);
+}
+
 .popup__content {
   padding: 16px 18px 10px;
   overflow-y: auto;
@@ -576,14 +603,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 0; /* زيادة مساحة الضغط */
+  padding: 6px 0;
   cursor: pointer;
 }
 
 .modifier-option__label {
   flex: 1;
   margin-left: 6px;
-  font-size: 15px; /* تكبير النص قليلاً */
+  font-size: 14px;
 }
 
 .modifier-option__price {
@@ -597,8 +624,8 @@ body {
 .modifier-option input[type="radio"] {
   margin-left: 6px;
   cursor: pointer;
-  transform: scale(1.2); /* تكبير زر الاختيار */
-  accent-color: var(--dark-green);
+  transform: scale(1.1);
+  accent-color: var(--dark-green); /* إضافة لون للراديو والتشيك بوكس */
 }
 
 .popup__footer {
@@ -633,14 +660,14 @@ body {
 }
 
 /* ===========================
-   8. تنسيقات نوع الطلب ورقم الطاولة
+   تنسيقات نوع الطلب ورقم الطاولة (جديد)
 =========================== */
 .order-type-box {
   margin-bottom: 12px;
   padding: 10px;
-  background: #faf6ef;
+  background: #faf6ef; /* لون خلفية خفيف */
   border-radius: 10px;
-  border: 1px solid #e4d9c4;
+  border: 1px solid #e4d9c4; /* حدود خفيفة */
 }
 
 .order-type-box h4 {
@@ -660,8 +687,8 @@ body {
 }
 
 .order-option input[type="radio"] {
-  transform: scale(1.1);
-  accent-color: var(--dark-green);
+  transform: scale(1.1); /* تكبير الزر قليلاً */
+  accent-color: var(--dark-green); /* تغيير لون التحديد */
 }
 
 #table-select-box {
@@ -678,13 +705,69 @@ body {
   color: var(--dark-green);
 }
 
+#table-select-box select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: var(--input-bg);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.table-note {
+  font-size: 12px;
+  color: #777;
+  margin-top: 6px;
+  padding-right: 5px;
+}
+
 /* ===========================
-   9. آراء العملاء (Testimonials)
+   RESPONSIVE
+=========================== */
+@media (max-width: 992px) {
+  .l-header__nav {
+    display: none;
+  }
+
+  .btn--call-floating {
+    display: flex;
+  }
+
+  .hero {
+    padding: 90px 16px 60px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .menu-layout {
+    flex-direction: column;
+  }
+
+  .cart {
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .smart-box {
+    padding-inline: 16px;
+  }
+}
+/* ===========================
+   آراء العملاء (Testimonials)
 =========================== */
 .testimonials {
   padding: 40px 20px;
   text-align: center;
-  background: var(--upsell-bg);
+  background: var(--upsell-bg); /* استخدام لون فاتح مميز */
 }
 
 .testimonials .section-title {
@@ -701,33 +784,33 @@ body {
 .carousel-container {
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: auto;
-  padding-bottom: 20px;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-  scroll-snap-type: x mandatory; 
+  overflow-x: auto; /* تفعيل التمرير الأفقي */
+  padding-bottom: 20px; /* مساحة لظل التمرير */
+  -ms-overflow-style: none; /* إخفاء شريط التمرير في IE/Edge */
+  scrollbar-width: none; /* إخفاء شريط التمرير في Firefox */
+  scroll-snap-type: x mandatory; /* تثبيت الشرائح عند التمرير */
 }
 
 .carousel-container::-webkit-scrollbar {
-    display: none; 
+    display: none; /* إخفاء شريط التمرير في Chrome/Safari */
 }
 
 .testimonial-carousel {
   display: flex;
   gap: 20px;
   padding: 5px 10px;
-  justify-content: flex-start;
+  justify-content: flex-start; /* بدء الشرائح من اليمين (لغة عربية) */
 }
 
 .testimonial-card {
-  flex: 0 0 350px; 
-  max-width: 80vw;
+  flex: 0 0 350px; /* عرض ثابت لكل شريحة */
+  max-width: 80vw; /* ضمان التجاوب على الجوال */
   padding: 25px;
   background: var(--white);
   border-radius: 16px;
   box-shadow: var(--shadow-soft);
   text-align: right;
-  scroll-snap-align: start;
+  scroll-snap-align: start; /* تثبيت الشريحة في بداية العرض */
   transition: transform 0.3s ease;
 }
 
@@ -757,175 +840,86 @@ body {
 }
 
 .testimonial-card .author .stars {
-  color: var(--gold);
+  color: var(--gold); /* تلوين النجوم باللون الذهبي */
   font-size: 16px;
 }
 
-/* ===========================
-   10. CONTACT (تواصل) والـ Footer
-=========================== */
-.contact {
-  padding: 50px 20px 60px;
-  background: #ede0d4;
-  text-align: center;
+/* تعديل التجاوب على الجوالات الصغيرة */
+@media (max-width: 600px) {
+    .testimonial-card {
+        flex: 0 0 90%; /* على الجوال، تصبح الشريحة بعرض أكبر */
+        margin-right: 10px;
+    }
+    .testimonial-carousel {
+        padding-right: 15px; /* لتظهر بداية الشريحة بشكل أفضل */
+    }
 }
-
-.contact h2 {
-  margin-top: 0;
-  font-size: 26px;
-}
-
-.contact p {
-  color: var(--gray);
-  margin-bottom: 16px;
-}
-
-/* التنسيق الجديد لأزرار التواصل (مثل الصورة) */
-.contact__buttons {
-    display: flex;
-    flex-wrap: wrap;
+/* هذا التنسيق يضمن أن الأيقونة تكون دائرية وواضحة */
+.social-icon {
+    display: inline-flex;
     justify-content: center;
-    gap: 12px; /* زيادة التباعد قليلاً */
+    align-items: center;
+    width: 40px; /* حجم الأيقونة */
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.instagram-icon {
+    /* لون خلفية فاتح مناسب */
+    background-color: #f0f0f0; 
+}
+
+.instagram-icon span {
+    /* لون النص/الإيموجي، استخدم اللون الأساسي للمطعم */
+    color: var(--primary-red); 
+
+}
+/* ===== أزرار السوشال والاتصال ===== */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 15px;
 }
 
 .action-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
-  padding: 10px 18px;
+  padding: 8px 14px;
   border-radius: 10px;
-  background: var(--white);
-  color: var(--dark-green);
+  background: #fff;
+  color: #5a0000;
   border: 2px solid #d7b98f;
   transition: 0.25s;
-  min-width: 150px; /* لضمان شكل مستطيل واضح */
 }
 
+/* تأثير عند التمرير */
 .action-btn:hover {
-  background: var(--gold);
-  color: var(--white);
-  border-color: var(--gold);
+  background: #d7b98f;
+  color: #5a0000;
   transform: translateY(-2px);
 }
 
-/* ألوان خلفية خفيفة مميزة */
+/* ألوان خاصة لكل زر */
 .call-btn {
-  background: #fff3cd;
+  background: #ffd54f;
 }
 
 .instagram-btn {
-  background: #fce4ec;
+  background: #ffe9e9;
 }
 
 .whatsapp-btn {
-  background: #e6ffec;
+  background: #e7ffe9;
 }
 
 .location-btn {
-  background: #e3f2fd;
-}
-
-.footer {
-  background: var(--dark-green);
-  color: #fff;
-  text-align: center;
-  padding: 14px 10px;
-  font-size: 13px;
-}
-
-/* ===========================
-   11. RESPONSIVE (التجاوب مع الهاتف)
-=========================== */
-@media (max-width: 992px) {
-  /* إخفاء شريط التنقل العلوي على الشاشات الصغيرة */
-  .l-header__nav {
-    display: none;
-  }
-
-  /* إظهار زر الاتصال العائم في الأسفل */
-  .btn--call-floating {
-    display: flex;
-  }
-  
-  /* تحسينات Hero */
-  .hero {
-    padding: 90px 16px 60px;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-
-  /* تحويل الـ Layout إلى عمود واحد: المنيو فوق السلة */
-  .menu-layout {
-    flex-direction: column;
-  }
-
-  /* إلغاء الـ Sticky للـ Cart على الجوال */
-  .cart {
-    position: static;
-    max-height: none;
-  }
-
-  /* تحسين حجم الأزرار في الـ Smart Box */
-  .options button {
-    width: 100%;
-    margin: 6px 0;
-  }
-  
-  /* تعديل النافذة المنبثقة لتظهر من الأسفل */
-  .popup-overlay {
-    align-items: flex-end; 
-  }
-
-  .popup {
-    border-radius: 20px 20px 0 0; 
-    max-height: 95vh;
-  }
-
-  .popup__content {
-    padding-bottom: 70px; /* مساحة لزر الإجمالي الثابت */
-  }
-
-  .popup__footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 101;
-    border-radius: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  /* جعل المنيو عمود واحد على الجوالات الصغيرة جدًا */
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .smart-box {
-    padding-inline: 16px;
-  }
-  
-  /* تحسين تنسيق بطاقة الآراء على الجوال */
-  .testimonial-card {
-      flex: 0 0 90%; 
-      margin-right: 10px;
-  }
-  .testimonial-carousel {
-      padding-right: 15px; 
-  }
-  
-  /* توسيع أزرار التواصل على الجوال */
-  .contact__buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .action-btn {
-    width: 100%;
-  }
+  background: #e9f3ff;
 }
