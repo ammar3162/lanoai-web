@@ -158,6 +158,7 @@ const FULL_MENU = [
         title: "اختر نوع الباستا",
         min_selection: 1,
         options: [
+          { name: "بدون سبايسي", price: 0.0 },
           { name: "بدون دجاج", price: 0.0 },
           { name: "  بدون بروكلي", price: 0.0 },
         ],
@@ -184,7 +185,7 @@ const FULL_MENU = [
       {
         id: "heat_level",
         type: "single",
-        title: "درجة حرارة الصوص",
+        title: "إضافات اختيارية",
         min_selection: 1,
         options: [
           { name: "سادة ", price: 0.0 },
@@ -206,12 +207,12 @@ const FULL_MENU = [
       {
         id: "heat_level",
         type: "single",
-        title: "درجة الحرارة (إجباري)",
+        title: "إضافات اختيارية",
         min_selection: 1,
         options: [
-          { name: "عادي (بدون حرارة)", price: 0.0 },
-          { name: "حرارة خفيفة", price: 0.0 },
-          { name: "حرارة متوسطة", price: 0.0 },
+          { name: "عادي (بدون سبايسي)", price: 0.0 },
+          { name: "بدون دجاج", price: 0.0 },
+          { name: "بدون بروكلي", price: 0.0 },
         ],
       },
       {
@@ -424,7 +425,7 @@ const FULL_MENU = [
         title: "اختر نوع المشروب",
         min_selection: 1, 
         options: [
-          { name: "أوشن كولا", price: 0.0 },
+          { name: " كولا", price: 0.0 },
           { name: "سبرايت", price: 0.0 },
         ],
       },
@@ -438,6 +439,29 @@ const FULL_MENU = [
     img: "images/ماء_نوفا_17620942785351718.jpg",
     modifiers: [],
   },
+  },
+  // تم تعديل الصنف 20 (مشروبات غازية)
+  {
+    id: 23,
+    name: "مشروبات للاطفال",
+    price: 5.0,
+    desc: "اختر نوع المشروب:  سن كولا أو سن توب.",
+    img: "images/مشروبات_غازية_17518899084159798.jpg",
+    modifiers: [
+      {
+        id: "soda_type",
+        type: "single", 
+        title: "اختر نوع المشروب",
+        min_selection: 1, 
+        options: [
+          { name: " سن كولا", price: 0.0 },
+          { name: "سن توب", price: 0.0 },
+        ],
+      },
+    ],
+  },
+  {
+  
 ];
 
 let cart = [];
