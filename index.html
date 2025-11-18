@@ -997,11 +997,11 @@
                     <h4>اختر نوع الطلب:</h4>
                     <div class="order-options-group">
                         <label class="order-option">
-                                                        <input type="radio" name="orderType" value="takeaway" checked onchange="window.setOrderType('takeaway')">
+                            <input type="radio" name="orderType" value="takeaway" checked>
                             <span>سفري (Takeaway)</span>
                         </label>
                         <label class="order-option">
-                                                        <input type="radio" name="orderType" value="dinein" onchange="window.setOrderType('dinein')">
+                            <input type="radio" name="orderType" value="dinein">
                             <span>محلي (Dine-In)</span>
                         </label>
                     </div>
@@ -1019,10 +1019,9 @@
                         <p class="table-note">لضمان وصول طلبك إلى طاولتك مباشرةً.</p>
                     </div>
                 </div>
-
-                                <div id="interactive-menu-grid" class="interactive-menu-grid">
+                <div id="interactive-menu-grid" class="interactive-menu-grid">
                     </div>
-                            </div>
+            </div>
 
             <div class="cart-wrapper">
                 <div class="cart-section">
@@ -1033,7 +1032,7 @@
 
                     <div id="total-price">
                         <span>الإجمالي الكلي:</span>
-                        <span><span id="final-total-price">0.00</span> ريال</span>
+                        <span><span id="final-total-price"></span> ريال</span>
                     </div>
 
                     <div class="client-info-fields">
@@ -1075,20 +1074,4 @@
             <div class="popup-quantity-control">
                 <button onclick="window.updatePopupQuantity(-1)">−</button>
                 <span id="popup-quantity">1</span>
-                <button onclick="window.updatePopupQuantity(1)">+</button>
-            </div>
-            
-            <div class="popup-total-bar">
-                <span>الإجمالي:</span>
-                <span><span id="popup-total-price">0.00</span> ريال</span>
-            </div>
-            
-            <button class="btn btn--primary btn--full" onclick="window.addItemToCartFromPopup()">
-                أضف إلى السلة
-            </button>
-        </div>
-    </div>
-
-                <script src="app.js"></script> 
-</body>
-</html>
+  
