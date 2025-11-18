@@ -415,7 +415,7 @@ const FULL_MENU = [
     id: 21,
     name: "مشروبات غازية",
     price: 5.0,
-    desc: "اختر نوع المشروب: أوشن كولا أو سبرايت.",
+    desc: "اختر نوع المشروب:  كولا أو سبرايت.",
     img: "images/مشروبات_غازية_17518899084159798.jpg",
     modifiers: [
       {
@@ -443,7 +443,7 @@ const FULL_MENU = [
     name: "مشروبات للاطفال",
     price: 4.0,
     desc: "اختر نوع المشروب: سن كولا أو سن توب.",
-    img: "images/123suncola.jpg",
+    img: "images/تصميم بدون عنوان.jpg",
     modifiers: [
       {
         id: "soda_type",
