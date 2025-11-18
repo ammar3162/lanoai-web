@@ -340,7 +340,7 @@ body {
     overflow: hidden; /* إخفاء النص الزائد */
     margin-bottom: 11px;
     line-height: 1.5; /* تحديد تباعد الأسطر لمزيد من التحكم */
-    text-overflow: ellipsis; /* إضافة نقاط (...) عند الاقتطاع */
+    text-overflow: ellipsis; /* إضافة نقاط (..) عند الاقتطاع */
     display: -webkit-box; /* تفعيل نمط العرض لتقييد عدد الأسطر */
     -webkit-line-clamp: 2; /* **تقييد الوصف على سطرين** */
     -webkit-box-orient: vertical;
@@ -955,4 +955,3 @@ body {
 .location-btn {
   background: #e9f3ff;
 }
-
