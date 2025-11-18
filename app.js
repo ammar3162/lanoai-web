@@ -446,7 +446,7 @@ const FULL_MENU = [
     name: "مشروبات للاطفال",
     price: 5.0,
     desc: "اختر نوع المشروب:  سن كولا أو سن توب.",
-    img: "images/مشروبات_غازية_17518899084159798.jpg",
+    img: "images/تصميم بدون عنوان.jpg",
     modifiers: [
       {
         id: "soda_type",
