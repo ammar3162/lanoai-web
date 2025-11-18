@@ -2,7 +2,7 @@
 //  إعدادات عامة
 // ================================
 const RESTAURANT_PHONE = "966582003125";
-// المتغيرات أصبحت تُحدَّث بناءً على اختيار المستخدم
+// المتغيرات أصبحت تُحدَّث بناءً على اختيار المستخدم
 let orderType = "takeaway"; // القيمة الافتراضية
 let tableNumber = ""; // رقم الطاولة (فقط للمحلي)
 
@@ -35,6 +35,9 @@ let currentQuestion = 0;
 // عرض السؤال الحالي
 function showQuestion() {
   const box = document.getElementById("question-box");
+  
+  // **تعديل: التحقق من وجود عنصر "question-box"**
+  if (!box) return;
 
   if (currentQuestion >= questions.length) {
     showResult();
@@ -74,6 +77,9 @@ function answerQuestion(button, choice) {
 // إظهار النتيجة النهائية للتوصية
 function showResult() {
   const resultBox = document.getElementById("result");
+  // **تعديل: التحقق من وجود عنصر "result"**
+  if (!resultBox) return;
+
   resultBox.style.display = "block";
 
   const [count, flavor, type, kids] = answers;
@@ -160,7 +166,7 @@ const FULL_MENU = [
         options: [
           { name: "بدون سبايسي", price: 0.0 },
           { name: "بدون دجاج", price: 0.0 },
-          { name: "  بدون بروكلي", price: 0.0 },
+          { name: "  بدون بروكلي", price: 0.0 },
         ],
       },
       {
@@ -228,7 +234,7 @@ const FULL_MENU = [
     ],
   },
 // ... (في مصفوفة FULL_MENU)
-{
+  {
     id: 4,
     name: "فتوتشيني ألفريدو",
     price: 43.0,
@@ -333,7 +339,7 @@ const FULL_MENU = [
   },
   {
     id: 14,
-    name: "لازانيا لحم  ",
+    name: "لازانيا لحم  ",
     price: 48.0,
     desc: "طبقات من شرائح الباستا الطازجة المحشوة باللحم المفروم مغطاة بصوص البشاميل الكريمي وجبنة البارميزان والموزاريلا الذائبة. ",
     img: "images/لازانيا_اللحم_17511263014621358.jpg",
@@ -439,13 +445,12 @@ const FULL_MENU = [
     img: "images/ماء_نوفا_17620942785351718.jpg",
     modifiers: [],
   },
-  },
   // تم تعديل الصنف 20 (مشروبات غازية)
   {
     id: 23,
     name: "مشروبات للاطفال",
     price: 5.0,
-    desc: "اختر نوع المشروب:  سن كولا أو سن توب.",
+    desc: "اختر نوع المشروب:  سن كولا أو سن توب.",
     img: "images/تصميم بدون عنوان.jpg",
     modifiers: [
       {
@@ -460,8 +465,7 @@ const FULL_MENU = [
       },
     ],
   },
-  {
-  
+  // تم تصحيح خطأ النسيان هنا (هذا القوس كان مغلقاً خطأً)
 ];
 
 let cart = [];
@@ -481,6 +485,13 @@ function findItemDetails(id) {
 // رسم المنيو
 function renderInteractiveMenu() {
   const container = document.getElementById("interactive-menu-grid");
+  
+  // **التعديل الهام**: التحقق من وجود العنصر لتجنب فشل الكود
+  if (!container) {
+    console.error("خطأ: العنصر ذو الهوية 'interactive-menu-grid' غير موجود في ملف index.html. هذا يوقف عرض المنيو.");
+    return;
+  }
+  
   container.innerHTML = FULL_MENU.map((item) => {
     return `
       <article class="menu-item">
@@ -517,6 +528,9 @@ function openModifierPopup(id) {
   const nameHeader = document.getElementById("popup-item-name");
   const optionsContainer = document.getElementById("popup-options-container");
   const qtySpan = document.getElementById("popup-quantity");
+  
+  // **تعديل: التحقق من وجود العناصر الضرورية للـ Popup**
+  if (!overlay || !nameHeader || !optionsContainer || !qtySpan) return;
 
   nameHeader.textContent = currentPopupItem.name;
   popupQuantity = 1;
@@ -545,7 +559,7 @@ function openModifierPopup(id) {
                 index === 0
                   ? "checked"
                   : "";
-              
+                  
               // التعديل هنا: إزالة كلمة "مجاناً" واستبدالها بسلسلة فارغة
               const priceLabel =
                 option.price > 0
@@ -581,14 +595,17 @@ function openModifierPopup(id) {
 
 function closeModifierPopup() {
   const overlay = document.getElementById("modifier-popup-overlay");
-  overlay.style.display = "none";
+  if (overlay) overlay.style.display = "none";
   currentPopupItem = null;
 }
 
 function updatePopupQuantity(change) {
+  const qtySpan = document.getElementById("popup-quantity");
+  if (!qtySpan) return;
+  
   popupQuantity += change;
   if (popupQuantity < 1) popupQuantity = 1;
-  document.getElementById("popup-quantity").textContent = popupQuantity;
+  qtySpan.textContent = popupQuantity;
   calculatePopupTotal();
 }
 
@@ -596,6 +613,9 @@ function calculatePopupTotal() {
   if (!currentPopupItem) return;
 
   const popup = document.getElementById("modifier-popup");
+  const finalPriceSpan = document.getElementById("final-price-span");
+  if (!popup || !finalPriceSpan) return; // **تعديل: التحقق من الـ Span**
+
   let modifiersPrice = 0;
   const checkedInputs = popup.querySelectorAll("input:checked");
 
@@ -606,7 +626,7 @@ function calculatePopupTotal() {
   const singleItemTotal = currentPopupItem.price + modifiersPrice;
   const finalTotal = singleItemTotal * popupQuantity;
 
-  document.getElementById("final-price-span").textContent =
+  finalPriceSpan.textContent =
     formatPrice(finalTotal);
 }
 
@@ -615,19 +635,27 @@ function addToCartFromPopup() {
   if (!currentPopupItem) return;
 
   const popup = document.getElementById("modifier-popup");
+  if (!popup) return;
+
   const selectedModifiers = [];
   let modifiersPrice = 0;
 
   // التحقق من المجموعات الإجبارية
-  (currentPopupItem.modifiers || []).forEach((group) => {
-    const selected = popup.querySelectorAll(
-      `input[name="modifier-${group.id}"]:checked`
-    );
-    if (group.min_selection > 0 && selected.length < group.min_selection) {
-      alert(`الرجاء اختيار ${group.min_selection} خيارات على الأقل من: ${group.title}`);
-      throw new Error("Required modifier not selected");
-    }
-  });
+  try {
+    (currentPopupItem.modifiers || []).forEach((group) => {
+      const selected = popup.querySelectorAll(
+        `input[name="modifier-${group.id}"]:checked`
+      );
+      if (group.min_selection > 0 && selected.length < group.min_selection) {
+        alert(`الرجاء اختيار ${group.min_selection} خيارات على الأقل من: ${group.title}`);
+        throw new Error("Required modifier not selected");
+      }
+    });
+  } catch (e) {
+    if (e.message === "Required modifier not selected") return;
+    throw e; // إعادة رمي أي خطأ آخر
+  }
+
 
   // تجميع الإضافات
   const checkedInputs = popup.querySelectorAll("input:checked");
@@ -692,6 +720,9 @@ function renderCart() {
   const container = document.getElementById("cart-items");
   const totalSpan = document.querySelector("#total-price span");
   const emptyMsg = document.getElementById("empty-cart-message");
+
+  // **تعديل: التحقق من وجود العناصر الضرورية**
+  if (!container || !totalSpan) return;
 
   if (!cart.length) {
     container.innerHTML = "";
@@ -766,6 +797,12 @@ function sendWhatsAppOrder() {
   const phoneInput = document.getElementById("clientPhoneCart");
   const notesInput = document.getElementById("customNotesCart");
   const statusEl = document.getElementById("cart-status-message");
+  
+  // **تعديل: التحقق من وجود العناصر الضرورية في نموذج الطلب**
+  if (!nameInput || !phoneInput || !notesInput || !statusEl) {
+    console.error("عناصر نموذج الطلب غير موجودة في HTML.");
+    return;
+  }
 
   const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
@@ -819,7 +856,7 @@ function sendWhatsAppOrder() {
       item.price
     )} ريال)\n`;
     item.modifiers.forEach((mod) => {
-      text += `   • إضافة: ${mod.name} ${
+      text += `   • إضافة: ${mod.name} ${
         mod.price > 0 ? `(+ ${formatPrice(mod.price)} ر.س)` : ""
       }\n`;
     });
