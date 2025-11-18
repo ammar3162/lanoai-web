@@ -424,7 +424,7 @@ const FULL_MENU = [
         title: "اختر نوع المشروب",
         min_selection: 1, 
         options: [
-          { name: "أوشن كولا", price: 0.0 },
+          { name: " كولا", price: 0.0 },
           { name: "سبرايت", price: 0.0 },
         ],
       },
