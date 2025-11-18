@@ -438,6 +438,25 @@ const FULL_MENU = [
     img: "images/ماء_نوفا_17620942785351718.jpg",
     modifiers: [],
   },
+   {
+    id: 23,
+    name: "مشروبات للاطفال",
+    price: 4.0,
+    desc: "اختر نوع المشروب: سن كولا أو سن توب.",
+    img: "images/123suncola.jpg",
+    modifiers: [
+      {
+        id: "soda_type",
+        type: "single", 
+        title: "اختر نوع المشروب",
+        min_selection: 1, 
+        options: [
+          { name: "سن كولا", price: 0.0 },
+          { name: "سن توب", price: 0.0 },
+        ],
+      },
+    ],
+  },
 ];
 
 let cart = [];
