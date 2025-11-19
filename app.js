@@ -1,895 +1,760 @@
-// ================================
-//  إعدادات عامة
-// ================================
-const RESTAURANT_PHONE = "966582003125";
-// المتغيرات أصبحت تُحدَّث بناءً على اختيار المستخدم
-let orderType = "takeaway"; // القيمة الافتراضية
-let tableNumber = ""; // رقم الطاولة (فقط للمحلي)
-
-
-// ================================
-//  1) نظام التوصية الذكية
-// ================================
-const questions = [
-  {
-    q: "كم عدد الأشخاص الذين سيستمتعون بالوجبة؟",
-    options: ["1-2 شخص (فردي)", "3-4 أشخاص (تشارك)", "5 أشخاص وأكثر (باقة عائلية)"],
-  },
-  {
-    q: "ما هي النكهة المفضلة لكم؟",
-    options: ["نكهات منعشة وخفيفة", "نكهات كريمية وغنية", "نكهات حارة ومتبلة"],
-  },
-  {
-    q: "هل تفضلون وجبة مشبعة (لازانيا / ريزوتو) أم وجبة أخف (باستا / بيتزا)؟",
-    options: ["غني ومُشبع", "خفيف وسريع"],
-  },
-  {
-    q: "هل يوجد أطفال في المجموعة؟",
-    options: ["نعم، يوجد أطفال", "لا، بالغون فقط"],
-  },
+// =========================================================
+// 1. تعريف بيانات المنيو (القائمة) - تم تغيير الاسم إلى 'menuItems'
+//    لتتوافق مع باقي الكود.
+// =========================================================
+const menuItems = [
+    {
+        id: 1,
+        name: "باستا لانو",
+        price: 35.0,
+        desc: "باستا لانو الشهيرة مع الدجاج والكريمة والبروكلي.",
+        image: "images/باستا_17511257850852190.webp", // تم تغيير 'img' إلى 'image'
+        modifiers: [
+            {
+                id: "pasta_type",
+                type: "radio", // تم تغيير 'single' إلى 'radio'
+                group: "اختر نوع الباستا", // إضافة 'group'
+                required: true, // إضافة 'required'
+                options: [
+                    { name: "بدون دجاج", price: 0.0 },
+                    { name: "بدون بروكلي", price: 0.0 },
+                ],
+            },
+            {
+                id: "paid_addons",
+                type: "checkbox", // تم تغيير 'multiple' إلى 'checkbox'
+                group: "إضافات مدفوعة", // إضافة 'group'
+                required: false, // إضافة 'required'
+                options: [
+                    { name: "زيادة دجاج إضافي", price: 5.0 },
+                    { name: "زيادة مشروم", price: 5.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 2,
+        name: "سباغيتي بولونيز",
+        price: 32.0,
+        desc: "سباغيتي بصلصة البولونيز مع جبنة البارميزان.",
+        image: "images/سباغيتي_17511257342315958.webp",
+        modifiers: [
+            {
+                id: "heat_level",
+                type: "radio",
+                group: "درجة حرارة الصوص",
+                required: true,
+                options: [
+                    { name: "سادة ", price: 0.0 },
+                    { name: "اضافة لحم", price: 7.0 },
+                    { name: "اضافة دجاج ", price: 5.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 3,
+        name: "بينك باستا",
+        price: 38.0,
+        desc: "صوص كريمة وردية مع دجاج مشوي وبروكلي.",
+        image: "images/بينك_باستا_17511258197184928.jpg",
+        modifiers: [
+            {
+                id: "heat_level",
+                type: "radio",
+                group: "درجة الحرارة (إجباري)",
+                required: true,
+                options: [
+                    { name: "عادي (بدون حرارة)", price: 0.0 },
+                    { name: "حرارة خفيفة", price: 0.0 },
+                    { name: "حرارة متوسطة", price: 0.0 },
+                ],
+            },
+            {
+                id: "addons",
+                type: "checkbox",
+                group: "إضافات اختيارية",
+                required: false,
+                options: [
+                    { name: "إضافة دجاج إضافي", price: 5.0 },
+                    { name: "إضافة بروكلي إضافي", price: 5.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 4,
+        name: "فتوتشيني ألفريدو",
+        price: 43.0,
+        desc: "فتوتشيني كريمي مع الدجاج والمشروم.",
+        image: "images/فتوتشيني_17511258546063978.jpg",
+        modifiers: [
+            {
+                id: "version",
+                type: "radio",
+                group: "اختر نوع الوجبة",
+                required: true,
+                options: [
+                    { name: "الطريقة الأصلية (بالدجاج والمشروم)", price: 0.0 },
+                    { name: "فتوتشيني (بدون دجاج )", price: 0.0 },
+                    { name: "فتوتشيني (بدون مشروم )", price: 0.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 5,
+        name: "رافيولي بالريكوتا والسبانخ",
+        price: 37.0,
+        desc: "رافيولي محشوة جبنة ريكوتا وسبانخ.",
+        image: "images/رافيولي_17511258874579816.jpg",
+        modifiers: [],
+    },
+    {
+        id: 6,
+        name: "ريزوتو بالكريمة والدجاج",
+        price: 35.0,
+        desc: "أرز كريمي غني مع دجاج مشوي.",
+        image: "images/ريزوتو_بالكريمة_والدجاج_المشوي_17511259231037362.jpg",
+        modifiers: [],
+    },
+    {
+        id: 7,
+        name: "بيتزا بوراتا مع بيبي جرجير",
+        price: 49.0,
+        desc: "جبنة بوراتا كريمية مع جرجير وزيت زيتون.",
+        image: "images/بيتزا_بوراتا_مع_بيبي_جرجير_17511259556497200.jpg",
+        modifiers: [],
+    },
+    {
+        id: 8,
+        name: "بيتزا مارجريتا",
+        price: 38.0,
+        desc: "طماطم سان مارزانو، موزاريلا، ريحان.",
+        image: "images/بيتزا_مارجريتا_17511259809415234.jpg",
+        modifiers: [],
+    },
+    {
+        id: 9, // تم تغيير id لـ ترافيل من 8 إلى 9
+        name: "بيتزا ترافيل",
+        price: 59.0,
+        desc: "صوص كريمي ناعم ونكهة الترافل الفاخرة، تكتمل بشرائح المشروم الطازجة",
+        image: "images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg",
+        modifiers: [],
+    },
+    {
+        id: 10, // تم تغيير id لـ بيتزا خضار ودجاج من 9 إلى 10
+        name: "بيتزا خضار ودجاج",
+        price: 39.0,
+        desc: "خضار طازجة مع قطع دجاج.",
+        image: "images/بيتزا_خضار_17511260105455480.jpg",
+        modifiers: [],
+    },
+    {
+        id: 11, // تم تغيير id لـ بيتزا بيستو دجاج من 10 إلى 11
+        name: "بيتزا بيستو دجاج",
+        price: 49.0,
+        desc: "صلصة بيستو منزلية مع دجاج وطماطم مجففة.",
+        image: "images/بيتزا_بيستو_دجاج_17511260422447870.jpg",
+        modifiers: [],
+    },
+    {
+        id: 12, // تم تغيير id لـ سلطة لانو من 11 إلى 12
+        name: "سلطة لانو",
+        price: 31.0,
+        desc: "خضار ورقية طازجة مع الذرة.",
+        image: "images/سلطة_لانو_17511261545338358.jpg",
+        modifiers: [],
+    },
+    {
+        id: 13, // تم تغيير id لـ سلطة سيزر من 12 إلى 13
+        name: "سلطة سيزر",
+        price: 33.0,
+        desc: "خس، دجاج مشوي، صوص سيزر.",
+        image: "images/سلطة_سيزر_17511261842402466.jpg",
+        modifiers: [],
+    },
+    {
+        id: 14, // تم تغيير id لـ كرات البطاطس المحشوة من 13 إلى 14
+        name: "كرات البطاطس المحشوة",
+        price: 48.0,
+        desc: "بطاطس مهروسة محشوة بأجبان ودجاج.",
+        image: "images/كرات_البطاطس_المحشوة_17511262735610694.jpg",
+        modifiers: [],
+    },
+    {
+        id: 15, // تم تغيير id لـ لازانيا لحم من 14 إلى 15
+        name: "لازانيا لحم  ",
+        price: 48.0,
+        desc: "طبقات من شرائح الباستا الطازجة المحشوة باللحم المفروم مغطاة بصوص البشاميل الكريمي وجبنة البارميزان والموزاريلا الذائبة. ",
+        image: "images/لازانيا_اللحم_17511263014621358.jpg",
+        modifiers: [],
+    },
+    {
+        id: 16, // تم تغيير id لـ كرات الأرنشيني من 15 إلى 16
+        name: "كرات الأرنشيني",
+        price: 33.0,
+        desc: "أرز كريمي محشو بأجبان ذائبة.",
+        image: "images/كرات_الأرنشيني_17511262416990748.jpg",
+        modifiers: [],
+    },
+    {
+        id: 17, // تم تغيير id لـ بارميجانا من 16 إلى 17
+        name: "بارميجانا",
+        price: 27.0,
+        desc: "شرائح باذنجان مشوي مع صوص طماطم وجبنة.",
+        image: "images/بارميجانا_17511262173301050.jpg",
+        modifiers: [
+            {
+                id: "protein_addon",
+                type: "checkbox",
+                group: "إضافات البروتين",
+                required: false,
+                options: [
+                    { name: "إضافة لحم مفروم", price: 7.0 },
+                    { name: "إضافة قطع دجاج مشوية", price: 5.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 18, // تم تغيير id لـ فرايز من 17 إلى 18
+        name: "فرايز",
+        price: 12.0,
+        desc: "بطاطس مقلية مقرمشة مع جبنة بارميزان.",
+        image: "images/فرايز_17511263309966382.jpg",
+        modifiers: [
+            {
+                id: "cheese_option",
+                type: "radio",
+                group: "خيار الجبنة",
+                required: true,
+                options: [
+                    { name: "مع جبنة بارميزان (كما هي)", price: 0.0 },
+                    { name: "بدون جبنة", price: 0.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 19, // تم تغيير id لـ باشن فروت من 18 إلى 19
+        name: "باشن فروت",
+        price: 24.0,
+        desc: "عصير باشن فروت فريش.",
+        image: "images/باشيتو_17511264110701110.jpg",
+        modifiers: [],
+    },
+    {
+        id: 20, // تم تغيير id لـ عصير برتقال من 19 إلى 20
+        name: "عصير برتقال",
+        price: 12.0,
+        desc: "عصير برتقال طبيعي منعش.",
+        image: "images/أورنجيتو_17511264339186198.jpg",
+        modifiers: [],
+    },
+    {
+        id: 21, // تم تغيير id لـ مكس بيري من 20 إلى 21
+        name: "مكس بيري",
+        price: 24.0,
+        desc: "مزيج توت وليمون ونعناع.",
+        image: "images/بيريتو_17511264757196126.jpg",
+        modifiers: [],
+    },
+    {
+        id: 22, // تم تغيير id لـ مشروبات غازية من 21 إلى 22
+        name: "مشروبات غازية",
+        price: 5.0,
+        desc: "اختر نوع المشروب: أوشن كولا أو سبرايت.",
+        image: "images/مشروبات_غازية_17518899084159798.jpg",
+        modifiers: [
+            {
+                id: "soda_type",
+                type: "radio",
+                group: "اختر نوع المشروب",
+                required: true,
+                options: [
+                    { name: "أوشن كولا", price: 0.0 },
+                    { name: "سبرايت", price: 0.0 },
+                ],
+            },
+        ],
+    },
+    {
+        id: 23,
+        name: "ماء نوفا",
+        price: 2.0,
+        desc: "مياه معدنية.",
+        image: "images/ماء_نوفا_17620942785351718.jpg",
+        modifiers: [],
+    },
+    {
+        id: 24, // تم تغيير id لـ مشروبات للاطفال من 23 إلى 24
+        name: "مشروبات للاطفال",
+        price: 4.0,
+        desc: "اختر نوع المشروب: سن كولا أو سن توب.",
+        image: "images/123suncola.jpg",
+        modifiers: [
+            {
+                id: "soda_type",
+                type: "radio",
+                group: "اختر نوع المشروب",
+                required: true,
+                options: [
+                    { name: "سن كولا", price: 0.0 },
+                    { name: "سن توب", price: 0.0 },
+                ],
+            },
+        ],
+    },
 ];
 
-let answers = [];
-let currentQuestion = 0;
-
-// عرض السؤال الحالي
-function showQuestion() {
-  const box = document.getElementById("question-box");
-
-  if (currentQuestion >= questions.length) {
-    showResult();
-    return;
-  }
-
-  const q = questions[currentQuestion];
-
-  box.innerHTML = `
-    <div class="question">${q.q}</div>
-    <div class="options">
-      ${q.options
-        .map(
-          (opt) => `
-        <button type="button" onclick="window.answerQuestion(this, '${opt}')">
-          ${opt}
-        </button>
-      `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-// حفظ الإجابة والانتقال للسؤال التالي
-function answerQuestion(button, choice) {
-  const allButtons = button.parentNode.querySelectorAll("button");
-  allButtons.forEach((b) => b.classList.remove("selected"));
-  button.classList.add("selected");
-
-  answers[currentQuestion] = choice;
-  currentQuestion++;
-
-  setTimeout(showQuestion, 250);
-}
-
-// إظهار النتيجة النهائية للتوصية
-function showResult() {
-  const resultBox = document.getElementById("result");
-  resultBox.style.display = "block";
-
-  const [count, flavor, type, kids] = answers;
-
-  let title = "🎉 اقتراح الوجبة الذكي";
-  let text = "";
-
-  if (count === "5 أشخاص وأكثر (باقة عائلية)") {
-    title = "✨ باقة لانو العائلية الذهبية";
-    text = `
-      نوصيكم بباقة عائلية مشبعة:
-      <ul>
-        <li>2 × لازانيا اللحم أو ريزوتو بالدجاج.</li>
-        <li>2 × بيتزا (بوراتا + بيستو دجاج).</li>
-        <li>مقبلات: كرات البطاطس + كرات الأرنشيني.</li>
-        <li>مشروبات: 3 × لتر عصير (مكس بيري / باشن فروت).</li>
-      </ul>
-    `;
-  } else if (count === "3-4 أشخاص (تشارك)") {
-    title = "🤝 باقة التشارك المتوسطة";
-    text = `
-      اقتراح مثالي لمجموعة 3–4:
-      <ul>
-        <li>1 × بيتزا مارجريتا + 1 × بيتزا خضار ودجاج.</li>
-        <li>1 × باستا (بينك باستا أو فتوتشيني).</li>
-        <li>سلطة: لانو أو سيزر.</li>
-      </ul>
-    `;
-  } else {
-    title = "👤 وجبة فردية مميزة";
-    if (type === "غني ومُشبع" && flavor.includes("كريمية")) {
-      text =
-        "نقترح عليك: فتوتشيني ألفريدو أو ريزوتو بالكريمة، مع كرات البطاطس ومشروب باشن فروت.";
-    } else if (type === "غني ومُشبع" && flavor.includes("حارة")) {
-      text =
-        "جرب سباغيتي بولونيز مع إضافة فلفل حار، ومعها سلطة لانو ومشروب غازي.";
-    } else if (type === "خفيف وسريع" && flavor.includes("منعشة")) {
-      text = "اختيار رائع: بيتزا مارجريتا أو سلطة لانو، مع مكس بيري.";
-    } else {
-      text =
-        "خيار متوازن: باستا لانو أو بينك باستا، مع فرايز ومشروب غازي.";
+// =========================================================
+// 2. تعريف بيانات التوصية الذكية - تم تحديث item_id لتتوافق مع القائمة الجديدة
+// =========================================================
+const recommenderQuestions = [
+    {
+        id: 1,
+        question: "ما هو مزاجك اليوم؟ هل تفضل طبقاً رئيسياً غنياً أم وجبة خفيفة جانبية؟",
+        options: [
+            { text: "طبق رئيسي دافئ (باستا / لازانيا)", type: "main" },
+            { text: "وجبة خفيفة سريعة (سلطات / مقبلات)", type: "side" }
+        ],
+        nextQuestion: 2
+    },
+    {
+        id: 2,
+        question: "هل أنت من محبي اللحوم أو تفضل الخيارات النباتية/الدجاج؟",
+        options: [
+            { text: "اللحوم الحمراء (بولونيز / ببروني)", type: "meat" },
+            { text: "الدجاج أو الخضروات (ألفريدو / مارغاريتا)", type: "chicken_veg" }
+        ],
+        nextQuestion: null // آخر سؤال
     }
-  }
-
-  if (kids === "نعم، يوجد أطفال") {
-    text += `<br><br>👶 للأطفال: ننصح بـ بينك باستا + فرايز، لأنها أخف وأقرب لذوق الأطفال.`;
-  }
-
-  resultBox.innerHTML = `
-    <h3>${title}</h3>
-    <p>${text}</p>
-    <hr style="margin: 20px 0;">
-    <div style="text-align:center;">
-      <button
-        type="button"
-        class="btn btn--primary"
-        onclick="document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' })"
-      >
-        🛒 انتقل لاختيار أطباقك من المنيو
-      </button>
-    </div>
-  `;
-}
-
-// تعريض الدوال عالمياً للاستخدام في الـ HTML
-window.answerQuestion = answerQuestion;
-
-// ================================
-//  2) بيانات المنيو + الإضافات
-// ================================
-const FULL_MENU = [
-  {
-    id: 1,
-    name: "باستا لانو",
-    price: 35.0,
-    desc: "باستا لانو الشهيرة مع الدجاج والكريمة والبروكلي.",
-    img: "images/باستا_17511257850852190.webp",
-    modifiers: [
-      {
-        id: "pasta_type",
-        type: "single",
-        title: "اختر نوع الباستا",
-        min_selection: 1,
-        options: [
-          { name: "بدون دجاج", price: 0.0 },
-          { name: "  بدون بروكلي", price: 0.0 },
-        ],
-      },
-      {
-        id: "paid_addons",
-        type: "multiple",
-        title: "إضافات مدفوعة",
-        min_selection: 0,
-        options: [
-          { name: "زيادة دجاج إضافي", price: 5.0 },
-          { name: "زيادة مشروم", price: 5.0 },
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "سباغيتي بولونيز",
-    price: 32.0,
-    desc: "سباغيتي بصلصة البولونيز مع جبنة البارميزان.",
-    img: "images/سباغيتي_17511257342315958.webp",
-    modifiers: [
-      {
-        id: "heat_level",
-        type: "single",
-        title: "درجة حرارة الصوص",
-        min_selection: 1,
-        options: [
-          { name: "سادة ", price: 0.0 },
-          { name: "اضافة لحم", price: 7.0 },
-          { name: "اضافة دجاج ", price: 5.0 },
-          
-        ],
-      },
-    ],
-  },
-  // تم تعديل الصنف 3 (بينك باستا)
-  {
-    id: 3,
-    name: "بينك باستا",
-    price: 38.0,
-    desc: "صوص كريمة وردية مع دجاج مشوي وبروكلي.",
-    img: "images/بينك_باستا_17511258197184928.jpg",
-    modifiers: [
-      {
-        id: "heat_level",
-        type: "single",
-        title: "درجة الحرارة (إجباري)",
-        min_selection: 1,
-        options: [
-          { name: "عادي (بدون حرارة)", price: 0.0 },
-          { name: "حرارة خفيفة", price: 0.0 },
-          { name: "حرارة متوسطة", price: 0.0 },
-        ],
-      },
-      {
-        id: "addons",
-        type: "multiple",
-        title: "إضافات اختيارية",
-        min_selection: 0,
-        options: [
-          { name: "إضافة دجاج إضافي", price: 5.0 },
-          { name: "إضافة بروكلي إضافي", price: 5.0 },
-        ],
-      },
-    ],
-  },
-// ... (في مصفوفة FULL_MENU)
-{
-    id: 4,
-    name: "فتوتشيني ألفريدو",
-    price: 43.0,
-    desc: "فتوتشيني كريمي مع الدجاج والمشروم.",
-    img: "images/فتوتشيني_17511258546063978.jpg",
-    modifiers: [
-      {
-        id: "version",
-        type: "single",
-        title: "اختر نوع الوجبة",
-        min_selection: 1,
-        options: [
-          { name: "الطريقة الأصلية (بالدجاج والمشروم)", price: 0.0 },
-          { name: "فتوتشيني (بدون دجاج )", price: 0.0 },
-          { name: "فتوتشيني (بدون مشروم )", price: 0.0 },
-        ],
-      },
-    ],
-  },
-// ... (بقية القائمة)
-  {
-    id: 5,
-    name: "رافيولي بالريكوتا والسبانخ",
-    price: 37.0,
-    desc: "رافيولي محشوة جبنة ريكوتا وسبانخ.",
-    img: "images/رافيولي_17511258874579816.jpg",
-    modifiers: [],
-  },
-  {
-    id: 6,
-    name: "ريزوتو بالكريمة والدجاج",
-    price: 35.0,
-    desc: "أرز كريمي غني مع دجاج مشوي.",
-    img: "images/ريزوتو_بالكريمة_والدجاج_المشوي_17511259231037362.jpg",
-    modifiers: [],
-  },
-  {
-    id: 7,
-    name: "بيتزا بوراتا مع بيبي جرجير",
-    price: 49.0,
-    desc: "جبنة بوراتا كريمية مع جرجير وزيت زيتون.",
-    img: "images/بيتزا_بوراتا_مع_بيبي_جرجير_17511259556497200.jpg",
-    modifiers: [],
-  },
-  {
-    id: 8,
-    name: "بيتزا مارجريتا",
-    price: 38.0,
-    desc: "طماطم سان مارزانو، موزاريلا، ريحان.",
-    img: "images/بيتزا_مارجريتا_17511259809415234.jpg",
-    modifiers: [],
-  },
-
-  {
-    id: 8,
-    name: "بيتزا ترافيل",
-    price: 59.0,
-    desc: "صوص كريمي ناعم ونكهة الترافل الفاخرة، تكتمل بشرائح المشروم الطازجة",
-    img: "images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg",
-    modifiers: [],
-  },
-
-  {
-    id: 9,
-    name: "بيتزا خضار ودجاج",
-    price: 39.0,
-    desc: "خضار طازجة مع قطع دجاج.",
-    img: "images/بيتزا_خضار_17511260105455480.jpg",
-    modifiers: [],
-  },
-  {
-    id: 10,
-    name: "بيتزا بيستو دجاج",
-    price: 49.0,
-    desc: "صلصة بيستو منزلية مع دجاج وطماطم مجففة.",
-    img: "images/بيتزا_بيستو_دجاج_17511260422447870.jpg",
-    modifiers: [],
-  },
-  {
-    id: 11,
-    name: "سلطة لانو",
-    price: 31.0,
-    desc: "خضار ورقية طازجة مع الذرة.",
-    img: "images/سلطة_لانو_17511261545338358.jpg",
-    modifiers: [],
-  },
-  {
-    id: 12,
-    name: "سلطة سيزر",
-    price: 33.0,
-    desc: "خس، دجاج مشوي، صوص سيزر.",
-    img: "images/سلطة_سيزر_17511261842402466.jpg",
-    modifiers: [],
-  },
-  {
-    id: 13,
-    name: "كرات البطاطس المحشوة",
-    price: 48.0,
-    desc: "بطاطس مهروسة محشوة بأجبان ودجاج.",
-    img: "images/كرات_البطاطس_المحشوة_17511262735610694.jpg",
-    modifiers: [],
-  },
-  {
-    id: 14,
-    name: "لازانيا لحم  ",
-    price: 48.0,
-    desc: "طبقات من شرائح الباستا الطازجة المحشوة باللحم المفروم مغطاة بصوص البشاميل الكريمي وجبنة البارميزان والموزاريلا الذائبة. ",
-    img: "images/لازانيا_اللحم_17511263014621358.jpg",
-    modifiers: [],
-  },
-  {
-    id: 15,
-    name: "كرات الأرنشيني",
-    price: 33.0,
-    desc: "أرز كريمي محشو بأجبان ذائبة.",
-    img: "images/كرات_الأرنشيني_17511262416990748.jpg",
-    modifiers: [],
-  },
-  // تم تعديل الصنف 15 (بارميجانا)
-  {
-    id: 16,
-    name: "بارميجانا",
-    price: 27.0,
-    desc: "شرائح باذنجان مشوي مع صوص طماطم وجبنة.",
-    img: "images/بارميجانا_17511262173301050.jpg",
-    modifiers: [
-      {
-        id: "protein_addon",
-        type: "multiple", 
-        title: "إضافات البروتين",
-        min_selection: 0, 
-        options: [
-          { name: "إضافة لحم مفروم", price: 7.0 },
-          { name: "إضافة قطع دجاج مشوية", price: 5.0 },
-        ],
-      },
-    ],
-  },
-  // تم تعديل الصنف 16 (فرايز)
-  {
-    id: 17,
-    name: "فرايز",
-    price: 12.0,
-    desc: "بطاطس مقلية مقرمشة مع جبنة بارميزان.",
-    img: "images/فرايز_17511263309966382.jpg",
-    modifiers: [
-      {
-        id: "cheese_option",
-        type: "single", 
-        title: "خيار الجبنة",
-        min_selection: 1, 
-        options: [
-          { name: "مع جبنة بارميزان (كما هي)", price: 0.0 },
-          { name: "بدون جبنة", price: 0.0 },
-        ],
-      },
-    ],
-  },
-  {
-    id: 18,
-    name: "باشن فروت",
-    price: 24.0,
-    desc: "عصير باشن فروت فريش.",
-    img: "images/باشيتو_17511264110701110.jpg",
-    modifiers: [],
-  },
-  {
-    id: 19,
-    name: "عصير برتقال",
-    price: 12.0,
-    desc: "عصير برتقال طبيعي منعش.",
-    img: "images/أورنجيتو_17511264339186198.jpg",
-    modifiers: [],
-  },
-  {
-    id: 20,
-    name: "مكس بيري",
-    price: 24.0,
-    desc: "مزيج توت وليمون ونعناع.",
-    img: "images/بيريتو_17511264757196126.jpg",
-    modifiers: [],
-  },
-  // تم تعديل الصنف 20 (مشروبات غازية)
-  {
-    id: 21,
-    name: "مشروبات غازية",
-    price: 5.0,
-    desc: "اختر نوع المشروب:  كولا أو سبرايت.",
-    img: "images/مشروبات_غازية_17518899084159798.jpg",
-    modifiers: [
-      {
-        id: "soda_type",
-        type: "single", 
-        title: "اختر نوع المشروب",
-        min_selection: 1, 
-        options: [
-          { name: " كولا", price: 0.0 },
-          { name: "سبرايت", price: 0.0 },
-        ],
-      },
-    ],
-  },
-  {
-    id: 22,
-    name: "ماء نوفا",
-    price: 2.0,
-    desc: "مياه معدنية.",
-    img: "images/ماء_نوفا_17620942785351718.jpg",
-    modifiers: [],
-  },
-   {
-    id: 23,
-    name: "مشروبات للاطفال",
-    price: 4.0,
-    desc: "اختر نوع المشروب: سن كولا أو سن توب.",
-    img: "images/تصميم بدون عنوان.jpg",
-    modifiers: [
-      {
-        id: "soda_type",
-        type: "single", 
-        title: "اختر نوع المشروب",
-        min_selection: 1, 
-        options: [
-          { name: "سن كولا", price: 0.0 },
-          { name: "سن توب", price: 0.0 },
-        ],
-      },
-    ],
-  },
 ];
 
+const recommenderResults = {
+    // تم تحديث الـ item_id لاستخدام أصناف موجودة
+    main_meat: {
+        name: "لازانيا لحم",
+        desc: "خيارك ممتاز! مزيج من لحم البولونيز وجبنة الموزاريلا يلبي الرغبة بوجبة رئيسية غنية ومشبعة.",
+        item_id: 15 // لازانيا لحم (ID 15)
+    },
+    main_chicken_veg: {
+        name: "فتوتشيني ألفريدو",
+        desc: "وجبة كلاسيكية دافئة ولذيذة. صوص الألفريدو مع الدجاج المشوي هو الخيار الأمثل لوجبة رئيسية شهية.",
+        item_id: 4 // فتوتشيني ألفريدو (ID 4)
+    },
+    side_meat: {
+        name: "سباغيتي بولونيز",
+        desc: "خيارك ممتاز! سباغيتي بولونيز هي الخيار الأمثل لوجبة خفيفة سريعة مع اللحم.",
+        item_id: 2 // سباغيتي بولونيز (ID 2)
+    },
+    side_chicken_veg: {
+        name: "كرات الأرنشيني",
+        desc: "وجبة خفيفة وممتعة، أرز كريمي محشو بأجبان ذائبة. لا تفوتها كطبق جانبي!",
+        item_id: 16 // كرات الأرنشيني (ID 16)
+    }
+};
+
+let currentQuestionIndex = 0;
+let recommendationAnswers = {};
+
+// =========================================================
+// 3. حالة السلة والعناصر النشطة
+// =========================================================
 let cart = [];
-let currentPopupItem = null;
+let activeItemInPopup = null;
 let popupQuantity = 1;
 
-// مساعد بسيط لتنسيق السعر
-function formatPrice(num) {
-  return num.toFixed(2);
-}
+// =========================================================
+// 4. وظائف التوصية الذكية
+// =========================================================
+window.renderRecommender = function() {
+    const container = document.getElementById('question-box');
+    container.innerHTML = '';
+    document.getElementById('result').style.display = 'none';
 
-// إيجاد صنف
-function findItemDetails(id) {
-  return FULL_MENU.find((item) => item.id === id);
-}
+    if (currentQuestionIndex < recommenderQuestions.length) {
+        const q = recommenderQuestions[currentQuestionIndex];
+        
+        const questionHtml = `<div class="question">${q.question}</div>`;
+        const optionsHtml = `<div class="options">${q.options.map(opt => 
+            `<button onclick="window.answerQuestion('${opt.type}')">${opt.text}</button>`
+        ).join('')}</div>`;
 
-// رسم المنيو
-function renderInteractiveMenu() {
-  const container = document.getElementById("interactive-menu-grid");
-  container.innerHTML = FULL_MENU.map((item) => {
-    return `
-      <article class="menu-item">
-        <img
-          src="${item.img}"
-          alt="${item.name}"
-          loading="lazy"
-          class="menu-item__image"
-          onclick="window.openModifierPopup(${item.id})"
-        />
-        <h3 class="menu-item__name">${item.name}</h3>
-        <p class="menu-item__desc">${item.desc}</p>
-        <span class="menu-item__price">${formatPrice(item.price)} ريال</span>
-        <button
-          type="button"
-          class="btn btn--secondary btn--full"
-          onclick="window.openModifierPopup(${item.id})"
-        >
-          ➕ أضف للاختيارات
-        </button>
-      </article>
-    `;
-  }).join("");
-}
+        container.innerHTML = questionHtml + optionsHtml;
+    } else {
+        // عرض النتيجة
+        const key = recommendationAnswers.q1 + '_' + recommendationAnswers.q2;
+        const result = recommenderResults[key];
+        // تم تغيير menuItems.find(i => i.id === result.item_id);
+        const item = menuItems.find(i => i.id === result.item_id); 
 
-// ================================
-//  3) النافذة المنبثقة (Modifiers)
-// ================================
-function openModifierPopup(id) {
-  currentPopupItem = findItemDetails(id);
-  if (!currentPopupItem) return;
+        const resultHtml = `
+            <h3>🎉 نقترح عليك: ${result.name}</h3>
+            <p>${result.desc}</p>
+            <ul>
+                <li><a href="#menu" style="color: var(--primary-red); font-weight: 700;">انتقل إلى المنيو لطلبها</a></li>
+                <li>${item.desc}</li>
+            </ul>
+            <button class="btn btn--primary" onclick="window.renderRecommender()">أعد التشغيل</button>
+        `;
+        document.getElementById('result').innerHTML = resultHtml;
+        document.getElementById('result').style.display = 'block';
+    }
+};
 
-  const overlay = document.getElementById("modifier-popup-overlay");
-  const nameHeader = document.getElementById("popup-item-name");
-  const optionsContainer = document.getElementById("popup-options-container");
-  const qtySpan = document.getElementById("popup-quantity");
+window.answerQuestion = function(answer) {
+    recommendationAnswers[`q${currentQuestionIndex + 1}`] = answer;
+    currentQuestionIndex++;
+    window.renderRecommender();
+};
 
-  nameHeader.textContent = currentPopupItem.name;
-  popupQuantity = 1;
-  qtySpan.textContent = popupQuantity;
+// =========================================================
+// 5. وظائف عرض المنيو (مع ربط زر الضغط وتحديث اللون)
+// =========================================================
+window.renderMenu = function() {
+    const grid = document.getElementById('interactive-menu-grid');
+    // **ملاحظة: لقد قمت بتغيير اسم خاصية الصورة في البيانات من 'img' إلى 'image'**
+    // **يجب أن تتأكد من تحديث أسماء الخصائص (img -> image) في ملف HTML أيضاً لتظهر الصور.**
+    grid.innerHTML = menuItems.map(item => {
+        // التحقق مما إذا كان الصنف موجوداً في السلة لتطبيق الكلاس الأخضر
+        const isInCart = cart.some(cartItem => cartItem.itemId === item.id);
+        const cartClass = isInCart ? ' is-in-cart' : ''; 
+        
+        return `
+            <div class="menu-item${cartClass}" data-item-id="${item.id}">
+                <img src="${item.image}" alt="${item.name}" class="menu-item__image" onclick="openModifierPopup(${item.id})">
+                <div class="item-details">
+                    <h3 class="menu-item__name">${item.name}</h3>
+                    <p class="menu-item__desc">${item.desc}</p>
+                    <span class="menu-item__price">${item.price.toFixed(2)} ريال</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+};
 
-  if (!currentPopupItem.modifiers || currentPopupItem.modifiers.length === 0) {
-    optionsContainer.innerHTML =
-      '<p style="text-align:center;color:#999;">لا توجد خيارات إضافية لهذا الصنف.</p>';
-  } else {
-    let html = "";
-    currentPopupItem.modifiers.forEach((group) => {
-      const typeAttr = group.type === "single" ? "radio" : "checkbox";
-      const requiredText =
-        group.min_selection > 0
-          ? `<small>(إجباري، اختر ${group.min_selection})</small>`
-          : `<small>(اختياري)</small>`;
+// =========================================================
+// 6. وظائف النافذة المنبثقة (Modifiers) - تم تحديث طريقة التعامل مع المتطلبات
+// =========================================================
+function openModifierPopup(itemId) {
+    activeItemInPopup = menuItems.find(i => i.id === itemId);
+    
+    if (!activeItemInPopup) {
+        console.error("Item not found for ID:", itemId);
+        return;
+    }
 
-      html += `
-        <div class="modifier-group">
-          <h4>${group.title} ${requiredText}</h4>
-          ${group.options
-            .map((option, index) => {
-              const checked =
-                group.min_selection > 0 &&
-                typeAttr === "radio" &&
-                index === 0
-                  ? "checked"
-                  : "";
-              
-              // التعديل هنا: إزالة كلمة "مجاناً" واستبدالها بسلسلة فارغة
-              const priceLabel =
-                option.price > 0
-                  ? `+ ${formatPrice(option.price)} ريال`
-                  : ""; 
+    popupQuantity = 1;
 
-              return `
-              <label class="modifier-option">
-                <span class="modifier-option__label">${option.name}</span>
-                <span class="modifier-option__price">${priceLabel}</span>
-                <input
-                  type="${typeAttr}"
-                  name="modifier-${group.id}"
-                  value="${option.name}|${option.price}"
-                  data-price="${option.price}"
-                  onchange="window.calculatePopupTotal()"
-                  ${checked}
-                />
-              </label>
-            `;
-            })
-            .join("")}
-        </div>
-      `;
+    document.getElementById('popup-item-name').textContent = activeItemInPopup.name;
+    document.getElementById('popup-quantity').textContent = popupQuantity;
+    
+    const optionsContainer = document.getElementById('popup-options-container');
+    optionsContainer.innerHTML = '';
+
+    activeItemInPopup.modifiers.forEach((mod, groupIndex) => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'modifier-group';
+
+        const groupTitle = document.createElement('h4');
+        // تم استخدام 'group' بدلاً من 'title' و 'required' بدلاً من min_selection
+        groupTitle.innerHTML = `${mod.group || mod.id} ${mod.required ? '<small>(مطلوب)</small>' : '<small>(اختياري)</small>'}`;
+        groupDiv.appendChild(groupTitle);
+
+        // تحديد نوع الإدخال بناءً على 'type' (radio, checkbox)
+        const inputType = mod.type; 
+
+        mod.options.forEach((opt, optIndex) => {
+            const optionDiv = document.createElement('label');
+            optionDiv.className = 'modifier-option';
+            
+            const input = document.createElement('input');
+            input.type = inputType;
+            // يجب أن يكون اسم المجموعة فريداً، خاصة للراديو
+            input.name = `modifier_group_${groupIndex}`; 
+            input.value = `${opt.name}|${opt.price}`;
+            input.dataset.groupIndex = groupIndex;
+            input.dataset.optIndex = optIndex;
+            
+            input.onchange = calculatePopupTotal;
+
+            const labelSpan = document.createElement('span');
+            labelSpan.className = 'modifier-option__label';
+            labelSpan.textContent = opt.name;
+
+            const priceSpan = document.createElement('span');
+            priceSpan.className = 'modifier-option__price';
+            priceSpan.textContent = opt.price > 0 ? `+${opt.price.toFixed(2)} ر.س` : 'مجاني';
+
+            optionDiv.appendChild(input);
+            optionDiv.appendChild(labelSpan);
+            optionDiv.appendChild(priceSpan);
+            groupDiv.appendChild(optionDiv);
+        });
+        optionsContainer.appendChild(groupDiv);
+
+        // تحديد الخيار الأول كـ Default للـ Radio buttons
+        if (inputType === 'radio' && mod.options.length > 0) {
+            groupDiv.querySelector('input[type="radio"]').checked = true;
+        }
     });
 
-    optionsContainer.innerHTML = html;
-  }
-
-  calculatePopupTotal();
-  overlay.style.display = "flex";
+    calculatePopupTotal();
+    document.getElementById('modifier-popup-overlay').classList.add('active');
 }
 
-function closeModifierPopup() {
-  const overlay = document.getElementById("modifier-popup-overlay");
-  overlay.style.display = "none";
-  currentPopupItem = null;
-}
+window.closeModifierPopup = function() {
+    document.getElementById('modifier-popup-overlay').classList.remove('active');
+    activeItemInPopup = null;
+};
 
-function updatePopupQuantity(change) {
-  popupQuantity += change;
-  if (popupQuantity < 1) popupQuantity = 1;
-  document.getElementById("popup-quantity").textContent = popupQuantity;
-  calculatePopupTotal();
-}
+window.updatePopupQuantity = function(change) {
+    popupQuantity = Math.max(1, popupQuantity + change);
+    document.getElementById('popup-quantity').textContent = popupQuantity;
+    calculatePopupTotal();
+};
 
 function calculatePopupTotal() {
-  if (!currentPopupItem) return;
+    if (!activeItemInPopup) return; 
+    
+    let itemBasePrice = activeItemInPopup.price;
+    let modifiersPrice = 0;
+    const popup = document.getElementById('modifier-popup');
+    
+    // حساب سعر التعديلات
+    activeItemInPopup.modifiers.forEach((mod, groupIndex) => {
+        const groupName = `modifier_group_${groupIndex}`;
+        const inputs = popup.querySelectorAll(`input[name="${groupName}"]:checked`);
+        
+        inputs.forEach(input => {
+            const priceString = input.value.split('|')[1];
+            modifiersPrice += parseFloat(priceString);
+        });
+    });
 
-  const popup = document.getElementById("modifier-popup");
-  let modifiersPrice = 0;
-  const checkedInputs = popup.querySelectorAll("input:checked");
-
-  checkedInputs.forEach((input) => {
-    modifiersPrice += parseFloat(input.dataset.price || "0");
-  });
-
-  const singleItemTotal = currentPopupItem.price + modifiersPrice;
-  const finalTotal = singleItemTotal * popupQuantity;
-
-  document.getElementById("final-price-span").textContent =
-    formatPrice(finalTotal);
+    const total = (itemBasePrice + modifiersPrice) * popupQuantity;
+    document.getElementById('popup-item-total').textContent = total.toFixed(2);
 }
 
-// إضافة للسلة من النافذة
-function addToCartFromPopup() {
-  if (!currentPopupItem) return;
+// =========================================================
+// 7. وظائف السلة
+// =========================================================
+window.addToCartFromPopup = function() {
+    const popup = document.getElementById('modifier-popup');
+    const itemBasePrice = activeItemInPopup.price;
+    let modifiers = [];
+    let modifiersTotalPrice = 0;
+    let isValid = true;
 
-  const popup = document.getElementById("modifier-popup");
-  const selectedModifiers = [];
-  let modifiersPrice = 0;
+    // التحقق من المتطلبات واحتساب السعر النهائي
+    activeItemInPopup.modifiers.forEach((mod, groupIndex) => {
+        const groupName = `modifier_group_${groupIndex}`;
+        const inputs = popup.querySelectorAll(`input[name="${groupName}"]:checked`);
 
-  // التحقق من المجموعات الإجبارية
-  (currentPopupItem.modifiers || []).forEach((group) => {
-    const selected = popup.querySelectorAll(
-      `input[name="modifier-${group.id}"]:checked`
-    );
-    if (group.min_selection > 0 && selected.length < group.min_selection) {
-      alert(`الرجاء اختيار ${group.min_selection} خيارات على الأقل من: ${group.title}`);
-      throw new Error("Required modifier not selected");
+        // التحقق من المتطلبات بناءً على خاصية 'required'
+        if (mod.required && inputs.length === 0) { 
+            isValid = false;
+        }
+        
+        inputs.forEach(input => {
+            const [name, priceString] = input.value.split('|');
+            const price = parseFloat(priceString);
+            modifiersTotalPrice += price;
+            // تم استخدام mod.group
+            modifiers.push({ group: mod.group || mod.id, name: name, price: price }); 
+        });
+    });
+
+    if (!isValid) {
+        alert("الرجاء اختيار جميع الخيارات المطلوبة.");
+        return;
     }
-  });
 
-  // تجميع الإضافات
-  const checkedInputs = popup.querySelectorAll("input:checked");
-  checkedInputs.forEach((input) => {
-    const [name, priceStr] = input.value.split("|");
-    const price = parseFloat(priceStr || "0");
-    modifiersPrice += price;
-    selectedModifiers.push({ name, price });
-  });
+    const itemTotalPrice = itemBasePrice + modifiersTotalPrice;
 
-  const unitPrice = currentPopupItem.price + modifiersPrice;
+    const newItem = {
+        id: Date.now(), // Unique ID for cart item
+        itemId: activeItemInPopup.id,
+        name: activeItemInPopup.name,
+        basePrice: itemBasePrice,
+        unitPrice: itemTotalPrice,
+        quantity: popupQuantity,
+        modifiers: modifiers
+    };
 
-  const cartItem = {
-    id: Date.now(), // ID فريد
-    base_id: currentPopupItem.id,
-    name: currentPopupItem.name,
-    price: unitPrice,
-    quantity: popupQuantity,
-    modifiers: selectedModifiers,
-  };
+    cart.push(newItem);
+    window.renderCart(); 
+    window.closeModifierPopup();
+};
 
-  cart.push(cartItem);
-  renderCart();
-  closeModifierPopup();
-}
+window.renderCart = function() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const emptyMessage = document.getElementById('empty-cart-message');
+    let grandTotal = 0;
 
-// تعريض دوال البوب أب عالمياً
-window.openModifierPopup = openModifierPopup;
-window.closeModifierPopup = closeModifierPopup;
-window.updatePopupQuantity = updatePopupQuantity;
-window.calculatePopupTotal = calculatePopupTotal;
-window.addToCartFromPopup = addToCartFromPopup;
+    window.renderMenu(); 
 
-// ================================
-//  4) إدارة السلة + WhatsApp
-// ================================
-function calculateTotal() {
-  return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-}
-
-function updateItemQuantity(id, change) {
-  const item = cart.find((i) => i.id === id);
-  if (!item) return;
-
-  item.quantity += change;
-  if (item.quantity <= 0) {
-    cart = cart.filter((i) => i.id !== id);
-  }
-  renderCart();
-}
-
-function removeItem(id) {
-  cart = cart.filter((i) => i.id !== id);
-  renderCart();
-}
-
-/**
- * دالة عرض السلة المُعدلة لحل مشكلة الخطأ.
- * تم إضافة تحقق للتأكد من وجود عنصر "empty-cart-message" قبل التلاعب بخصائصه.
- */
-function renderCart() {
-  const container = document.getElementById("cart-items");
-  const totalSpan = document.querySelector("#total-price span");
-  const emptyMsg = document.getElementById("empty-cart-message");
-
-  if (!cart.length) {
-    container.innerHTML = "";
-    if (emptyMsg) { // **التحقق الذي يحل مشكلة Cannot read properties of null (reading 'style')**
-      emptyMsg.style.display = "block";
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '';
+        emptyMessage.style.display = 'flex';
+        document.getElementById('final-total-price').textContent = '0.00';
+        return;
     }
-    totalSpan.textContent = "0.00";
-    return;
-  }
 
-  if (emptyMsg) { // **التحقق الذي يحل مشكلة Cannot read properties of null (reading 'style')**
-    emptyMsg.style.display = "none";
-  }
+    emptyMessage.style.display = 'none';
 
-  container.innerHTML = cart
-    .map((item) => {
-      const modsHtml =
-        item.modifiers && item.modifiers.length
-          ? item.modifiers
-              .map(
-                (mod) =>
-                  `+ ${mod.name} ${
-                    mod.price > 0
-                      ? `(${formatPrice(mod.price)} ر.س)`
-                      : ""
-                  }`
-              )
-              .join("<br>")
-          : "";
+    cartItemsContainer.innerHTML = cart.map((item, index) => {
+        const itemTotal = item.unitPrice * item.quantity;
+        grandTotal += itemTotal;
+        
+        const modsList = item.modifiers.length > 0 ? 
+            '<div class="cart-item__mods">التعديلات: ' + 
+            item.modifiers.map(m => m.name + (m.price > 0 ? ` (+${m.price.toFixed(2)})` : '')).join(', ') + 
+            '</div>' : '';
 
-      return `
-      <div class="cart-item">
-        <div class="cart-item__details">
-          <strong>${item.name}</strong>
-          ${
-            modsHtml
-              ? `<div class="cart-item__mods">${modsHtml}</div>`
-              : ""
-          }
-          <span class="cart-item__unit-price">
-            سعر الوحدة: ${formatPrice(item.price)} ريال
-          </span>
-        </div>
-        <div class="cart-item__controls">
-          <button type="button" onclick="window.updateItemQuantity(${item.id}, -1)">−</button>
-          <span>${item.quantity}</span>
-          <button type="button" onclick="window.updateItemQuantity(${item.id}, 1)">+</button>
-          <button
-            type="button"
-            class="cart-item__delete"
-            onclick="window.removeItem(${item.id})"
-          >
-            🗑
-          </button>
-        </div>
-      </div>
-    `;
-    })
-    .join("");
+        return `
+            <div class="cart-item" data-index="${index}">
+                <div class="cart-item__details">
+                    <strong>${item.name} (x${item.quantity})</strong>
+                    <span class="cart-item__unit-price">سعر الوحدة: ${item.unitPrice.toFixed(2)} ر.س</span>
+                    ${modsList}
+                </div>
+                <div class="cart-item__controls">
+                    <button onclick="window.updateCartItemQuantity(${index}, -1)" ${item.quantity === 1 ? 'disabled' : ''}>−</button>
+                    <span style="font-weight:700;">${itemTotal.toFixed(2)} ر.س</span>
+                    <button onclick="window.updateCartItemQuantity(${index}, 1)">+</button>
+                    <button class="cart-item__delete" onclick="window.deleteCartItem(${index})">🗑️</button>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-  totalSpan.textContent = formatPrice(calculateTotal());
-}
+    document.getElementById('final-total-price').textContent = grandTotal.toFixed(2);
+};
 
-window.updateItemQuantity = updateItemQuantity;
-window.removeItem = removeItem;
+window.updateCartItemQuantity = function(index, change) {
+    if (cart[index]) {
+        const newQuantity = cart[index].quantity + change;
+        if (newQuantity >= 1) {
+            cart[index].quantity = newQuantity;
+        } else if (newQuantity === 0) {
+            window.deleteCartItem(index);
+            return;
+        }
+        window.renderCart();
+    }
+};
 
-/**
- * تحديث: تم تعديل هذه الدالة لتضمين نوع الطلب ورقم الطاولة في رسالة الواتساب.
- */
-function sendWhatsAppOrder() {
-  const nameInput = document.getElementById("clientNameCart");
-  const phoneInput = document.getElementById("clientPhoneCart");
-  const notesInput = document.getElementById("customNotesCart");
-  const statusEl = document.getElementById("cart-status-message");
+window.deleteCartItem = function(index) {
+    if (cart[index]) {
+        cart.splice(index, 1);
+        window.renderCart();
+    }
+};
 
-  const name = nameInput.value.trim();
-  const phone = phoneInput.value.trim();
-  const notes = notesInput.value.trim();
-  const total = calculateTotal();
+// =========================================================
+// 8. وظيفة نوع الطلب (سفري/محلي)
+// =========================================================
+window.handleOrderTypeChange = function() {
+    const orderType = document.querySelector('input[name="orderType"]:checked').value;
+    const tableBox = document.getElementById('table-select-box');
+    const tableSelect = document.getElementById('tableNumber');
 
-  // تحققات
-  if (!name || !phone || phone.length < 8) {
-    statusEl.style.display = "block";
-    statusEl.style.backgroundColor = "#c62828";
-    statusEl.textContent = "❌ الرجاء إدخال الاسم ورقم الجوال بشكل صحيح.";
-    return;
-  }
-  
-  // التحقق الإضافي لطلب "محلي"
-  if (orderType === "dinein" && !tableNumber) {
-    statusEl.style.display = "block";
-    statusEl.style.backgroundColor = "#c62828";
-    statusEl.textContent = "❌ الرجاء اختيار رقم الطاولة للطلب المحلي.";
-    return;
-  }
+    if (orderType === 'dinein') {
+        tableBox.style.display = 'block';
+        tableSelect.setAttribute('required', 'true');
+    } else {
+        tableBox.style.display = 'none';
+        tableSelect.removeAttribute('required');
+        tableSelect.value = ''; 
+    }
+};
 
-  if (!cart.length) {
-    statusEl.style.display = "block";
-    statusEl.style.backgroundColor = "#c62828";
-    statusEl.textContent = "❌ السلة فارغة. أضف أطباقًا أولاً.";
-    return;
-  }
 
-  let text = "✨ طلب جديد من صفحة لانو التفاعلية ✨\n\n";
-  
-  // إضافة نوع الطلب ورقم الطاولة في البداية (منطق WhatsApp الاحترافي)
-  let typeText;
-  if (orderType === "takeaway") {
-      typeText = "سفري (Takeaway)";
-  } else {
-      typeText = `محلي (Dine-In) - الطاولة رقم: ${tableNumber}`;
-  }
-  
-  text += `**🏷️ نوع الطلب:** ${typeText}\n`;
-  text += "---\n"; // فاصل واضح للكاشير
-  
-  text += "\n👤 بيانات العميل:\n";
-  text += `الاسم: ${name}\n`;
-  text += `الجوال: ${phone}\n`;
-  text += `ملاحظات: ${notes || "لا يوجد"}\n\n`;
-  text += "📋 تفاصيل الطلب:\n";
+// =========================================================
+// 9. وظيفة إرسال الطلب عبر واتساب
+// =========================================================
+window.sendWhatsAppOrder = function() {
+    const name = document.getElementById('clientNameCart').value;
+    const phone = document.getElementById('clientPhoneCart').value;
+    const notes = document.getElementById('customNotesCart').value;
+    const statusMessage = document.getElementById('cart-status-message');
+    const total = document.getElementById('final-total-price').textContent;
+    const orderType = document.querySelector('input[name="orderType"]:checked').value;
+    const tableNumber = orderType === 'dinein' ? document.getElementById('tableNumber').value : null;
 
-  cart.forEach((item) => {
-    text += `- ${item.quantity} × ${item.name} (بسعر الوحدة: ${formatPrice(
-      item.price
-    )} ريال)\n`;
-    item.modifiers.forEach((mod) => {
-      text += `   • إضافة: ${mod.name} ${
-        mod.price > 0 ? `(+ ${formatPrice(mod.price)} ر.س)` : ""
-      }\n`;
+    if (cart.length === 0) {
+        statusMessage.textContent = '❌ السلة فارغة. لا يمكن إرسال طلب فارغ.';
+        statusMessage.className = 'error';
+        statusMessage.style.display = 'block';
+        return;
+    }
+
+    if (!name || !phone) {
+        statusMessage.textContent = '❌ الرجاء إدخال الاسم ورقم الجوال أولاً.';
+        statusMessage.className = 'error';
+        statusMessage.style.display = 'block';
+        return;
+    }
+
+    if (orderType === 'dinein' && !tableNumber) {
+        statusMessage.textContent = '❌ الرجاء اختيار رقم الطاولة لطلب المحل.';
+        statusMessage.className = 'error';
+        statusMessage.style.display = 'block';
+        return;
+    }
+
+    statusMessage.style.display = 'none';
+
+    let orderDetails = `*📝 طلب جديد من مطعم لانو باستا*\n\n`;
+    orderDetails += `*نوع الطلب:* ${orderType === 'dinein' ? 'محلي (داخل المطعم)' : 'سفري (Takeaway)'}\n`;
+    
+    if (tableNumber) {
+        orderDetails += `*رقم الطاولة:* ${tableNumber}\n`;
+    }
+    orderDetails += `*الاسم:* ${name}\n`;
+    orderDetails += `*الجوال:* ${phone}\n`;
+    orderDetails += `*الملاحظات:* ${notes || 'لا يوجد'}\n`;
+    orderDetails += `--------------------------------------\n`;
+    orderDetails += `*الطلبات:*\n`;
+
+    cart.forEach((item, index) => {
+        orderDetails += `*${index + 1}.* (${item.quantity}x) *${item.name}* (${(item.unitPrice * item.quantity).toFixed(2)} ر.س)\n`;
+        if (item.modifiers.length > 0) {
+            orderDetails += `   - التعديلات: ${item.modifiers.map(m => m.name + (m.price > 0 ? ` (+${m.price.toFixed(2)} ر.س)` : '')).join('، ')}\n`;
+        }
     });
-  });
 
-  text += `\nالإجمالي: ${formatPrice(total)} ريال\n`;
+    orderDetails += `--------------------------------------\n`;
+    orderDetails += `*الإجمالي النهائي:* *${total} ر.س*\n\n`;
+    orderDetails += `_شكراً لاختياركم لانو نها باستا!_`;
 
-  // إرفاق ملخص التوصية الذكية إن وُجد
-  if (answers.length) {
-    text += `\n🧠 ملخص التوصية الذكية:\n${answers.join(" | ")}\n`;
-  }
+    const whatsappNumber = '966582003125';
+    const encodedOrder = encodeURIComponent(orderDetails);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedOrder}`;
 
-  text += "\n📢 للاستلام خلال 30 دقيقة إن أمكن.\n🤍 شكراً لاختياركم لانو 🤍";
+    // فتح رابط الواتساب
+    window.open(whatsappUrl, '_blank');
+    
+    // رسالة نجاح (اختياري)
+    statusMessage.textContent = '✅ تم فتح رابط الواتساب لإرسال الطلب!';
+    statusMessage.className = 'success';
+    statusMessage.style.display = 'block';
+};
 
-  const encoded = encodeURIComponent(text);
-  const url = `https://wa.me/${RESTAURANT_PHONE}?text=${encoded}`;
 
-  statusEl.style.display = "block";
-  statusEl.style.backgroundColor = "var(--success-green)";
-  statusEl.textContent = "✅ سيتم فتح واتساب الآن لإرسال الطلب.";
-
-  setTimeout(() => {
-    window.open(url, "_blank");
-  }, 800);
-}
-
-window.sendWhatsAppOrder = sendWhatsAppOrder;
-
-// ================================
-//  5) تهيئة الصفحة
-// ================================
-function initSmartRecommender() {
-  currentQuestion = 0;
-  answers = [];
-  showQuestion();
-}
-
-/**
- * تحديث: تم إضافة منطق التعامل مع خياري (سفري/محلي) وتحديث رقم الطاولة.
- */
-function initPage() {
-  // 1. منطق نوع الطلب (سفري/محلي)
-  const orderTypeInputs = document.querySelectorAll('input[name="orderType"]');
-  const tableBox = document.getElementById("table-select-box");
-  const tableSelect = document.getElementById("tableNumber");
-  
-  // تهيئة الواجهة لطلب سفري افتراضياً
-  if (tableBox) tableBox.style.display = "none";
-  
-  orderTypeInputs.forEach(i => {
-    i.addEventListener("change", () => {
-      orderType = i.value;
-  
-      if (orderType === "dinein") {
-        if (tableBox) tableBox.style.display = "block";
-        // لا نحدث tableNumber هنا إلا إذا تم اختياره، لكن نظهره
-      } else {
-        if (tableBox) tableBox.style.display = "none";
-        tableNumber = "";
-        if (tableSelect) tableSelect.value = ""; // مسح الاختيار عند التحويل لسفري
-      }
-    });
-  });
-  
-  if (tableSelect) {
-    tableSelect.addEventListener("change", () => {
-      tableNumber = tableSelect.value;
-    });
-  }
-
-  // 2. تهيئة باقي محتويات الصفحة
-  initSmartRecommender();
-  renderInteractiveMenu();
-  renderCart();
-}
-
-// تشغيل بعد تحميل الـ DOM
-window.addEventListener("DOMContentLoaded", initPage);
+// =========================================================
+// 10. تشغيل الوظائف عند تحميل الصفحة
+// =========================================================
+window.onload = function() {
+    window.renderMenu();
+    window.renderRecommender();
+    window.renderCart(); 
+    window.handleOrderTypeChange(); 
+    
+    // ربط الدوال بالـ Window لضمان إمكانية استدعائها من الـ HTML
+    window.openModifierPopup = openModifierPopup; 
+    window.calculatePopupTotal = calculatePopupTotal;
+};
