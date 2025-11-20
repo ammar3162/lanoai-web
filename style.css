@@ -1,5 +1,5 @@
 /* ===========================
-   أساسيات عام
+   أساسيات عامة
 =========================== */
 :root {
   --main-beige: #f3e9dd;
@@ -10,9 +10,12 @@
   --gray: #666666;
   --upsell-bg: #fff7e0;
   --success-green: #28a745;
-  --danger-red: ب#9e4242;
+  --danger-red: #9e4242;
   --input-bg: #f9f9f9;
   --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+  /* لون أساسي للسوشال */
+  --primary-red: #a34444;
 }
 
 *,
@@ -190,7 +193,7 @@ body {
 }
 
 /* ===========================
-   SMART BOX
+   SMART BOX (التوصية الذكية)
 =========================== */
 .smart {
   padding: 0 20px 40px;
@@ -305,7 +308,12 @@ body {
   box-shadow: var(--shadow-soft);
   text-align: center;
   cursor: default;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border 0.18s ease;
+}
+
+/* تمييز العنصر الموجود في السلة */
+.menu-item.is-in-cart {
+  border: 2px solid var(--gold);
 }
 
 .menu-item:hover {
@@ -334,16 +342,16 @@ body {
 }
 
 .menu-item__desc {
-    color: var(--gray);
-    font-size: 11px; /* تم تصغير حجم الخط من 14px إلى 12px */
-    height: 38px; /* ارتفاع ثابت لسطرين ونصف تقريباً بهذا الحجم */
-    overflow: hidden; /* إخفاء النص الزائد */
-    margin-bottom: 11px;
-    line-height: 1.5; /* تحديد تباعد الأسطر لمزيد من التحكم */
-    text-overflow: ellipsis; /* إضافة نقاط (..) عند الاقتطاع */
-    display: -webkit-box; /* تفعيل نمط العرض لتقييد عدد الأسطر */
-    -webkit-line-clamp: 2; /* **تقييد الوصف على سطرين** */
-    -webkit-box-orient: vertical;
+  color: var(--gray);
+  font-size: 11px;
+  height: 38px;
+  overflow: hidden;
+  margin-bottom: 11px;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* تقييد الوصف على سطرين */
+  -webkit-box-orient: vertical;
 }
 
 .menu-item__price {
@@ -353,7 +361,9 @@ body {
   margin-bottom: 8px;
 }
 
-/* CART */
+/* ===========================
+   CART
+=========================== */
 .cart {
   flex: 1.2;
   background: var(--white);
@@ -530,7 +540,7 @@ body {
 }
 
 /* ===========================
-   POPUP
+   POPUP (Modifiers)
 =========================== */
 .popup-overlay {
   position: fixed;
@@ -541,6 +551,10 @@ body {
   align-items: center;
   z-index: 100;
   padding: 20px;
+}
+
+.popup-overlay.active {
+  display: flex;
 }
 
 .popup {
@@ -632,7 +646,7 @@ body {
   margin-left: 6px;
   cursor: pointer;
   transform: scale(1.1);
-  accent-color: var(--dark-green); /* إضافة لون للراديو والتشيك بوكس */
+  accent-color: var(--dark-green);
 }
 
 .popup__footer {
@@ -666,11 +680,13 @@ body {
   text-align: center;
 }
 
+.popup__total {
+  margin-right: auto;
+  font-weight: 700;
+}
+
 /* ===========================
-   تنسيقات نوع الطلب ورقم الطاولة (جديد)
-=========================== */
-/* ===========================
-   8. تنسيقات نوع الطلب ورقم الطاولة
+   نوع الطلب ورقم الطاولة
 =========================== */
 .order-type-box {
   margin-bottom: 12px;
@@ -681,22 +697,20 @@ body {
 }
 
 .order-type-box h4 {
-    margin: 0 0 8px;
-    font-size: 16px;
-    color: var(--dark-green);
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: var(--dark-green);
 }
 
-/* **البداية: التعديل الرئيسي هنا** */
-
 .order-options-group {
-    display: flex; /* لعرض الخيارين بجانب بعض */
-    gap: 8px; /* مسافة بين الخيارين */
-    margin-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .order-option {
-  flex: 1; /* لجعل كل خيار يأخذ نصف المساحة */
-  display: block; /* لضمان أن يكون كله منطقة قابلة للنقر */
+  flex: 1;
+  display: block;
   text-align: center;
   padding: 10px 5px;
   border-radius: 8px;
@@ -709,29 +723,27 @@ body {
   color: var(--dark-green);
 }
 
+/* إخفاء الراديو الأصلي */
 .order-option input[type="radio"] {
-  /* إخفاء زر الراديو الأصلي والتحكم به عبر التنسيق */
-  display: none; 
+  display: none;
 }
 
-/* التنسيق عند اختيار الخيار */
+/* الحالة المختارة */
 .order-option input[type="radio"]:checked + span {
-    display: block; /* إظهار النص */
-    background: var(--gold);
-    color: var(--white);
-    border: 2px solid var(--gold);
-    border-radius: 6px;
-    padding: 8px 0;
-    margin: -10px -5px; /* لتغطية مساحة الـ order-option */
+  display: block;
+  background: var(--gold);
+  color: var(--white);
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  padding: 8px 0;
+  margin: -10px -5px;
 }
 
-/* تنسيق النص الداخلي لـ order-option */
+/* نص داخل خيار الطلب */
 .order-option span {
-    display: block;
-    padding: 2px;
+  display: block;
+  padding: 2px;
 }
-
-/* **النهاية: التعديل الرئيسي هنا** */
 
 #table-select-box {
   padding-top: 8px;
@@ -748,10 +760,164 @@ body {
 }
 
 .table-note {
-    font-size: 11px;
-    color: #a34444;
-    text-align: center;
-    margin-top: 5px;
+  font-size: 11px;
+  color: #a34444;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* ===========================
+   آراء العملاء (Testimonials)
+=========================== */
+.testimonials {
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--upsell-bg);
+}
+
+.testimonials .section-title {
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: var(--dark-green);
+}
+
+.testimonials .section-subtitle {
+  color: var(--gray);
+  margin-bottom: 30px;
+}
+
+.carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-carousel {
+  display: flex;
+  gap: 20px;
+  padding: 5px 10px;
+  justify-content: flex-start;
+}
+
+.testimonial-card {
+  flex: 0 0 350px;
+  max-width: 80vw;
+  padding: 25px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  text-align: right;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  font-size: 16px;
+  color: var(--dark-green);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.testimonial-card .author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #eee;
+  padding-top: 10px;
+}
+
+.testimonial-card .author .name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.testimonial-card .author .stars {
+  color: var(--gold);
+  font-size: 16px;
+}
+
+/* ===========================
+   SOCIAL ICONS + HEADER ACTIONS
+=========================== */
+.social-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.instagram-icon {
+  background-color: #f0f0f0;
+}
+
+.instagram-icon span {
+  color: var(--primary-red);
+}
+
+/* أزرار السوشال والاتصال في الهيدر */
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 15px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fff;
+  color: #5a0000;
+  border: 2px solid #d7b98f;
+  transition: 0.25s;
+}
+
+.action-btn:hover {
+  background: #eacf95;
+  color: #fffefe;
+  transform: translateY(-2px);
+}
+
+/* ألوان خاصة لكل زر */
+.call-btn {
+  background: #ffd54f;
+}
+
+.instagram-btn {
+  background: #e1306c;
+  color: #fff;
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: #fff;
+}
+
+.location-btn {
+  background: #e9f3ff;
 }
 
 /* ===========================
@@ -792,166 +958,14 @@ body {
   .smart-box {
     padding-inline: 16px;
   }
-}
-/* ===========================
-   آراء العملاء (Testimonials)
-=========================== */
-.testimonials {
-  padding: 40px 20px;
-  text-align: center;
-  background: var(--upsell-bg); /* استخدام لون فاتح مميز */
+
+  .testimonial-card {
+    flex: 0 0 90%;
+    margin-right: 10px;
+  }
+
+  .testimonial-carousel {
+    padding-right: 15px;
+  }
 }
 
-.testimonials .section-title {
-    font-size: 30px;
-    margin-bottom: 5px;
-    color: var(--dark-green);
-}
-
-.testimonials .section-subtitle {
-    color: var(--gray);
-    margin-bottom: 30px;
-}
-
-.carousel-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow-x: auto; /* تفعيل التمرير الأفقي */
-  padding-bottom: 20px; /* مساحة لظل التمرير */
-  -ms-overflow-style: none; /* إخفاء شريط التمرير في IE/Edge */
-  scrollbar-width: none; /* إخفاء شريط التمرير في Firefox */
-  scroll-snap-type: x mandatory; /* تثبيت الشرائح عند التمرير */
-}
-
-.carousel-container::-webkit-scrollbar {
-    display: none; /* إخفاء شريط التمرير في Chrome/Safari */
-}
-
-.testimonial-carousel {
-  display: flex;
-  gap: 20px;
-  padding: 5px 10px;
-  justify-content: flex-start; /* بدء الشرائح من اليمين (لغة عربية) */
-}
-
-.testimonial-card {
-  flex: 0 0 350px; /* عرض ثابت لكل شريحة */
-  max-width: 80vw; /* ضمان التجاوب على الجوال */
-  padding: 25px;
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
-  text-align: right;
-  scroll-snap-align: start; /* تثبيت الشريحة في بداية العرض */
-  transition: transform 0.3s ease;
-}
-
-.testimonial-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.testimonial-card .quote {
-  font-style: italic;
-  font-size: 16px;
-  color: var(--dark-green);
-  margin-bottom: 15px;
-  line-height: 1.5;
-}
-
-.testimonial-card .author {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px dashed #eee;
-  padding-top: 10px;
-}
-
-.testimonial-card .author .name {
-  font-weight: 700;
-  font-size: 15px;
-}
-
-.testimonial-card .author .stars {
-  color: var(--gold); /* تلوين النجوم باللون الذهبي */
-  font-size: 16px;
-}
-
-/* تعديل التجاوب على الجوالات الصغيرة */
-@media (max-width: 600px) {
-    .testimonial-card {
-        flex: 0 0 90%; /* على الجوال، تصبح الشريحة بعرض أكبر */
-        margin-right: 10px;
-    }
-    .testimonial-carousel {
-        padding-right: 15px; /* لتظهر بداية الشريحة بشكل أفضل */
-    }
-}
-/* هذا التنسيق يضمن أن الأيقونة تكون دائرية وواضحة */
-.social-icon {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px; /* حجم الأيقونة */
-    height: 40px;
-    border-radius: 50%;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.instagram-icon {
-    /* لون خلفية فاتح مناسب */
-    background-color: #f0f0f0; 
-}
-
-.instagram-icon span {
-    /* لون النص/الإيموجي، استخدم اللون الأساسي للمطعم */
-    color: var(--primary-red); 
-
-}
-/* ===== أزرار السوشال والاتصال ===== */
-.header-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 15px;
-}
-
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: #fff;
-  color: #5a0000;
-  border: 2px solid #d7b98f;
-  transition: 0.25s;
-}
-
-/* تأثير عند التمرير */
-.action-btn:hover {
-  background: #eacf95;
-  color: #fffefe;
-  transform: translateY(-2px);
-}
-
-/* ألوان خاصة لكل زر */
-.call-btn {
-  background: #ffd54f;
-}
-
-.instagram-btn {
-  background: #E1306C;
-}
-
-.whatsapp-btn {
-  background: #25D366;
-}
-
-.location-btn {
-  background: #e9f3ff;
-}
