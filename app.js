@@ -43,10 +43,10 @@ const menuItems = [
             {
                 id: "heat_level",
                 type: "radio",
-                group: "درجة حرارة الصوص",
+                group: "النوع  ",
                 required: true,
                 options: [
-                    { name: "سادة ", price: 0.0 },
+                    { name: "سادة " },
                     { name: "اضافة لحم", price: 7.0 },
                     { name: "اضافة دجاج ", price: 5.0 },
                 ],
