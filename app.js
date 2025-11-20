@@ -16,6 +16,7 @@ const menuItems = [
                 group: "اختر نوع الباستا", // إضافة 'group'
                 required: true, // إضافة 'required'
                 options: [
+                    { name: "الاصلية ", price: 0.0 },
                     { name: "بدون سبايسي", price: 0.0 },
                     { name: "بدون دجاج", price: 0.0 },
                     { name: "بدون بروكلي", price: 0.0 },
@@ -28,7 +29,7 @@ const menuItems = [
                 required: false, // إضافة 'required'
                 options: [
                     { name: "زيادة دجاج إضافي", price: 5.0 },
-                    { name: "زيادة مشروم", price: 5.0 },
+                    { name: " زيادة بروكلي ", price: 5.0 },
                 ],
             },
         ],
