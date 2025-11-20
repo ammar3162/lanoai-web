@@ -1011,4 +1011,3 @@ window.onload = function () {
     window.openModifierPopup = openModifierPopup;
     window.calculatePopupTotal = calculatePopupTotal;
 };
-
