@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* [الـ CSS الكامل بنمط Eataly] */
         :root {
             --primary-red: #822626; 
             --dark-text: #222222;
@@ -31,7 +30,7 @@
             font-size: 16px;
         }
 
-        /* 1. تبسيط الهيدر والـ Navbar (مثل Eataly) */
+        /* الهيدر */
         header {
             position: fixed; top: 0; right: 0; left: 0;
             background-color: var(--white); color: var(--dark-text);
@@ -63,14 +62,14 @@
         .nav a:hover { color: var(--primary-red); }
         .header-actions { display: none; } 
 
-        /* 2. الحاوية الأساسية */
+        /* حاوية عامة */
         .l-container { 
             max-width: 1000px; 
             margin: 0 auto; 
             padding: 0 25px; 
         } 
         
-        /* 3. العناوين والنصوص */
+        /* عناوين */
         .section-title {
             font-size: 38px; 
             font-weight: 400; 
@@ -89,7 +88,7 @@
             margin-right: auto;
         }
         
-        /* 4. تصميم About Us (من نحن) - مثل Eataly */
+        /* من نحن */
         .about-us {
             padding: var(--section-padding);
             text-align: center;
@@ -102,7 +101,7 @@
             line-height: 1.8;
         }
 
-        /* 5. قسم Carousel (بديل Hero) */
+        /* Hero / Carousel */
         .carousel-section {
             width: 100%;
             height: 450px; 
@@ -129,7 +128,7 @@
             object-position: center;
         }
 
-        /* 6. أقسام Eat | Shop | Learn */
+        /* كروت Eat/Shop/Learn */
         .core-sections {
             padding: 0 25px 80px;
             display: flex;
@@ -170,11 +169,45 @@
             border-bottom: 1px solid var(--primary-red);
         }
         
-        /* 7. تصميم المنيو (قسم Eat) */
+        /* قسم المنيو */
         .menu-section {
             padding: var(--section-padding);
             background-color: var(--light-gray);
         }
+        .menu-layout { 
+            display: grid; 
+            grid-template-columns: 1fr 350px; 
+            gap: 40px; 
+        }
+
+        /* شريط الفلترة بالأيقونات */
+        .menu-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .menu-filter button {
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            cursor: pointer;
+            border-radius: 999px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .menu-filter button i {
+            font-size: 15px;
+        }
+        .menu-filter button.active,
+        .menu-filter button:hover {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
+
         .interactive-menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
@@ -212,9 +245,8 @@
             color: var(--primary-red);
             padding-top: 10px;
         }
-        .menu-layout { display: grid; grid-template-columns: 1fr 350px; gap: 40px; }
 
-        /* 8. تصميم الفوتر (مثل Eataly) */
+        /* الفوتر */
         footer {
             background-color: var(--white);
             padding: 60px 0;
@@ -258,14 +290,14 @@
         }
         .social-icons a:hover { color: var(--primary-red); }
 
-        /* 9. السلة والـ Popup (تنسيقات الوظائف) */
+        /* السلة والبوب أب */
         .cart-wrapper { max-width: 350px; }
         .cart-section {
             background-color: var(--white);
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             padding: 20px;
-            position: sticky; /* لجعل السلة ثابتة */
+            position: sticky;
             top: 100px;
         }
         .send-order-btn {
@@ -300,7 +332,6 @@
         .modifier-group h4 { font-size: 16px; margin-bottom: 10px; font-weight: 600; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
         .modifier-option { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 14px; }
         
-        /* تنسيقات حقول معلومات العميل والسلة */
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #eee; }
         .cart-item__details strong { font-size: 14px; }
         .cart-item__unit-price, .cart-item__mods { font-size: 12px; color: #777; }
@@ -314,15 +345,14 @@
         .input-group label { display: block; font-size: 12px; color: #777; margin-bottom: 3px; }
         .input-group input, .input-group textarea { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 10px; font-size: 14px; box-sizing: border-box; }
         
-        /* حالة الطلب */
         #cart-status-message {
             padding: 10px; margin-bottom: 15px; border-radius: 4px; text-align: center;
             display: none; font-weight: 600;
         }
         #cart-status-message.success { background-color: #d4edda; color: var(--success-green); border: 1px solid #c3e6cb; }
         #cart-status-message.error { background-color: #f8d7da; color: var(--error-red); border: 1px solid #f5c6cb; }
-        
-        /* تنسيق صندوق الطلب (Table/Pickup) */
+
+        /* نوع الطلب */
         .order-options-group { display: flex; justify-content: space-around; gap: 10px; margin-bottom: 15px; }
         .order-option input { display: none; }
         .order-option span { 
@@ -335,7 +365,7 @@
         #tableNumber { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; }
         .table-note { font-size: 12px; color: #777; margin-top: 5px; }
         
-        /* تنسيق التوصية الذكية */
+        /* التوصية الذكية */
         .options button { 
             background-color: var(--white); color: var(--dark-text); border: 1px solid var(--border-color);
             padding: 10px 20px; margin: 8px; border-radius: 4px; font-size: 16px; min-width: 140px; 
@@ -347,17 +377,17 @@
         #result ul { list-style-type: none; padding: 0; text-align: center; }
         #result ul li { font-size: 15px; background: var(--white); padding: 8px; margin: 5px 0; border-radius: 4px; border: 1px solid #eee; }
 
-        /* ميديا كويري للجوال */
+        /* للجوال */
         @media (max-width: 992px) {
             .menu-layout { grid-template-columns: 1fr; }
             .cart-wrapper { order: -1; max-width: 100%; margin-bottom: 40px; }
-            .cart-section { position: static; } /* إلغاء التثبيت للجوال */
+            .cart-section { position: static; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .carousel-content h2 { font-size: 32px; }
             body { padding-top: 60px; }
             header { padding: 10px 0; }
             .logo { font-size: 20px; }
-            .nav { display: none; } /* إخفاء قائمة التنقل للجوال */
+            .nav { display: none; }
             .location-card { flex-direction: column; }
             .map-embed { order: -1; }
         }
@@ -393,8 +423,7 @@
                 <a href="#location">تواصل</a>
                 <a href="#cart-section" style="margin-left: 25px; color: var(--primary-red);"><i class="fas fa-shopping-cart"></i> اطلب الآن</a>
             </nav>
-            <div class="header-actions">
-            </div>
+            <div class="header-actions"></div>
         </div>
     </header>
     
@@ -436,6 +465,7 @@
             <a href="#recommender" class="cta-link">جرب التوصية الذكية <i class="fas fa-arrow-left"></i></a>
         </div>
     </div>
+
     <section id="menu" class="menu-section">
         <div class="l-container menu-layout">
             
@@ -443,7 +473,7 @@
                 <h2 class="section-title"><i class="fas fa-utensils"></i> قائمة المأكولات</h2>
                 <p class="section-subtitle">تشكيلة واسعة من الباستا والبيتزا المحضرة بمكونات يومية طازجة، اختر وجبتك وخصصها كما تحب.</p>
 
-                <div class="order-type-box" style="margin-bottom: 40px; background-color: var(--white); border: 1px solid var(--border-color); padding: 20px; border-radius: 4px;">
+                <div class="order-type-box" style="margin-bottom: 30px; background-color: var(--white); border: 1px solid var(--border-color); padding: 20px; border-radius: 4px;">
                     <h4><i class="fas fa-shopping-basket"></i> حدد نوع الطلب</h4>
                     <div class="order-options-group">
                         <label class="order-option">
@@ -469,8 +499,29 @@
                     </div>
                 </div>
 
-                <div id="interactive-menu-grid" class="interactive-menu-grid">
-                    </div>
+                <!-- شريط الفلترة بالأيقونات -->
+                <div class="menu-filter">
+                    <button data-category="all" class="active" onclick="window.filterMenu('all')">
+                        <i class="fas fa-star"></i> الكل
+                    </button>
+                    <button data-category="pasta" onclick="window.filterMenu('pasta')">
+                        <i class="fas fa-bowl-food"></i> الباستا
+                    </button>
+                    <button data-category="pizza" onclick="window.filterMenu('pizza')">
+                        <i class="fas fa-pizza-slice"></i> البيتزا
+                    </button>
+                    <button data-category="salad" onclick="window.filterMenu('salad')">
+                        <i class="fas fa-seedling"></i> السلطات
+                    </button>
+                    <button data-category="appetizer" onclick="window.filterMenu('appetizer')">
+                        <i class="fas fa-cheese"></i> المقبلات
+                    </button>
+                    <button data-category="drinks" onclick="window.filterMenu('drinks')">
+                        <i class="fas fa-glass-martini-alt"></i> المشروبات
+                    </button>
+                </div>
+
+                <div id="interactive-menu-grid" class="interactive-menu-grid"></div>
 
             </div>
 
@@ -483,8 +534,7 @@
                         <span>سلتك فارغة حالياً. ابدأ بإضافة الأطباق اللذيذة!</span>
                     </div>
 
-                    <div id="cart-items">
-                        </div>
+                    <div id="cart-items"></div>
 
                     <div id="total-price">
                         <span>الإجمالي الكلي:</span>
@@ -518,12 +568,10 @@
     <section id="recommender" class="recommender" style="padding: var(--section-padding); background-color: var(--white);">
         <div class="l-container">
             <h2 class="section-title"><i class="fas fa-brain"></i> نقترح الوجبة بذكاء</h2>
-            <p class="section-subtitle">أجب عن سؤال بسيط لنقترح عليك أفضل طبق يناسب مزاجك ومجموعتك!</p>
+            <p class="section-subtitle">أجب عن أسئلة بسيطة لنقترح عليك أفضل طبق يناسب مزاجك ومجموعتك!</p>
             <div id="smart-box" class="smart-box" style="background-color: var(--light-gray); padding: 40px; border-radius: 4px; text-align: center;">
-                <div id="question-box">
-                    </div>
-                <div id="result" style="display: none;">
-                    </div>
+                <div id="question-box"></div>
+                <div id="result" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -560,8 +608,7 @@
             <span id="popup-close" title="إغلاق" style="position: absolute; top: 10px; left: 10px; font-size: 20px; cursor: pointer; color: #888;"><i class="fas fa-times"></i></span>
             <h2>تخصيص طبق <span id="popup-item-name"></span></h2>
 
-            <div id="popup-options-container">
-                </div>
+            <div id="popup-options-container"></div>
 
             <div class="popup-total-bar">
                 <span>سعر الوحدة مع الإضافات:</span>
@@ -637,399 +684,391 @@
 
     <script>
         // =========================================================
-        // 1. تعريف بيانات المنيو (القائمة) 
+        // 1. تعريف بيانات المنيو (القائمة) مع التصنيف (category)
         // =========================================================
-       const menuItems = [
-    // ============================
-    // (1 - 6) قسم الباستا
-    // ============================
-    {
-        id: 1,
-        name: "باستا لانو",
-        price: 35.0,
-        desc: "باستا لانو الشهيرة مع الدجاج والكريمة والبروكلي.",
-        image: "images/باستا_17511257850852190.webp",
-        isFeatured: true,
-        modifiers: [
-            
+        const menuItems = [
+            // (1 - 6) الباستا
             {
-                group: "النوع",
-                type: "radio",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: "الاصليه", price: 0.0, default: true },
-                    { name: "بدوم سبايسي", price: 0.0 },
+                id: 1,
+                category: "pasta",
+                name: "باستا لانو",
+                price: 35.0,
+                desc: "باستا لانو الشهيرة مع الدجاج والكريمة والبروكلي.",
+                image: "images/باستا_17511257850852190.webp",
+                isFeatured: true,
+                modifiers: [
+                    {
+                        group: "النوع",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "الاصليه", price: 0.0, default: true },
+                            { name: "بدوم سبايسي", price: 0.0 },
+                        ],
+                    },
+                    {
+                        group: "إضافات إختيارية",
+                        type: "checkbox",
+                        min: 0,
+                        max: 3,
+                        options: [
+                            { name: " دجاج", price: 5.0 },
+                            { name: "بروكلي ", price: 5.0 },
+                        ],
+                    },
                 ],
             },
             {
-                group: "إضافات إختيارية",
-                type: "checkbox",
-                min: 0,
-                max: 3,
-                options: [
-                    { name: " دجاج", price: 5.0 },
-                    { name: "بروكلي ", price: 5.0 },
-                    
-                ],
-            },
-        ],
-    },
-
-    {
-        id: 2,
-        name: "سباغيتي بولونيز",
-        price: 32.0,
-        desc: "سباغيتي بصلصة البولونيز مع جبنة البارميزان.",
-        image: "images/سباغيتي_17511257342315958.webp",
-        isFeatured: false,
-        modifiers: [
-            {
-                group: "النوع ",
-                type: "radio",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: " سادة", price: 0.0 },
-                    { name: "لحم ", price: 7.0, default: true },
-                    { name: " دجاج", price: 5.0 },
-                ],
-            },
-            {
-                group: "إضافات إختيارية",
-                type: "checkbox",
-                min: 0,
-                max: 2,
-                options: [
-                    { name: "سبايسي ", price: 0.0 },
-                    
-                ],
-            },
-        ],
-    },
-
-    {
-        id: 3,
-        name: "بينك باستا",
-        price: 38.0,
-        desc: "صوص كريمة وردية مع دجاج مشوي وبروكلي.",
-        image: "images/بينك_باستا_17511258197184928.jpg",
-        isFeatured: false,
-        modifiers: [
-            {
-                group: "النوع ",
-                type: "radio",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: "الاصليه ", price: 0.0, default: true },
-                    { name: "بدون سبايسي", price: 0.0 },
-                    { name: "بدون دجاج", price: 0.0 },
-                    { name: "بدون بروكلي", price: 0.0 },
+                id: 2,
+                category: "pasta",
+                name: "سباغيتي بولونيز",
+                price: 32.0,
+                desc: "سباغيتي بصلصة البولونيز مع جبنة البارميزان.",
+                image: "images/سباغيتي_17511257342315958.webp",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "النوع ",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: " سادة", price: 0.0 },
+                            { name: "لحم ", price: 7.0, default: true },
+                            { name: " دجاج", price: 5.0 },
+                        ],
+                    },
+                    {
+                        group: "إضافات إختيارية",
+                        type: "checkbox",
+                        min: 0,
+                        max: 2,
+                        options: [
+                            { name: "سبايسي ", price: 0.0 },
+                        ],
+                    },
                 ],
             },
             {
-                group: "نوع الباستا",
-                type: "checkbox",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: "اضافة دجاج", price: 5.0, default: true },
-                    { name: "اضافة بروكلي", price: 5.0 },
+                id: 3,
+                category: "pasta",
+                name: "بينك باستا",
+                price: 38.0,
+                desc: "صوص كريمة وردية مع دجاج مشوي وبروكلي.",
+                image: "images/بينك_باستا_17511258197184928.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "النوع ",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "الاصليه ", price: 0.0, default: true },
+                            { name: "بدون سبايسي", price: 0.0 },
+                            { name: "بدون دجاج", price: 0.0 },
+                            { name: "بدون بروكلي", price: 0.0 },
+                        ],
+                    },
+                    {
+                        group: "إضافات إختيارية",
+                        type: "checkbox",
+                        min: 0,
+                        max: 2,
+                        options: [
+                            { name: "اضافة دجاج", price: 5.0 },
+                            { name: "اضافة بروكلي", price: 5.0 },
+                        ],
+                    },
                 ],
             },
-        ],
-    },
-
-    {
-        id: 4,
-        name: "فتوتشيني ألفريدو",
-        price: 43.0,
-        desc: "فتوتشيني كريمي مع الدجاج والمشروم.",
-        image: "images/فتوتشيني_17511258546063978.jpg",
-        isFeatured: true,
-        modifiers: [
             {
-                group: "إضافات إختيارية",
-                type: "checkbox",
-                min: 0,
-                max: 2,
-                options: [
-                    { name: "اضافة دجاج  ", price: 5.0 },
+                id: 4,
+                category: "pasta",
+                name: "فتوتشيني ألفريدو",
+                price: 43.0,
+                desc: "فتوتشيني كريمي مع الدجاج والمشروم.",
+                image: "images/فتوتشيني_17511258546063978.jpg",
+                isFeatured: true,
+                modifiers: [
+                    {
+                        group: "إضافات إختيارية",
+                        type: "checkbox",
+                        min: 0,
+                        max: 2,
+                        options: [
+                            { name: "اضافة دجاج  ", price: 5.0 },
+                        ],
+                    },
                 ],
             },
-        ],
-    },
-
-    {
-        id: 5,
-        name: "رافيولي بالريكوتا والسبانخ",
-        price: 37.0,
-        desc: "رافيولي محشوة جبنة ريكوتا وسبانخ.",
-        image: "images/رافيولي_17511258874579816.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 6,
-        name: "ريزوتو بالكريمة والدجاج",
-        price: 35.0,
-        desc: "أرز كريمي غني مع دجاج مشوي.",
-        image: "images/ريزوتو_بالكريمة_والدجاج_المشوي_17511259231037362.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    // ============================
-    // (7 - 11) قسم البيتزا
-    // ============================
-    {
-        id: 7,
-        name: "بيتزا بوراتا مع بيبي جرجير",
-        price: 49.0,
-        desc: "جبنة بوراتا كريمية مع جرجير وزيت زيتون.",
-        image: "images/بيتزا_بوراتا_مع_بيبي_جرجير_17511259556497200.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 8,
-        name: "بيتزا مارجريتا",
-        price: 38.0,
-        desc: "طماطم سان مارزانو، موزاريلا، ريحان.",
-        image: "images/بيتزا_مارجريتا_17511259809415234.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 9,
-        name: "بيتزا ترافيل",
-        price: 59.0,
-        desc: "صوص كريمي ناعم ونكهة الترافل الفاخرة، تكتمل بشرائح المشروم الطازجة",
-        image: "images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg",
-        isFeatured: true,
-        modifiers: [],
-    },
-
-    {
-        id: 10,
-        name: "بيتزا خضار ودجاج",
-        price: 39.0,
-        desc: "خضار طازجة مع قطع دجاج.",
-        image: "images/بيتزا_خضار_17511260105455480.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 11,
-        name: "بيتزا بيستو دجاج",
-        price: 49.0,
-        desc: "صلصة بيستو منزلية مع دجاج وطماطم مجففة.",
-        image: "images/بيتزا_بيستو_دجاج_17511260422447870.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    // ============================
-    // (12 - 18) سلطات ومقبلات
-    // ============================
-    {
-        id: 12,
-        name: "سلطة لانو",
-        price: 31.0,
-        desc: "خضار ورقية طازجة مع الذرة.",
-        image: "images/سلطة_لانو_17511261545338358.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 13,
-        name: "سلطة سيزر",
-        price: 33.0,
-        desc: "خس، دجاج مشوي، صوص سيزر.",
-        image: "images/سلطة_سيزر_17511261842402466.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 14,
-        name: "كرات البطاطس المحشوة",
-        price: 48.0,
-        desc: "بطاطس مهروسة محشوة بأجبان ودجاج.",
-        image: "images/كرات_البطاطس_المحشوة_17511262735610694.jpg",
-        isFeatured: true,
-        modifiers: [
-
-        ],
-    },
-
-    {
-        id: 15,
-        name: "لازانيا لحم",
-        price: 48.0,
-        desc: "طبقات من شرائح الباستا الطازجة المحشوة باللحم المفروم مغطاة بصوص البشاميل الكريمي وجبنة البارميزان والموزاريلا الذائبة.",
-        image: "images/لازانيا_اللحم_17511263014621358.jpg",
-        isFeatured: false,
-        modifiers: [
             {
-                group: "إضافات إختيارية",
-                type: "radio",
-                min: 0,
-                max: 2,
-                options: [
-                    { name: "لحم كما هي ", price: 0.0 },
-                    { name: "دجاج ", price: 0.0 },
-                ],
+                id: 5,
+                category: "pasta",
+                name: "رافيولي بالريكوتا والسبانخ",
+                price: 37.0,
+                desc: "رافيولي محشوة جبنة ريكوتا وسبانخ.",
+                image: "images/رافيولي_17511258874579816.jpg",
+                isFeatured: false,
+                modifiers: [],
             },
-        ],
-    },
-
-    {
-        id: 16,
-        name: "كرات الأرنشيني",
-        price: 33.0,
-        desc: "أرز كريمي محشو بأجبان ذائبة.",
-        image: "images/كرات_الأرنشيني_17511262416990748.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 17,
-        name: "بارميجانا",
-        price: 27.0,
-        desc: "شرائح باذنجان مشوي مع صوص طماطم وجبنة.",
-        image: "images/بارميجانا_17511262173301050.jpg",
-        isFeatured: false,
-        modifiers: [
             {
-                group: "نوع المحشي ",
-                type: "radio",
-                min: 0,
-                max: 1,
-                options: [
-                    { name: "جبن ", price: 0.0 },
-                    { name: "لحم ", price: 7.0 },
-                    { name: "دجاج ", price: 5.0 },
-                ],
+                id: 6,
+                category: "pasta",
+                name: "ريزوتو بالكريمة والدجاج",
+                price: 35.0,
+                desc: "أرز كريمي غني مع دجاج مشوي.",
+                image: "images/ريزوتو_بالكريمة_والدجاج_المشوي_17511259231037362.jpg",
+                isFeatured: false,
+                modifiers: [],
             },
-        ],
-    },
 
-    {
-        id: 18,
-        name: "فرايز",
-        price: 12.0,
-        desc: "بطاطس مقلية مقرمشة مع جبنة بارميزان.",
-        image: "images/فرايز_17511263309966382.jpg",
-        isFeatured: false,
-        modifiers: [
+            // (7 - 11) البيتزا
             {
-                group: "النوع ",
-                type: "radio",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: " كما هو مع الجنبة", price: 0.0, default: true },
-                    { name: "بدون جبة البارمجان ", price: 0.0 },
-                ],
+                id: 7,
+                category: "pizza",
+                name: "بيتزا بوراتا مع بيبي جرجير",
+                price: 49.0,
+                desc: "جبنة بوراتا كريمية مع جرجير وزيت زيتون.",
+                image: "images/بيتزا_بوراتا_مع_بيبي_جرجير_17511259556497200.jpg",
+                isFeatured: false,
+                modifiers: [],
             },
-        ],
-    },
-
-    // ============================
-    // (19 - 24) مشروبات
-    // ============================
-    {
-        id: 19,
-        name: "باشن فروت",
-        price: 24.0,
-        desc: "عصير باشن فروت فريش.",
-        image: "images/باشيتو_17511264110701110.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 20,
-        name: "عصير برتقال",
-        price: 12.0,
-        desc: "عصير برتقال طبيعي منعش.",
-        image: "images/أورنجيتو_17511264339186198.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 21,
-        name: "مكس بيري",
-        price: 24.0,
-        desc: "مزيج توت وليمون ونعناع.",
-        image: "images/بيريتو_17511264757196126.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 22,
-        name: "مشروبات غازية",
-        price: 5.0,
-        desc: "اختر نوع المشروب: كولا أو سبرايت.",
-        image: "images/مشروبات_غازية_17518899084159798.jpg",
-        isFeatured: false,
-        modifiers: [
             {
-                group: "نوع المشروب",
-                type: "radio",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: "كولا", price: 0.0, default: true },
-                    { name: "سبرايت", price: 0.0 },
-                ],
+                id: 8,
+                category: "pizza",
+                name: "بيتزا مارجريتا",
+                price: 38.0,
+                desc: "طماطم سان مارزانو، موزاريلا، ريحان.",
+                image: "images/بيتزا_مارجريتا_17511259809415234.jpg",
+                isFeatured: false,
+                modifiers: [],
             },
-        ],
-    },
-
-    {
-        id: 23,
-        name: "ماء نوفا",
-        price: 2.0,
-        desc: "مياه معدنية.",
-        image: "images/ماء_نوفا_17620942785351718.jpg",
-        isFeatured: false,
-        modifiers: [],
-    },
-
-    {
-        id: 24,
-        name: "مشروبات للاطفال",
-        price: 4.0,
-        desc: "اختر نوع المشروب: سن كولا أو سن توب.",
-        image: "images/123suncola.jpg",
-        isFeatured: false,
-        modifiers: [
             {
-                group: "نوع المشروب",
-                type: "radio",
-                min: 1,
-                max: 1,
-                options: [
-                    { name: "سن كولا", price: 0.0, default: true },
-                    { name: "سن توب برتقال", price: 0.0 },
+                id: 9,
+                category: "pizza",
+                name: "بيتزا ترافيل",
+                price: 59.0,
+                desc: "صوص كريمي ناعم ونكهة الترافل الفاخرة، تكتمل بشرائح المشروم الطازجة",
+                image: "images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg",
+                isFeatured: true,
+                modifiers: [],
+            },
+            {
+                id: 10,
+                category: "pizza",
+                name: "بيتزا خضار ودجاج",
+                price: 39.0,
+                desc: "خضار طازجة مع قطع دجاج.",
+                image: "images/بيتزا_خضار_17511260105455480.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 11,
+                category: "pizza",
+                name: "بيتزا بيستو دجاج",
+                price: 49.0,
+                desc: "صلصة بيستو منزلية مع دجاج وطماطم مجففة.",
+                image: "images/بيتزا_بيستو_دجاج_17511260422447870.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+
+            // سلطات (12 - 13)
+            {
+                id: 12,
+                category: "salad",
+                name: "سلطة لانو",
+                price: 31.0,
+                desc: "خضار ورقية طازجة مع الذرة.",
+                image: "images/سلطة_لانو_17511261545338358.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 13,
+                category: "salad",
+                name: "سلطة سيزر",
+                price: 33.0,
+                desc: "خس، دجاج مشوي، صوص سيزر.",
+                image: "images/سلطة_سيزر_17511261842402466.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+
+            // مقبلات (14 - 18)
+            {
+                id: 14,
+                category: "appetizer",
+                name: "كرات البطاطس المحشوة",
+                price: 48.0,
+                desc: "بطاطس مهروسة محشوة بأجبان ودجاج.",
+                image: "images/كرات_البطاطس_المحشوة_17511262735610694.jpg",
+                isFeatured: true,
+                modifiers: [],
+            },
+            {
+                id: 15,
+                category: "appetizer",
+                name: "لازانيا لحم",
+                price: 48.0,
+                desc: "طبقات من شرائح الباستا الطازجة المحشوة باللحم المفروم مغطاة بصوص البشاميل الكريمي وجبنة البارميزان والموزاريلا الذائبة.",
+                image: "images/لازانيا_اللحم_17511263014621358.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "إضافات إختيارية",
+                        type: "radio",
+                        min: 0,
+                        max: 1,
+                        options: [
+                            { name: "لحم كما هي ", price: 0.0, default: true },
+                            { name: "دجاج ", price: 0.0 },
+                        ],
+                    },
                 ],
             },
-        ],
-    },
-];
+            {
+                id: 16,
+                category: "appetizer",
+                name: "كرات الأرنشيني",
+                price: 33.0,
+                desc: "أرز كريمي محشو بأجبان ذائبة.",
+                image: "images/كرات_الأرنشيني_17511262416990748.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 17,
+                category: "appetizer",
+                name: "بارميجانا",
+                price: 27.0,
+                desc: "شرائح باذنجان مشوي مع صوص طماطم وجبنة.",
+                image: "images/بارميجانا_17511262173301050.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "نوع المحشي ",
+                        type: "radio",
+                        min: 0,
+                        max: 1,
+                        options: [
+                            { name: "جبن ", price: 0.0, default: true },
+                            { name: "لحم ", price: 7.0 },
+                            { name: "دجاج ", price: 5.0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 18,
+                category: "appetizer",
+                name: "فرايز",
+                price: 12.0,
+                desc: "بطاطس مقلية مقرمشة مع جبنة بارميزان.",
+                image: "images/فرايز_17511263309966382.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "النوع ",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: " كما هو مع الجنبة", price: 0.0, default: true },
+                            { name: "بدون جبة البارمجان ", price: 0.0 },
+                        ],
+                    },
+                ],
+            },
 
-        
+            // مشروبات (19 - 24)
+            {
+                id: 19,
+                category: "drinks",
+                name: "باشن فروت",
+                price: 24.0,
+                desc: "عصير باشن فروت فريش.",
+                image: "images/باشيتو_17511264110701110.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 20,
+                category: "drinks",
+                name: "عصير برتقال",
+                price: 12.0,
+                desc: "عصير برتقال طبيعي منعش.",
+                image: "images/أورنجيتو_17511264339186198.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 21,
+                category: "drinks",
+                name: "مكس بيري",
+                price: 24.0,
+                desc: "مزيج توت وليمون ونعناع.",
+                image: "images/بيريتو_17511264757196126.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 22,
+                category: "drinks",
+                name: "مشروبات غازية",
+                price: 5.0,
+                desc: "اختر نوع المشروب: كولا أو سبرايت.",
+                image: "images/مشروبات_غازية_17518899084159798.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "نوع المشروب",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "كولا", price: 0.0, default: true },
+                            { name: "سبرايت", price: 0.0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 23,
+                category: "drinks",
+                name: "ماء نوفا",
+                price: 2.0,
+                desc: "مياه معدنية.",
+                image: "images/ماء_نوفا_17620942785351718.jpg",
+                isFeatured: false,
+                modifiers: [],
+            },
+            {
+                id: 24,
+                category: "drinks",
+                name: "مشروبات للاطفال",
+                price: 4.0,
+                desc: "اختر نوع المشروب: سن كولا أو سن توب.",
+                image: "images/123suncola.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "نوع المشروب",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "سن كولا", price: 0.0, default: true },
+                            { name: "سن توب برتقال", price: 0.0 },
+                        ],
+                    },
+                ],
+            },
+        ];
+
         const recommenderQuestions = [
             { id: 1, question: "كم عدد الأشخاص الذين سيستمتعون بالوجبة اليوم؟", options: [{ text: "فرد واحد", type: "solo" }, { text: "شخصان", type: "two" }, { text: "3-4 أشخاص", type: "group" }, { text: "5 أشخاص أو أكثر", type: "big_group" }, ], nextQuestion: 2, },
             { id: 2, question: "هل يوجد أطفال معكم على الطاولة؟", options: [{ text: "نعم، يوجد أطفال", type: "with_kids" }, { text: "لا، بالغون فقط", type: "no_kids" }, ], nextQuestion: 3, },
@@ -1042,25 +1081,44 @@
         let activeItemInPopup = null;
         let popupQuantity = 1;
 
+        // =========================================================
+        // 2. الفلترة حسب القسم
+        // =========================================================
+        window.filterMenu = function(category) {
+            const buttons = document.querySelectorAll(".menu-filter button");
+            buttons.forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.classList.add("active");
+                } else {
+                    btn.classList.remove("active");
+                }
+                if (category === "all" && btn.dataset.category === "all") {
+                    btn.classList.add("active");
+                }
+            });
+
+            let itemsToRender = menuItems;
+            if (category !== "all") {
+                itemsToRender = menuItems.filter(item => item.category === category);
+            }
+            window.renderMenu(itemsToRender);
+        };
 
         // =========================================================
-        // 2. وظائف القائمة (Menu Rendering)
+        // 3. عرض المنيو
         // =========================================================
-
         window.findMenuItemById = function(id) {
             return menuItems.find(item => item.id === id);
         };
 
-        window.renderMenu = function () {
+        window.renderMenu = function (items = menuItems) {
             const menuGrid = document.getElementById("interactive-menu-grid");
             if (!menuGrid) return;
             
-            menuGrid.innerHTML = menuItems
+            menuGrid.innerHTML = items
                 .map(item => {
-                    const isInCart = cart.some(cartItem => cartItem.id === item.id);
-                    const cartClass = isInCart ? ' is-in-cart' : '';
                     return `
-                        <div class="menu-item${cartClass}" onclick="window.openModifierPopup(${item.id})">
+                        <div class="menu-item" onclick="window.openModifierPopup(${item.id})">
                             <div>
                                 <img src="${item.image}" alt="${item.name}" class="menu-item__image">
                                 <h3 class="menu-item__name">${item.name}</h3>
@@ -1074,11 +1132,9 @@
         };
 
         // =========================================================
-        // 3. وظائف التوصية الذكية (Recommender)
+        // 4. التوصية الذكية
         // =========================================================
-
         window.getRecommendationFromAnswers = function(answers) {
-            // (منطق التوصية بناءً على الأجوبة)
             if (answers.type_3 === 'hearty') {
                 return {
                     title: "الباستا هي خيارك الأمثل لليوم!",
@@ -1098,7 +1154,7 @@
                     items: [ "سلطة لانو (منعشة)", "كرات الأرنشيني", "بارميجانا" ]
                 };
             }
-            return { title: "طبقنا المميز", description: "ننصحك بباستا لانو، خيارنا الأفضل دائماً." };
+            return { title: "طبقنا المميز", description: "ننصحك بباستا لانو، خيارنا الأفضل دائماً.", items: ["باستا لانو"] };
         };
 
         window.renderRecommender = function (questionIndex = 0) {
@@ -1109,9 +1165,8 @@
             if (resultBox) resultBox.style.display = 'none';
 
             if (!currentQ) {
-                // عرض النتيجة النهائية
                 const recommendation = window.getRecommendationFromAnswers(recommendationAnswers);
-                questionBox.innerHTML = ''; // إخفاء السؤال
+                questionBox.innerHTML = '';
                 if (resultBox) {
                     resultBox.innerHTML = `
                         <h3><i class="fas fa-magic"></i> ${recommendation.title}</h3>
@@ -1126,7 +1181,6 @@
                 return;
             }
 
-            // عرض السؤال الحالي
             questionBox.innerHTML = `
                 <div class="question" style="font-size: 20px; font-weight: 600; margin-bottom: 25px;">${currentQ.question}</div>
                 <div class="options">
@@ -1145,16 +1199,15 @@
             recommendationAnswers[`type_${qId}`] = type;
             
             if (nextQIndex === 'null' || nextQIndex === null) {
-                window.renderRecommender(null); // عرض النتيجة
+                window.renderRecommender(null);
             } else {
-                window.renderRecommender(parseInt(nextQIndex) - 1); // الانتقال للسؤال التالي
+                window.renderRecommender(parseInt(nextQIndex) - 1);
             }
         };
 
         // =========================================================
-        // 4. وظائف السلة (Cart Management)
+        // 5. إدارة السلة
         // =========================================================
-
         window.updateCartItemQuantity = function (index, change) {
             const item = cart[index];
             if (!item) return;
@@ -1186,8 +1239,7 @@
                 });
             
             const itemTotalElement = document.getElementById('popup-item-total');
-            const total = parseFloat(itemTotalElement.textContent.replace(' ر.س', ''));
-            const unitPrice = total; // السعر المحسوب هو سعر الوحدة
+            const unitPrice = parseFloat(itemTotalElement.textContent.replace(' ر.س', ''));
 
             const newItem = {
                 id: activeItemInPopup.id,
@@ -1210,7 +1262,6 @@
 
             window.closeModifierPopup();
             window.renderCart();
-            document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
         };
         
         window.renderCart = function () {
@@ -1218,7 +1269,6 @@
             const emptyMessage = document.getElementById("empty-cart-message");
             let grandTotal = 0;
 
-            window.renderMenu();
             window.updateMobileCartCount();
 
             if (cart.length === 0) {
@@ -1238,7 +1288,7 @@
                     grandTotal += itemTotal;
 
                     const modsList =
-                        item.modifiers.length > 0
+                        item.modifiers && item.modifiers.length > 0
                             ? '<div class="cart-item__mods">التعديلات: ' +
                               item.modifiers
                                   .map(
@@ -1280,9 +1330,8 @@
         };
 
         // =========================================================
-        // 5. وظائف النافذة المنبثقة (Popup Management)
+        // 6. البوب أب
         // =========================================================
-
         window.calculatePopupTotal = function() {
             if (!activeItemInPopup) return 0;
 
@@ -1314,7 +1363,7 @@
             const container = document.getElementById('popup-options-container');
             container.innerHTML = '';
 
-            if (!activeItemInPopup || activeItemInPopup.modifiers.length === 0) {
+            if (!activeItemInPopup || !activeItemInPopup.modifiers || activeItemInPopup.modifiers.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#888;">هذا الطبق لا يتطلب تعديلات.</p>';
                 window.calculatePopupTotal();
                 return;
@@ -1329,7 +1378,7 @@
                         ${group.options.map(option => `
                             <label class="modifier-option">
                                 <input 
-                                    type="${type}" 
+                                    type="${type === 'radio' ? 'radio' : 'checkbox'}" 
                                     name="mod_${group.group}" 
                                     value="${option.name}" 
                                     data-price="${option.price.toFixed(2)}"
@@ -1337,7 +1386,13 @@
                                     onchange="window.calculatePopupTotal()"
                                 >
                                 <span class="modifier-option__label">${option.name}</span>
-                                <span class="modifier-option__price" style="font-weight: 600;">${option.price > 0 ? '+' + option.price.toFixed(2) + ' ر.س' : (option.price < 0 ? option.price.toFixed(2) + ' ر.س' : '')}</span>
+                                <span class="modifier-option__price" style="font-weight: 600;">
+                                    ${
+                                        option.price > 0 
+                                        ? '+' + option.price.toFixed(2) + ' ر.س' 
+                                        : (option.price < 0 ? option.price.toFixed(2) + ' ر.س' : '')
+                                    }
+                                </span>
                             </label>
                         `).join('')}
                     </div>
@@ -1357,7 +1412,6 @@
             document.getElementById('popup-quantity').textContent = popupQuantity;
 
             window.renderModifiers();
-
             document.getElementById('modifier-popup-overlay').classList.add('active');
         };
 
@@ -1367,22 +1421,17 @@
         };
 
         // =========================================================
-        // 6. وظائف واتساب (WhatsApp Integration)
+        // 7. واتساب
         // =========================================================
-
         window.generateWhatsAppMessage = function (orderType, tableNumber, cart, clientName, clientPhone, clientNotes) {
             if (cart.length === 0) return "";
             
             let message = `*✨ طلب جديد - LANO PASTA ✨*\n\n`;
             
-            // نوع الطلب
             message += `*نوع الطلب:* ${orderType === 'dinein' ? `محلي (طاولة ${tableNumber})` : 'سفري (استلام من الفرع)'}\n`;
-            
-            // تفاصيل العميل
             message += `*العميل:* ${clientName || 'غير محدد'}\n`;
             message += `*الجوال:* ${clientPhone || 'غير محدد'}\n\n`;
 
-            // تفاصيل السلة
             let grandTotal = 0;
             message += `*📋 تفاصيل الطلبات (${cart.length} صنف):*\n`;
 
@@ -1390,17 +1439,14 @@
                 const itemTotal = item.unitPrice * item.quantity;
                 grandTotal += itemTotal;
                 
-                // اسم الصنف والكمية والسعر
                 message += `${index + 1}. *${item.name}* (x${item.quantity}) - ${itemTotal.toFixed(2)} ر.س\n`;
 
-                // التعديلات والإضافات
                 if (item.modifiers && item.modifiers.length > 0) {
                     const mods = item.modifiers.map(m => m.name + (m.price > 0 ? ` (+${m.price.toFixed(2)})` : '')).join(' / ');
                     message += `   - التعديلات: ${mods}\n`;
                 }
             });
 
-            // الإجمالي والملاحظات
             message += `\n*💰 الإجمالي الكلي:* ${grandTotal.toFixed(2)} ر.س\n`;
             if (clientNotes) {
                 message += `\n*📝 ملاحظات العميل:* ${clientNotes}\n`;
@@ -1453,9 +1499,8 @@
                 return;
             }
 
-
             const message = window.generateWhatsAppMessage(orderType, tableNumber, cart, clientName, clientPhone, clientNotes);
-            const phoneNumber = '966582003125'; // رقم الواتساب الخاص بالمطعم
+            const phoneNumber = '966582003125';
 
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
             
@@ -1467,15 +1512,8 @@
         };
 
         // =========================================================
-        // 7. وظائف العناصر المميزة (Featured/Shop)
+        // 8. شريط السلة في الجوال
         // =========================================================
-
-        // تم إلغاء وظيفة عرض العناصر المميزة في هذا التصميم، ويمكن إعادة دمجها كقسم جديد إن لزم الأمر.
-        
-        // =========================================================
-        // 8. وظائف تطويرية: شريط التنقل السفلي
-        // =========================================================
-        
         window.updateMobileCartCount = function() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
             const mobileCountSpan = document.getElementById('mobile-cart-count');
@@ -1484,11 +1522,9 @@
             mobileCountSpan.style.display = count > 0 ? 'block' : 'none';
         };
 
-
         // =========================================================
-        // 9. إعداد الإطلاق والـ Initialization
+        // 9. تهيئة الأحداث
         // =========================================================
-
         function setupEventListeners() {
             document.getElementById("qty-plus").addEventListener('click', () => window.updatePopupQuantity(1));
             document.getElementById("qty-minus").addEventListener('click', () => window.updatePopupQuantity(-1));
@@ -1501,6 +1537,16 @@
             window.handleOrderTypeChange(); 
 
             document.getElementById("send-order-btn").addEventListener('click', window.sendWhatsAppOrder);
+
+            // فلترة من كرت "شاهد المقبلات الأكثر مبيعاً"
+            const showAppetizersLink = document.getElementById("show-appetizers");
+            if (showAppetizersLink) {
+                showAppetizersLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+                    setTimeout(() => window.filterMenu('appetizer'), 400);
+                });
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1509,8 +1555,7 @@
             window.renderMenu(); 
             window.renderCart(); 
         });
-
     </script>
-    
 </body>
 </html>
+
