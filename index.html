@@ -384,7 +384,7 @@
             .cart-section { position: static; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .carousel-content h2 { font-size: 32px; }
-            body { padding-top: 60px; }
+            body { padding-top: 60px; padding-bottom: 70px; }
             header { padding: 10px 0; }
             .logo { font-size: 20px; }
             .nav { display: none; }
@@ -586,7 +586,7 @@
                     <h3>Lano Pasta - صبيا</h3>
                     <div class="location-info">
                         <p style="margin-bottom: 10px;"><span><i class="fas fa-road" style="color: var(--primary-red);"></i></span> <strong>العنوان:</strong> طريق الملك فهد، حي الصفا، صبيا، السعودية.</p>
-                        <p style="margin-bottom: 10px;"><span><i class="fas fa-clock" style="color: var(--primary-red);"></i></span> <strong>ساعات العمل:</strong> يومياً من 12:00 مساءً حتى 1:00 صباحاً.</p>
+                        <p style="margin-bottom: 10px;"><span><i class="fas fa-clock" style="color: var(--primary-red);"></i></span> <strong>ساعات العمل:</strong> يومياً من 5:00 مساءً حتى 2:00 صباحاً.</p>
                         <p><span><i class="fas fa-phone-volume" style="color: var(--primary-red);"></i></span> <strong>للتواصل:</strong> 0582003125</p>
                     </div>
                 </div>
@@ -1077,14 +1077,9 @@
         window.filterMenu = function(category) {
             const buttons = document.querySelectorAll(".menu-filter button");
             buttons.forEach(btn => {
-                if (btn.dataset.category === category) {
-                    btn.classList.add("active");
-                } else {
-                    btn.classList.remove("active");
-                }
-                if (category === "all" && btn.dataset.category === "all") {
-                    btn.classList.add("active");
-                }
+                const btnCat = btn.dataset.category;
+                const isActive = category === "all" ? btnCat === "all" : btnCat === category;
+                btn.classList.toggle("active", isActive);
             });
 
             let itemsToRender = menuItems;
@@ -1220,7 +1215,7 @@
 
             const selectedMods = Array.from(document.querySelectorAll('#popup-options-container input:checked'))
                 .map(input => {
-                    const group = input.closest('.modifier-group').querySelector('h4').textContent.replace(/\s*\(.*\)\s*/, '').trim();
+                    const group = input.closest('.modifier-group').querySelector('h4').textContent.replace(/\س*\(.*\)\s*/, '').trim();
                     return {
                         group: group,
                         name: input.value,
@@ -1513,7 +1508,7 @@
         };
 
         // =========================================================
-        // 9. تهيئة الأحداث
+        // 9. تهيئة الأحداث + التمرير لأعلى الصفحة عند التحميل
         // =========================================================
         function setupEventListeners() {
             document.getElementById("qty-plus").addEventListener('click', () => window.updatePopupQuantity(1));
@@ -1540,6 +1535,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // دايماً أول ما تفتح أو تحدّث يرجع لأعلى الصفحة
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
             setupEventListeners();
             window.renderRecommender(); 
             window.renderMenu(); 
