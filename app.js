@@ -16,6 +16,7 @@ const menuItems = [
                 group: "اختر نوع الباستا", // إضافة 'group'
                 required: true, // إضافة 'required'
                 options: [
+                    { name: "بدون سبايسي", price: 0.0 },
                     { name: "بدون دجاج", price: 0.0 },
                     { name: "بدون بروكلي", price: 0.0 },
                 ],
@@ -62,12 +63,12 @@ const menuItems = [
             {
                 id: "heat_level",
                 type: "radio",
-                group: "درجة الحرارة (إجباري)",
+                group: "النوع",
                 required: true,
                 options: [
-                    { name: "عادي (بدون حرارة)", price: 0.0 },
-                    { name: "حرارة خفيفة", price: 0.0 },
-                    { name: "حرارة متوسطة", price: 0.0 },
+                    { name: "عاديه ", price: 0.0 },
+                    { name: "بدون سبايسي", price: 0.0 },
+                    
                 ],
             },
             {
