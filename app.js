@@ -47,7 +47,7 @@ const menuItems = [
                 group: "النوع  ",
                 required: true,
                 options: [
-                    { name: "سادة " },
+                    { name: "سادة ", price: 0.0  },
                     { name: "اضافة لحم", price: 7.0 },
                     { name: "اضافة دجاج ", price: 5.0 },
                 ],
