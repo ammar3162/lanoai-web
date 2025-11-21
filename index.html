@@ -1,1569 +1,1369 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lano Pasta | الأناقة الإيطالية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary-red: #822626; 
-            --dark-text: #222222;
-            --light-gray: #f7f7f7;
-            --white: #ffffff;
-            --border-color: #e0e0e0;
-            --section-padding: 80px 0;
-            --success-green: #28a745; 
-            --error-red: #dc3545;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lano Pasta | الأناقة الإيطالية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #822626; 
+            --dark-text: #222222;
+            --light-gray: #f7f7f7;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --section-padding: 80px 0;
+            --success-green: #28a745; 
+            --error-red: #dc3545;
+        }
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--white);
-            margin: 0;
-            padding-top: 80px; 
-            color: var(--dark-text);
-            direction: rtl;
-            text-align: right;
-            line-height: 1.6;
-            font-size: 16px;
-        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--white);
+            margin: 0;
+            padding-top: 80px; 
+            color: var(--dark-text);
+            direction: rtl;
+            text-align: right;
+            line-height: 1.6;
+            font-size: 16px;
+        }
 
-        /* الهيدر */
-        header {
-            position: fixed; top: 0; right: 0; left: 0;
-            background-color: var(--white); color: var(--dark-text);
-            padding: 15px 0; 
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); 
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .header-content {
-            max-width: 1200px; margin: 0 auto; padding: 0 25px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo {
-            font-size: 24px; 
-            font-weight: 800; 
-            color: var(--dark-text);
-            letter-spacing: 1px;
-        }
-        .nav { display: flex; align-items: center; }
-        .nav a {
-            color: var(--dark-text);
-            text-decoration: none;
-            font-size: 14px; 
-            margin-right: 25px; 
-            padding: 5px 0;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .nav a:hover { color: var(--primary-red); }
-        .header-actions { display: none; } 
+        /* الهيدر */
+        header {
+            position: fixed; top: 0; right: 0; left: 0;
+            background-color: var(--white); color: var(--dark-text);
+            padding: 15px 0; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); 
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-content {
+            max-width: 1200px; margin: 0 auto; padding: 0 25px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            font-size: 24px; 
+            font-weight: 800; 
+            color: var(--dark-text);
+            letter-spacing: 1px;
+        }
+        .nav { display: flex; align-items: center; }
+        .nav a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-size: 14px; 
+            margin-right: 25px; 
+            padding: 5px 0;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav a:hover { color: var(--primary-red); }
+        .header-actions { display: none; } 
 
-        /* حاوية عامة */
-        .l-container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 0 25px; 
-        } 
-        
-        /* عناوين */
-        .section-title {
-            font-size: 38px; 
-            font-weight: 400; 
-            margin-bottom: 15px; 
-            text-align: center;
-            letter-spacing: 1px;
-            color: var(--dark-text);
-        }
-        .section-subtitle {
-            font-size: 18px; 
-            margin-bottom: 50px;
-            color: #666;
-            text-align: center;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* من نحن */
-        .about-us {
-            padding: var(--section-padding);
-            text-align: center;
-        }
-        .about-us p {
-            max-width: 800px;
-            margin: 0 auto 50px;
-            font-size: 18px;
-            color: #444;
-            line-height: 1.8;
-        }
+        /* حاوية عامة */
+        .l-container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 0 25px; 
+        } 
+        
+        /* عناوين */
+        .section-title {
+            font-size: 38px; 
+            font-weight: 400; 
+            margin-bottom: 15px; 
+            text-align: center;
+            letter-spacing: 1px;
+            color: var(--dark-text);
+        }
+        .section-subtitle {
+            font-size: 18px; 
+            margin-bottom: 50px;
+            color: #666;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* من نحن */
+        .about-us {
+            padding: var(--section-padding);
+            text-align: center;
+        }
+        .about-us p {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.8;
+        }
 
-        /* Hero / Carousel */
-        .carousel-section {
-            width: 100%;
-            height: 450px; 
-            overflow: hidden;
-            position: relative;
-            background-color: #ccc;
-        }
-        .carousel-content {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            display: flex; justify-content: center; align-items: center;
-            background: rgba(0, 0, 0, 0.2); 
-        }
-        .carousel-content h2 {
-            font-size: 48px;
-            color: var(--white);
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-        .carousel-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+        /* Hero / Carousel */
+        .carousel-section {
+            width: 100%;
+            height: 450px; 
+            overflow: hidden;
+            position: relative;
+            background-color: #ccc;
+        }
+        .carousel-content {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(0, 0, 0, 0.2); 
+        }
+        .carousel-content h2 {
+            font-size: 48px;
+            color: var(--white);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
 
-        /* كروت Eat/Shop/Learn */
-        .core-sections {
-            padding: 0 25px 80px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .core-card {
-            flex: 1 1 300px; 
-            text-align: center;
-            padding: 0 10px;
-        }
-        .core-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .core-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .core-card p {
-            font-size: 15px;
-            color: #666;
-            line-height: 1.6;
-        }
-        .core-card a.cta-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: var(--primary-red);
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px solid transparent;
-        }
-        .core-card a.cta-link:hover {
-            border-bottom: 1px solid var(--primary-red);
-        }
-        
-        /* قسم المنيو */
-        .menu-section {
-            padding: var(--section-padding);
-            background-color: var(--light-gray);
-        }
-        .menu-layout { 
-            display: grid; 
-            grid-template-columns: 1fr 350px; 
-            gap: 40px; 
-        }
+        /* كروت Eat/Shop/Learn */
+        .core-sections {
+            padding: 0 25px 80px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .core-card {
+            flex: 1 1 300px; 
+            text-align: center;
+            padding: 0 10px;
+        }
+        .core-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .core-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .core-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        .core-card a.cta-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+        }
+        .core-card a.cta-link:hover {
+            border-bottom: 1px solid var(--primary-red);
+        }
+        
+        /* قسم المنيو */
+        .menu-section {
+            padding: var(--section-padding);
+            background-color: var(--light-gray);
+        }
+        .menu-layout { 
+            display: grid; 
+            grid-template-columns: 1fr 350px; 
+            gap: 40px; 
+        }
 
-        /* شريط الفلترة بالأيقونات */
-        .menu-filter {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        .menu-filter button {
-            padding: 8px 14px;
-            border: 1px solid var(--border-color);
-            background: var(--white);
-            cursor: pointer;
-            border-radius: 999px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .menu-filter button i {
-            font-size: 15px;
-        }
-        .menu-filter button.active,
-        .menu-filter button:hover {
-            background: var(--primary-red);
-            color: var(--white);
-            border-color: var(--primary-red);
-        }
+        /* شريط الفلترة بالأيقونات */
+        .menu-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .menu-filter button {
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            cursor: pointer;
+            border-radius: 999px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .menu-filter button i {
+            font-size: 15px;
+        }
+        .menu-filter button.active,
+        .menu-filter button:hover {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
 
-        .interactive-menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-            gap: 20px;
-        }
-        .menu-item {
-            background-color: var(--white);
-            border-radius: 4px;
-            box-shadow: none;
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: right;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-        .menu-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-        .menu-item__image { 
-            width: 100%;
-            height: 120px; 
-            object-fit: cover;
-            margin-bottom: 10px; 
-            border-radius: 4px;
-        }
-        .menu-item__name { font-size: 18px; margin-bottom: 5px; font-weight: 600; }
-        .menu-item__desc { font-size: 12px; min-height: 30px; color: #777; margin-bottom: 10px; }
-        .menu-item__price { 
-            font-size: 18px; 
-            font-weight: 700;
-            color: var(--primary-red);
-            padding-top: 10px;
-        }
+        .interactive-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 20px;
+        }
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 4px;
+            box-shadow: none;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: right;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .menu-item__image { 
+            width: 100%;
+            height: 120px; 
+            object-fit: cover;
+            margin-bottom: 10px; 
+            border-radius: 4px;
+        }
+        .menu-item__name { font-size: 18px; margin-bottom: 5px; font-weight: 600; }
+        .menu-item__desc { font-size: 12px; min-height: 30px; color: #777; margin-bottom: 10px; }
+        .menu-item__price { 
+            font-size: 18px; 
+            font-weight: 700;
+            color: var(--primary-red);
+            padding-top: 10px;
+        }
 
-        /* الفوتر */
-        footer {
-            background-color: var(--white);
-            padding: 60px 0;
-            border-top: 1px solid var(--border-color);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr; 
-            gap: 40px;
-            text-align: right;
-        }
-        .footer-col h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-col ul li a {
-            color: #666;
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 2.2;
-        }
-        .footer-col ul li a:hover {
-            color: var(--primary-red);
-        }
-        .footer-logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-        }
-        .social-icons a {
-            font-size: 18px;
-            margin-left: 10px;
-            color: #666;
-            transition: color 0.3s;
-        }
-        .social-icons a:hover { color: var(--primary-red); }
+        /* الفوتر */
+        footer {
+            background-color: var(--white);
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr; 
+            gap: 40px;
+            text-align: right;
+        }
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2.2;
+        }
+        .footer-col ul li a:hover {
+            color: var(--primary-red);
+        }
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+        .social-icons a {
+            font-size: 18px;
+            margin-left: 10px;
+            color: #666;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover { color: var(--primary-red); }
 
-        /* السلة والبوب أب */
-        .cart-wrapper { max-width: 350px; }
-        .cart-section {
-            background-color: var(--white);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            position: sticky;
-            top: 100px;
-        }
-        .send-order-btn {
-            background-color: var(--primary-red);
-            border: none;
-            color: var(--white);
-            padding: 12px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 700;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        .send-order-btn:hover { background-color: #a04040; }
-        
-        #modifier-popup-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.7); z-index: 2000;
-            display: none; justify-content: center; align-items: center;
-        }
-        #modifier-popup {
-            background: var(--white); padding: 30px; border-radius: 8px; max-width: 450px; width: 90%;
-            position: relative; 
-        }
-        #modifier-popup-overlay.active { display: flex; }
-        .popup-total-bar { font-size: 18px; font-weight: 700; color: var(--primary-red); border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px; display: flex; justify-content: space-between; }
-        .popup-quantity-control { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .popup-quantity-control button { width: 35px; height: 35px; background-color: var(--light-gray); border: 1px solid var(--border-color); border-radius: 4px; font-size: 20px; cursor: pointer; }
-        .popup-quantity-control span { font-size: 20px; margin: 0 15px; font-weight: 700; }
-        .modifier-group { margin-bottom: 20px; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px;}
-        .modifier-group h4 { font-size: 16px; margin-bottom: 10px; font-weight: 600; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
-        .modifier-option { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 14px; }
-        
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #eee; }
-        .cart-item__details strong { font-size: 14px; }
-        .cart-item__unit-price, .cart-item__mods { font-size: 12px; color: #777; }
-        .cart-item__controls { display: flex; align-items: center; gap: 5px; }
-        .cart-item__controls button { padding: 3px 6px; font-size: 14px; background: var(--light-gray); border: 1px solid var(--border-color); border-radius: 3px; cursor: pointer; }
-        .cart-item__delete { color: var(--error-red); background: none; border: none; font-size: 14px; cursor: pointer; }
-        #total-price { font-size: 20px; font-weight: 700; display: flex; justify-content: space-between; margin-top: 15px; padding-top: 10px; border-top: 2px solid var(--border-color); }
+        /* السلة والبوب أب */
+        .cart-wrapper { max-width: 350px; }
+        .cart-section {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            position: sticky;
+            top: 100px;
+        }
+        .send-order-btn {
+            background-color: var(--primary-red);
+            border: none;
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 700;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .send-order-btn:hover { background-color: #a04040; }
+        
+        #modifier-popup-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7); z-index: 2000;
+            display: none; justify-content: center; align-items: center;
+        }
+        #modifier-popup {
+            background: var(--white); padding: 30px; border-radius: 8px; max-width: 450px; width: 90%;
+            position: relative; 
+        }
+        #modifier-popup-overlay.active { display: flex; }
+        .popup-total-bar { font-size: 18px; font-weight: 700; color: var(--primary-red); border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px; display: flex; justify-content: space-between; }
+        .popup-quantity-control { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .popup-quantity-control button { width: 35px; height: 35px; background-color: var(--light-gray); border: 1px solid var(--border-color); border-radius: 4px; font-size: 20px; cursor: pointer; }
+        .popup-quantity-control span { font-size: 20px; margin: 0 15px; font-weight: 700; }
+        .modifier-group { margin-bottom: 20px; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px;}
+        .modifier-group h4 { font-size: 16px; margin-bottom: 10px; font-weight: 600; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        .modifier-option { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 14px; }
+        
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #eee; }
+        .cart-item__details strong { font-size: 14px; }
+        .cart-item__unit-price, .cart-item__mods { font-size: 12px; color: #777; }
+        .cart-item__controls { display: flex; align-items: center; gap: 5px; }
+        .cart-item__controls button { padding: 3px 6px; font-size: 14px; background: var(--light-gray); border: 1px solid var(--border-color); border-radius: 3px; cursor: pointer; }
+        .cart-item__delete { color: var(--error-red); background: none; border: none; font-size: 14px; cursor: pointer; }
+        #total-price { font-size: 20px; font-weight: 700; display: flex; justify-content: space-between; margin-top: 15px; padding-top: 10px; border-top: 2px solid var(--border-color); }
 
-        .client-info-fields { margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color); }
-        .client-info-fields h3 { font-size: 16px; margin-bottom: 10px; }
-        .input-group label { display: block; font-size: 12px; color: #777; margin-bottom: 3px; }
-        .input-group input, .input-group textarea { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 10px; font-size: 14px; box-sizing: border-box; }
-        
-        #cart-status-message {
-            padding: 10px; margin-bottom: 15px; border-radius: 4px; text-align: center;
-            display: none; font-weight: 600;
-        }
-        #cart-status-message.success { background-color: #d4edda; color: var(--success-green); border: 1px solid #c3e6cb; }
-        #cart-status-message.error { background-color: #f8d7da; color: var(--error-red); border: 1px solid #f5c6cb; }
+        .client-info-fields { margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color); }
+        .client-info-fields h3 { font-size: 16px; margin-bottom: 10px; }
+        .input-group label { display: block; font-size: 12px; color: #777; margin-bottom: 3px; }
+        .input-group input, .input-group textarea { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 10px; font-size: 14px; box-sizing: border-box; }
+        
+        #cart-status-message {
+            padding: 10px; margin-bottom: 15px; border-radius: 4px; text-align: center;
+            display: none; font-weight: 600;
+        }
+        #cart-status-message.success { background-color: #d4edda; color: var(--success-green); border: 1px solid #c3e6cb; }
+        #cart-status-message.error { background-color: #f8d7da; color: var(--error-red); border: 1px solid #f5c6cb; }
 
-        /* نوع الطلب */
-        .order-options-group { display: flex; justify-content: space-around; gap: 10px; margin-bottom: 15px; }
-        .order-option input { display: none; }
-        .order-option span { 
-            padding: 10px 15px; border: 1px solid var(--border-color); border-radius: 4px;
-            cursor: pointer; flex-grow: 1; text-align: center; font-size: 14px;
-        }
-        .order-option input:checked + span { background-color: var(--light-gray); border-color: var(--primary-red); color: var(--primary-red); font-weight: 600; }
-        #table-select-box { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--border-color); }
-        #table-select-box label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 5px; }
-        #tableNumber { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; }
-        .table-note { font-size: 12px; color: #777; margin-top: 5px; }
-        
-        /* التوصية الذكية */
-        .options button { 
-            background-color: var(--white); color: var(--dark-text); border: 1px solid var(--border-color);
-            padding: 10px 20px; margin: 8px; border-radius: 4px; font-size: 16px; min-width: 140px; 
-            cursor: pointer; transition: background-color 0.3s;
-        }
-        .options button:hover { background-color: #e8e8e8; border-color: #aaa; }
-        #result h3 { font-size: 24px; color: var(--primary-red); margin-top: 10px; }
-        #result p { font-size: 16px; margin: 15px 0; }
-        #result ul { list-style-type: none; padding: 0; text-align: center; }
-        #result ul li { font-size: 15px; background: var(--white); padding: 8px; margin: 5px 0; border-radius: 4px; border: 1px solid #eee; }
+        /* نوع الطلب */
+        .order-options-group { display: flex; justify-content: space-around; gap: 10px; margin-bottom: 15px; }
+        .order-option input { display: none; }
+        .order-option span { 
+            padding: 10px 15px; border: 1px solid var(--border-color); border-radius: 4px;
+            cursor: pointer; flex-grow: 1; text-align: center; font-size: 14px;
+        }
+        .order-option input:checked + span { background-color: var(--light-gray); border-color: var(--primary-red); color: var(--primary-red); font-weight: 600; }
+        #table-select-box { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--border-color); }
+        #table-select-box label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 5px; }
+        #tableNumber { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; }
+        .table-note { font-size: 12px; color: #777; margin-top: 5px; }
+        
+        /* التوصية الذكية */
+        .options button { 
+            background-color: var(--white); color: var(--dark-text); border: 1px solid var(--border-color);
+            padding: 10px 20px; margin: 8px; border-radius: 4px; font-size: 16px; min-width: 140px; 
+            cursor: pointer; transition: background-color 0.3s;
+        }
+        .options button:hover { background-color: #e8e8e8; border-color: #aaa; }
+        #result h3 { font-size: 24px; color: var(--primary-red); margin-top: 10px; }
+        #result p { font-size: 16px; margin: 15px 0; }
+        #result ul { list-style-type: none; padding: 0; text-align: center; }
+        #result ul li { font-size: 15px; background: var(--white); padding: 8px; margin: 5px 0; border-radius: 4px; border: 1px solid #eee; }
 
-        /* للجوال */
-        @media (max-width: 992px) {
-            .menu-layout { grid-template-columns: 1fr; }
-            .cart-wrapper { order: -1; max-width: 100%; margin-bottom: 40px; }
-            .cart-section { position: static; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .carousel-content h2 { font-size: 32px; }
-            body { padding-top: 60px; padding-bottom: 70px; }
-            header { padding: 10px 0; }
-            .logo { font-size: 20px; }
-            .nav { display: none; }
-            .location-card { flex-direction: column; }
-            .map-embed { order: -1; }
-        }
-        
-        .mobile-nav-bar {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-            background-color: var(--white); border-top: 1px solid var(--border-color);
-            display: flex; justify-content: space-around; padding: 8px 0;
-        }
-        .mobile-nav-bar a {
-            display: flex; flex-direction: column; align-items: center;
-            text-decoration: none; color: #666; font-size: 12px;
-            position: relative;
-        }
-        .mobile-nav-bar a i { font-size: 18px; margin-bottom: 3px; }
-        .mobile-nav-bar a:hover { color: var(--primary-red); }
-        #mobile-cart-count {
-            position: absolute; top: 0; right: -5px; background-color: var(--primary-red);
-            color: var(--white); border-radius: 50%; padding: 1px 6px; font-size: 10px;
-            font-weight: 700; display: none; 
-        }
+        /* للجوال */
+        @media (max-width: 992px) {
+            .menu-layout { grid-template-columns: 1fr; }
+            .cart-wrapper { order: -1; max-width: 100%; margin-bottom: 40px; }
+            .cart-section { position: static; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .carousel-content h2 { font-size: 32px; }
+            body { padding-top: 60px; padding-bottom: 70px; }
+            header { padding: 10px 0; }
+            .logo { font-size: 20px; }
+            .nav { display: none; }
+            .location-card { flex-direction: column; }
+            .map-embed { order: -1; }
+        }
+        
+        .mobile-nav-bar {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+            background-color: var(--white); border-top: 1px solid var(--border-color);
+            display: flex; justify-content: space-around; padding: 8px 0;
+        }
+        .mobile-nav-bar a {
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; color: #666; font-size: 12px;
+            position: relative;
+        }
+        .mobile-nav-bar a i { font-size: 18px; margin-bottom: 3px; }
+        .mobile-nav-bar a:hover { color: var(--primary-red); }
+        #mobile-cart-count {
+            position: absolute; top: 0; right: -5px; background-color: var(--primary-red);
+            color: var(--white); border-radius: 50%; padding: 1px 6px; font-size: 10px;
+            font-weight: 700; display: none; 
+        }
 
-    </style>
+    </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo"> مطعم لانو نهئ باستا LANO BY NOHA PASTA </div>
-            <nav class="nav">
-                <a href="#about">من نحن</a>
-                <a href="#menu">المنيو (Eat)</a>
-                <a href="#recommender">توصية ذكية (Learn)</a>
-                <a href="#location">تواصل</a>
-                <a href="#cart-section" style="margin-left: 25px; color: var(--primary-red);"><i class="fas fa-shopping-cart"></i> اطلب الآن</a>
-            </nav>
-            <div class="header-actions"></div>
-        </div>
-    </header>
-    
-    <section class="carousel-section">
-        <img src="images/سباغيتي_17511257342315958.webp" alt="نكهات إيطالية أصيلة" class="carousel-img">
-        <div class="carousel-content">
-            <h2>نكهات إيطالية أصيلة</h2>
-        </div>
-    </section>
-
-    <section id="about" class="about-us">
-        <div class="l-container">
-            <h2 class="section-title">من نحن</h2>
-            <p>
-تأسست LANO PASTA على يد الشيف نُهى عام 2017، لتقديم تجربة طعام إيطالية بطابع عصري وبجودة عالية. نختار مكوناتنا بعناية ونقدّم وصفات بسيطة ومحضّرة بإتقان، في أجواء مريحة تناسب العائلات والأصدقاء. هدفنا هو تقديم نكهات إيطالية محلية بلمسة حديثة تجعل زيارتك تجربة لا تُنسى.            </p>
-        </div>
-    </section>
-
-    <div class="core-sections">
-        <div class="core-card">
-            <img src="images/فتوتشيني_17511258546063978.jpg" alt="Eat">
-            <h3>Eat | تذوق</h3>
-            <p>نؤمن بتقديم عدد قليل من الأطباق، لكن بمكونات عالية الجودة، لتقديم روائع تذوق حقيقية. أطلب باستا لانو أو اللازانيا الآن.</p>
-            <a href="#menu" class="cta-link">استعرض المنيو الكامل <i class="fas fa-arrow-left"></i></a>
-        </div>
-        
-        <div class="core-card">
-            <img src="images/كرات_البطاطس_المحشوة_17511262735610694.jpg" alt="Shop">
-            <h3>Shop | تميز</h3>
-            <p>نقدم مجموعة من أجود المنتجات الإيطالية والمقبلات المصنوعة يدوياً مثل كرات البطاطس، لتتمكن من تكرار نكهاتنا في منزلك.</p>
-            <a href="#menu" id="show-appetizers" class="cta-link">شاهد المقبلات الأكثر مبيعاً <i class="fas fa-arrow-left"></i></a>
-        </div>
-        
-        <div class="core-card">
-            <img src="images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg" alt="Learn">
-            <h3>Learn | اكتشف</h3>
-            <p>كلما عرفت أكثر، كلما استمتعت أكثر. اكتشف تاريخ طعامنا، وجرب نظام التوصية الذكية لتكتشف طبقك المفضل.</p>
-            <a href="#recommender" class="cta-link">جرب التوصية الذكية <i class="fas fa-arrow-left"></i></a>
-        </div>
-    </div>
-
-    <section id="menu" class="menu-section">
-        <div class="l-container menu-layout">
-            
-            <div class="menu-grid-wrapper">
-                <h2 class="section-title"><i class="fas fa-utensils"></i> قائمة المأكولات</h2>
-                <p class="section-subtitle">تشكيلة واسعة من الباستا والبيتزا المحضرة بمكونات يومية طازجة، اختر وجبتك وخصصها كما تحب.</p>
-
-                <div class="order-type-box" style="margin-bottom: 30px; background-color: var(--white); border: 1px solid var(--border-color); padding: 20px; border-radius: 4px;">
-                    <h4><i class="fas fa-shopping-basket"></i> حدد نوع الطلب</h4>
-                    <div class="order-options-group">
-                        <label class="order-option">
-                            <input type="radio" name="orderType" value="pickup" checked>
-                            <span><i class="fas fa-box"></i> سفري (استلام من الفرع)</span>
-                        </label>
-                        <label class="order-option">
-                            <input type="radio" name="orderType" value="dinein">
-                            <span><i class="fas fa-chair"></i> محلي </span>
-                        </label>
-                    </div>
-                    <div id="table-select-box" style="display: none;">
-                        <label for="tableNumber"><i class="fas fa-hashtag"></i> رقم الطاولة:</label>
-                        <select id="tableNumber">
-                            <option value="">اختر رقم الطاولة...</option>
-                            <option value="T01">طاولة 01</option>
-                            <option value="T02">طاولة 02</option>
-                            <option value="T03">طاولة 03</option>
-                            <option value="T04">طاولة 04</option>
-                            <option value="T05">طاولة 05</option>
-                        </select>
-                        <p class="table-note">يرجى التأكد من رقم الطاولة لضمان وصول طلبك بشكل صحيح.</p>
-                    </div>
-                </div>
-
-                <!-- شريط الفلترة بالأيقونات -->
-                <div class="menu-filter">
-                    <button data-category="all" class="active" onclick="window.filterMenu('all')">
-                        <i class="fas fa-star"></i> الكل
-                    </button>
-                    <button data-category="pasta" onclick="window.filterMenu('pasta')">
-                        <i class="fas fa-bowl-food"></i> الباستا
-                    </button>
-                    <button data-category="pizza" onclick="window.filterMenu('pizza')">
-                        <i class="fas fa-pizza-slice"></i> البيتزا
-                    </button>
-                    <button data-category="salad" onclick="window.filterMenu('salad')">
-                        <i class="fas fa-seedling"></i> السلطات
-                    </button>
-                    <button data-category="appetizer" onclick="window.filterMenu('appetizer')">
-                        <i class="fas fa-cheese"></i> المقبلات
-                    </button>
-                    <button data-category="drinks" onclick="window.filterMenu('drinks')">
-                        <i class="fas fa-glass-martini-alt"></i> المشروبات
-                    </button>
-                </div>
-
-                <div id="interactive-menu-grid" class="interactive-menu-grid"></div>
-
-            </div>
-
-            <div class="cart-wrapper">
-                <div class="cart-section" id="cart-section">
-                    <h2><i class="fas fa-shopping-cart"></i> سلة طلباتك</h2>
-                    
-                    <div id="empty-cart-message" style="text-align: center; color: #888; padding: 20px; display: flex; flex-direction: column; align-items: center;">
-                        <i class="fas fa-box-open" style="font-size: 30px; margin-bottom: 10px;"></i>
-                        <span>سلتك فارغة حالياً. ابدأ بإضافة الأطباق اللذيذة!</span>
-                    </div>
-
-                    <div id="cart-items"></div>
-
-                    <div id="total-price">
-                        <span>الإجمالي الكلي:</span>
-                        <span id="final-total-price">0.00 ر.س</span>
-                    </div>
-                    
-                    <div class="client-info-fields">
-                        <h3><i class="fas fa-user-check"></i> بيانات العميل</h3>
-                        <div class="input-group">
-                            <label for="clientNameCart">الاسم:</label>
-                            <input type="text" id="clientNameCart" placeholder="الاسم الكريم" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="clientPhoneCart">رقم الجوال (واتساب):</label>
-                            <input type="tel" id="clientPhoneCart" placeholder="9665xxxxxxxx" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="clientNotesCart">ملاحظات على الطلب:</label>
-                            <textarea id="clientNotesCart" placeholder="اكتب أي ملاحظات إضافية هنا"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div id="cart-status-message"></div>
-
-                    <button class="send-order-btn" id="send-order-btn"><i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="recommender" class="recommender" style="padding: var(--section-padding); background-color: var(--white);">
-        <div class="l-container">
-            <h2 class="section-title"><i class="fas fa-brain"></i> نقترح الوجبة بذكاء</h2>
-            <p class="section-subtitle">أجب عن أسئلة بسيطة لنقترح عليك أفضل طبق يناسب مزاجك ومجموعتك!</p>
-            <div id="smart-box" class="smart-box" style="background-color: var(--light-gray); padding: 40px; border-radius: 4px; text-align: center;">
-                <div id="question-box"></div>
-                <div id="result" style="display: none;"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="location" class="location-section" style="padding: var(--section-padding); background-color: var(--light-gray);">
-        <div class="l-container">
-            <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> تواصل معنا</h2>
-            <p class="section-subtitle">نحن بانتظارك في موقعنا الأنيق للاستمتاع بأجواء إيطالية فريدة.</p>
-            
-            <div class="location-card" style="display: flex; gap: 30px; background-color: var(--white); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
-                <div class="location-details" style="flex: 1; padding: 30px; text-align: right;">
-                    <h3>Lano Pasta - صبيا</h3>
-                    <div class="location-info">
-                        <p style="margin-bottom: 10px;"><span><i class="fas fa-road" style="color: var(--primary-red);"></i></span> <strong>العنوان:</strong> طريق الملك فهد، حي الصفا، صبيا، السعودية.</p>
-                        <p style="margin-bottom: 10px;"><span><i class="fas fa-clock" style="color: var(--primary-red);"></i></span> <strong>ساعات العمل:</strong> يومياً من 5:00 مساءً حتى 2:00 صباحاً.</p>
-                        <p><span><i class="fas fa-phone-volume" style="color: var(--primary-red);"></i></span> <strong>للتواصل:</strong> 0582003125</p>
-                    </div>
-                </div>
-                <iframe 
-                    class="map-embed"
-                    style="flex: 1; height: 350px; border: none; min-width: 50%;"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11790.64160459346!2d42.637159938555135!3d17.15174092429643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1600863806a6c471%3A0x6a21820464673193!2z2LTYqtmG2Yog2YjYp9ix2YUg2KfZhNiy2YrYp9i5!5e0!3m2!1sar!2ssa!4v1700496000000!5m2!1sar!2ssa" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="موقع مطعم لانو نها باستا">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <div id="modifier-popup-overlay">
-        <div id="modifier-popup">
-            <span id="popup-close" title="إغلاق" style="position: absolute; top: 10px; left: 10px; font-size: 20px; cursor: pointer; color: #888;"><i class="fas fa-times"></i></span>
-            <h2>تخصيص طبق <span id="popup-item-name"></span></h2>
-
-            <div id="popup-options-container"></div>
-
-            <div class="popup-total-bar">
-                <span>سعر الوحدة مع الإضافات:</span>
-                <span id="popup-item-total">0.00 ر.س</span>
-            </div>
-
-            <div class="popup-quantity-control">
-                <button id="qty-minus"><i class="fas fa-minus"></i></button>
-                <span id="popup-quantity">1</span>
-                <button id="qty-plus"><i class="fas fa-plus"></i></button>
-            </div>
-            
-            <button class="send-order-btn" id="add-to-cart-btn" style="background-color: var(--dark-text);"><i class="fas fa-cart-plus"></i> إضافة إلى السلة</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="l-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">مطعم لانو نها باستا LANO BY NOHA PASTA</div>
-                    <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
-                        نحتفل بنكهات إيطاليا العظيمة ومكوناتها المستدامة.
-                    </p>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/lano_pasta/?hl=ar" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/966582003125" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="tel:+966582003125" target="_blank"><i class="fas fa-phone-alt"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>أقسام الموقع</h4>
-                    <ul>
-                        <li><a href="#about">من نحن</a></li>
-                        <li><a href="#menu">المنيو</a></li>
-                        <li><a href="#recommender">التوصية الذكية</a></li>
-                        <li><a href="#location">الموقع وساعات العمل</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>تواصل معنا</h4>
-                    <ul>
-                        <li><a href="tel:0582003125">هاتف: 0582003125</a></li>
-                        <li><a href="mailto:info@lanopasta.com">إيميل: info@lanopasta.com</a></li>
-                        <li><a href="#location">صبيا، طريق الملك فهد</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="mobile-nav-bar">
-        <a href="#menu"><i class="fas fa-utensils"></i> المنيو</a>
-        <a href="#recommender"><i class="fas fa-brain"></i> اكتشف</a>
-        <a href="#cart-section" class="mobile-cart-link">
-            <i class="fas fa-shopping-cart"></i> السلة
-            <span id="mobile-cart-count" class="mobile-nav-cart-count">0</span>
-        </a>
-        <a href="https://wa.me/966582003125" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
-    </div>
-
-    <script>
-        // =========================================================
-        // 1. تعريف بيانات المنيو (القائمة) مع التصنيف (category)
-        // =========================================================
-        const menuItems = [
-            // (1 - 6) الباستا
-            {
-                id: 1,
-                category: "pasta",
-                name: "باستا لانو",
-                price: 35.0,
-                desc: "باستا لانو الشهيرة مع الدجاج والكريمة والبروكلي.",
-                image: "images/باستا_17511257850852190.webp",
-                isFeatured: true,
-                modifiers: [
-                    {
-                        group: "النوع",
-                        type: "radio",
-                        min: 1,
-                        max: 1,
-                        options: [
-                            { name: "الاصليه", price: 0.0, default: true },
-                            { name: "بدوم سبايسي", price: 0.0 },
-                        ],
-                    },
-                    {
-                        group: "إضافات إختيارية",
-                        type: "checkbox",
-                        min: 0,
-                        max: 3,
-                        options: [
-                            { name: " دجاج", price: 5.0 },
-                            { name: "بروكلي ", price: 5.0 },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 2,
-                category: "pasta",
-                name: "سباغيتي بولونيز",
-                price: 32.0,
-                desc: "سباغيتي بصلصة البولونيز مع جبنة البارميزان.",
-                image: "images/سباغيتي_17511257342315958.webp",
-                isFeatured: false,
-                modifiers: [
-                    {
-                        group: "النوع ",
-                        type: "radio",
-                        min: 1,
-                        max: 1,
-                        options: [
-                            { name: " سادة", price: 0.0 },
-                            { name: "لحم ", price: 7.0, default: true },
-                            { name: " دجاج", price: 5.0 },
-                        ],
-                    },
-                    {
-                        group: "إضافات إختيارية",
-                        type: "checkbox",
-                        min: 0,
-                        max: 2,
-                        options: [
-                            { name: "سبايسي ", price: 0.0 },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 3,
-                category: "pasta",
-                name: "بينك باستا",
-                price: 38.0,
-                desc: "صوص كريمة وردية مع دجاج مشوي وبروكلي.",
-                image: "images/بينك_باستا_17511258197184928.jpg",
-                isFeatured: false,
-                modifiers: [
-                    {
-                        group: "النوع ",
-                        type: "radio",
-                        min: 1,
-                        max: 1,
-                        options: [
-                            { name: "الاصليه ", price: 0.0, default: true },
-                            { name: "بدون سبايسي", price: 0.0 },
-                            { name: "بدون دجاج", price: 0.0 },
-                            { name: "بدون بروكلي", price: 0.0 },
-                        ],
-                    },
-                    {
-                        group: "إضافات إختيارية",
-                        type: "checkbox",
-                        min: 0,
-                        max: 2,
-                        options: [
-                            { name: "اضافة دجاج", price: 5.0 },
-                            { name: "اضافة بروكلي", price: 5.0 },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 4,
-                category: "pasta",
-                name: "فتوتشيني ألفريدو",
-                price: 43.0,
-                desc: "فتوتشيني كريمي مع الدجاج والمشروم.",
-                image: "images/فتوتشيني_17511258546063978.jpg",
-                isFeatured: true,
-                modifiers: [
-                    {
-                        group: "إضافات إختيارية",
-                        type: "checkbox",
-                        min: 0,
-                        max: 2,
-                        options: [
-                            { name: "اضافة دجاج  ", price: 5.0 },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 5,
-                category: "pasta",
-                name: "رافيولي بالريكوتا والسبانخ",
-                price: 37.0,
-                desc: "رافيولي محشوة جبنة ريكوتا وسبانخ.",
-                image: "images/رافيولي_17511258874579816.jpg",
-                isFeatured: false,
-                modifiers: [],
-            },
-            {
-                id: 6,
-                category: "pasta",
-                name: "ريزوتو بالكريمة والدجاج",
-                price: 35.0,
-                desc: "أرز كريمي غني مع دجاج مشوي.",
-                image: "images/ريزوتو_بالكريمة_والدجاج_المشوي_17511259231037362.jpg",
-                isFeatured: false,
-                modifiers: [],
-            },
-
-            // (7 - 11) البيتزا
-            {
-                id: 7,
-                category: "pizza",
-                name: "بيتزا بوراتا مع بيبي جرجير",
-                price: 49.0,
-                desc: "جبنة بوراتا كريمية مع جرجير وزيت زيتون.",
-                image: "images/بيتزا_بوراتا_مع_بيبي_جرجير_17511259556497200.jpg",
-                isFeatured: false,
-                modifiers: [],
-            },
-            {
-                id: 8,
-                category: "pizza",
-                name: "بيتزا مارجريتا",
-                price: 38.0,
-                desc: "طماطم سان مارزانو، موزاريلا، ريحان.",
-                image: "images/بيتزا_مارجريتا_17511259809415234.jpg",
-                isFeatured: false,
-                modifiers: [],
-            },
-           {
-    id: 9,
-    category: "pizza",
-    name: "بيتزا لانو",
-    price: 48.0,
-    desc: "بيتزا بالدجاج مع صوص الترافل والبيستو، ممزوجة مع نكهة المارغريتا الكلاسيكية وجبن موزاريلا ذايب. نكهة غنية ولذيذة.",
-    image: "images/IMG_8234 (3).jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 10,
-    category: "pizza",
-    name: "بيتزا ترافيل",
-    price: 59.0,
-    desc: "صوص كريمي ناعم ونكهة الترافل الفاخرة، تكتمل بشرائح المشروم الطازجة",
-    image: "images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg",
-    isFeatured: true,
-    modifiers: []
-},
-{
-    id: 11,
-    category: "pizza",
-    name: "بيتزا خضار ودجاج",
-    price: 39.0,
-    desc: "خضار طازجة مع قطع دجاج.",
-    image: "images/بيتزا_خضار_17511260105455480.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 12,
-    category: "pizza",
-    name: "بيتزا بيستو دجاج",
-    price: 49.0,
-    desc: "صلصة بيستو منزلية مع دجاج وطماطم مجففة.",
-    image: "images/بيتزا_بيستو_دجاج_17511260422447870.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 13,
-    category: "pizza",
-    name: "بيتزا لحم مدخن",
-    price: 52.0,
-    desc: "كريمية وغنية، يميزها اللحم المدخن بنكهته العميقة، تقدم مع العسل اختيارياً لمحبي التوازن الحلو والمالح.",
-    image: "images/بيتزا_اللحم_المدخن_مع_العسل_17511261077692370.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-
-// سلطات
-{
-    id: 14,
-    category: "salad",
-    name: "سلطة لانو",
-    price: 31.0,
-    desc: "خضار ورقية طازجة مع الذرة.",
-    image: "images/سلطة_لانو_17511261545338358.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 15,
-    category: "salad",
-    name: "سلطة سيزر",
-    price: 33.0,
-    desc: "خس، دجاج مشوي، صوص سيزر.",
-    image: "images/سلطة_سيزر_17511261842402466.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-
-// مقبلات
-{
-    id: 16,
-    category: "appetizer",
-    name: "كرات البطاطس المحشوة",
-    price: 48.0,
-    desc: "بطاطس مهروسة محشوة بأجبان ودجاج.",
-    image: "images/كرات_البطاطس_المحشوة_17511262735610694.jpg",
-    isFeatured: true,
-    modifiers: []
-},
-{
-    id: 17,
-    category: "appetizer",
-    name: "لازانيا لحم",
-    price: 48.0,
-    desc: "طبقات من شرائح الباستا الطازجة المحشوة باللحم المفروم مغطاة بصوص البشاميل الكريمي وجبنة البارميزان والموزاريلا الذائبة.",
-    image: "images/لازانيا_اللحم_17511263014621358.jpg",
-    isFeatured: false,
-    modifiers: [
-        {
-            group: "إضافات اختيارية",
-            type: "radio",
-            min: 0,
-            max: 1,
-            options: [
-                { name: "لحم كما هي", price: 0.0, default: true },
-                { name: "دجاج", price: 0.0 }
-            ]
-        }
-    ]
-},
-{
-    id: 18,
-    category: "appetizer",
-    name: "كرات الأرنشيني",
-    price: 33.0,
-    desc: "أرز كريمي محشو بأجبان ذائبة.",
-    image: "images/كرات_الأرنشيني_17511262416990748.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 19,
-    category: "appetizer",
-    name: "بارميجانا",
-    price: 27.0,
-    desc: "شرائح باذنجان مشوي مع صوص طماطم وجبنة.",
-    image: "images/بارميجانا_17511262173301050.jpg",
-    isFeatured: false,
-    modifiers: [
-        {
-            group: "نوع المحشي",
-            type: "radio",
-            min: 0,
-            max: 1,
-            options: [
-                { name: "جبن", price: 0.0, default: true },
-                { name: "لحم", price: 7.0 },
-                { name: "دجاج", price: 5.0 }
-            ]
-        }
-    ]
-},
-{
-    id: 20,
-    category: "appetizer",
-    name: "فرايز",
-    price: 12.0,
-    desc: "بطاطس مقلية مقرمشة مع جبنة بارميزان.",
-    image: "images/فرايز_17511263309966382.jpg",
-    isFeatured: false,
-    modifiers: [
-        {
-            group: "النوع",
-            type: "radio",
-            min: 1,
-            max: 1,
-            options: [
-                { name: "كما هو مع الجبنة", price: 0.0, default: true },
-                { name: "بدون جبنة البارميزان", price: 0.0 }
-            ]
-        }
-    ]
-},
-
-// مشروبات
-{
-    id: 21,
-    category: "drinks",
-    name: "باشن فروت",
-    price: 24.0,
-    desc: "عصير باشن فروت فريش.",
-    image: "images/باشيتو_17511264110701110.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 22,
-    category: "drinks",
-    name: "عصير برتقال",
-    price: 12.0,
-    desc: "عصير برتقال طبيعي منعش.",
-    image: "images/أورنجيتو_17511264339186198.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 23,
-    category: "drinks",
-    name: "مكس بيري",
-    price: 24.0,
-    desc: "مزيج توت وليمون ونعناع.",
-    image: "images/بيريتو_17511264757196126.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 24,
-    category: "drinks",
-    name: "مشروبات غازية",
-    price: 5.0,
-    desc: "اختر نوع المشروب: كولا أو سبرايت.",
-    image: "images/مشروبات_غازية_17518899084159798.jpg",
-    isFeatured: false,
-    modifiers: [
-        {
-            group: "نوع المشروب",
-            type: "radio",
-            min: 1,
-            max: 1,
-            options: [
-                { name: "كولا", price: 0.0, default: true },
-                { name: "سبرايت", price: 0.0 }
-            ]
-        }
-    ]
-},
-{
-    id: 25,
-    category: "drinks",
-    name: "ماء نوفا",
-    price: 2.0,
-    desc: "مياه معدنية.",
-    image: "images/ماء_نوفا_17620942785351718.jpg",
-    isFeatured: false,
-    modifiers: []
-},
-{
-    id: 26,
-    category: "drinks",
-    name: "مشروبات للأطفال",
-    price: 4.0,
-    desc: "اختر نوع المشروب: سن كولا أو سن توب.",
-    image: "images/123suncola.jpg",
-    isFeatured: false,
-    modifiers: [
-        {
-            group: "نوع المشروب",
-            type: "radio",
-            min: 1,
-            max: 1,
-            options: [
-                { name: "سن كولا", price: 0.0, default: true },
-                { name: "سن توب برتقال", price: 0.0 }
-            ]
-        }
-    ]
-}
-
-
-
-        const recommenderQuestions = [
-            { id: 1, question: "كم عدد الأشخاص الذين سيستمتعون بالوجبة اليوم؟", options: [{ text: "فرد واحد", type: "solo" }, { text: "شخصان", type: "two" }, { text: "3-4 أشخاص", type: "group" }, { text: "5 أشخاص أو أكثر", type: "big_group" }, ], nextQuestion: 2, },
-            { id: 2, question: "هل يوجد أطفال معكم على الطاولة؟", options: [{ text: "نعم، يوجد أطفال", type: "with_kids" }, { text: "لا، بالغون فقط", type: "no_kids" }, ], nextQuestion: 3, },
-            { id: 3, question: "ما هو مزاجكم اليوم؟ ما نوع الوجبة التي تبحثون عنها؟", options: [{ text: "وجبة مشبعة ودسمة (لازانيا / باستا)", type: "hearty" }, { text: "بيتزا للتشارك بين الجميع", type: "pizza" }, { text: "شيء خفيف مع سلطات ومقبلات", type: "light" }, ], nextQuestion: null, },
-        ];
-
-        let currentQuestionIndex = 0;
-        let recommendationAnswers = {};
-        let cart = [];
-        let activeItemInPopup = null;
-        let popupQuantity = 1;
-
-        // =========================================================
-        // 2. الفلترة حسب القسم
-        // =========================================================
-        window.filterMenu = function(category) {
-            const buttons = document.querySelectorAll(".menu-filter button");
-            buttons.forEach(btn => {
-                const btnCat = btn.dataset.category;
-                const isActive = category === "all" ? btnCat === "all" : btnCat === category;
-                btn.classList.toggle("active", isActive);
-            });
-
-            let itemsToRender = menuItems;
-            if (category !== "all") {
-                itemsToRender = menuItems.filter(item => item.category === category);
-            }
-            window.renderMenu(itemsToRender);
-        };
-
-        // =========================================================
-        // 3. عرض المنيو
-        // =========================================================
-        window.findMenuItemById = function(id) {
-            return menuItems.find(item => item.id === id);
-        };
-
-        window.renderMenu = function (items = menuItems) {
-            const menuGrid = document.getElementById("interactive-menu-grid");
-            if (!menuGrid) return;
-            
-            menuGrid.innerHTML = items
-                .map(item => {
-                    return `
-                        <div class="menu-item" onclick="window.openModifierPopup(${item.id})">
-                            <div>
-                                <img src="${item.image}" alt="${item.name}" class="menu-item__image">
-                                <h3 class="menu-item__name">${item.name}</h3>
-                                <p class="menu-item__desc">${item.desc}</p>
-                            </div>
-                            <span class="menu-item__price">${item.price.toFixed(2)} ر.س</span>
-                        </div>
-                    `;
-                })
-                .join("");
-        };
-
-        // =========================================================
-        // 4. التوصية الذكية
-        // =========================================================
-        window.getRecommendationFromAnswers = function(answers) {
-            if (answers.type_3 === 'hearty') {
-                return {
-                    title: "الباستا هي خيارك الأمثل لليوم!",
-                    description: "نظراً لاختيارك وجبة دسمة، نوصيك بالانغماس في عالم الباستا الغني.",
-                    items: [ "لازانيا لحم (طبق مثالي للمشاركة)", "باستا لانو (الخيار الأكثر شعبية)", "فتوتشيني ألفريدو (لمحبي الكريمة والمشروم)" ]
-                };
-            } else if (answers.type_3 === 'pizza') {
-                return {
-                    title: "مجموعة من البيتزا للتشارك!",
-                    description: "البيتزا دائماً خيار رائع للتجمعات. يمكنك اختيار مجموعة من النكهات.",
-                    items: [ "بيتزا ترافيل (الخيار الفاخر)", "بيتزا مارجريتا (كلاسيكية)", "بيتزا بوراتا مع بيبي جرجير" ]
-                };
-            } else if (answers.type_3 === 'light') {
-                return {
-                    title: "مقبلات وسلطات خفيفة ومغذية!",
-                    description: "للحصول على وجبة خفيفة، ننصحك بالتركيز على السلطات والمقبلات الطازجة.",
-                    items: [ "سلطة لانو (منعشة)", "كرات الأرنشيني", "بارميجانا" ]
-                };
-            }
-            return { title: "طبقنا المميز", description: "ننصحك بباستا لانو، خيارنا الأفضل دائماً.", items: ["باستا لانو"] };
-        };
-
-        window.renderRecommender = function (questionIndex = 0) {
-            const questionBox = document.getElementById('question-box');
-            const resultBox = document.getElementById('result');
-            const currentQ = recommenderQuestions[questionIndex];
-            
-            if (resultBox) resultBox.style.display = 'none';
-
-            if (!currentQ) {
-                const recommendation = window.getRecommendationFromAnswers(recommendationAnswers);
-                questionBox.innerHTML = '';
-                if (resultBox) {
-                    resultBox.innerHTML = `
-                        <h3><i class="fas fa-magic"></i> ${recommendation.title}</h3>
-                        <p>${recommendation.description}</p>
-                        <ul>
-                            ${recommendation.items.map(item => `<li>${item}</li>`).join('')}
-                        </ul>
-                        <button onclick="window.renderRecommender(0)" style="margin-top: 20px;" class="send-order-btn">إعادة التجربة</button>
-                    `;
-                    resultBox.style.display = 'block';
-                }
-                return;
-            }
-
-            questionBox.innerHTML = `
-                <div class="question" style="font-size: 20px; font-weight: 600; margin-bottom: 25px;">${currentQ.question}</div>
-                <div class="options">
-                    ${currentQ.options.map(option => `
-                        <button onclick="window.answerQuestion(${currentQ.id}, '${currentQ.nextQuestion}', '${option.type}')">
-                            ${option.text}
-                        </button>
-                    `).join('')}
-                </div>
-            `;
-            
-            currentQuestionIndex = questionIndex;
-        };
-
-        window.answerQuestion = function (qId, nextQIndex, type) {
-            recommendationAnswers[`type_${qId}`] = type;
-            
-            if (nextQIndex === 'null' || nextQIndex === null) {
-                window.renderRecommender(null);
-            } else {
-                window.renderRecommender(parseInt(nextQIndex) - 1);
-            }
-        };
-
-        // =========================================================
-        // 5. إدارة السلة
-        // =========================================================
-        window.updateCartItemQuantity = function (index, change) {
-            const item = cart[index];
-            if (!item) return;
-
-            item.quantity += change;
-            if (item.quantity <= 0) {
-                window.deleteCartItem(index);
-            } else {
-                window.renderCart();
-            }
-        };
-
-        window.deleteCartItem = function (index) {
-            cart.splice(index, 1);
-            window.renderCart();
-        };
-
-        window.addToCartFromPopup = function () {
-            if (!activeItemInPopup) return;
-
-            const selectedMods = Array.from(document.querySelectorAll('#popup-options-container input:checked'))
-                .map(input => {
-                    const group = input.closest('.modifier-group').querySelector('h4').textContent.replace(/\س*\(.*\)\s*/, '').trim();
-                    return {
-                        group: group,
-                        name: input.value,
-                        price: parseFloat(input.dataset.price) || 0,
-                    };
-                });
-            
-            const itemTotalElement = document.getElementById('popup-item-total');
-            const unitPrice = parseFloat(itemTotalElement.textContent.replace(' ر.س', ''));
-
-            const newItem = {
-                id: activeItemInPopup.id,
-                name: activeItemInPopup.name,
-                unitPrice: unitPrice, 
-                quantity: popupQuantity,
-                modifiers: selectedMods,
-                initialPrice: activeItemInPopup.price,
-            };
-
-            const existingItemIndex = cart.findIndex(
-                (c) => c.id === newItem.id && JSON.stringify(c.modifiers) === JSON.stringify(newItem.modifiers)
-            );
-
-            if (existingItemIndex !== -1) {
-                cart[existingItemIndex].quantity += newItem.quantity;
-            } else {
-                cart.push(newItem);
-            }
-
-            window.closeModifierPopup();
-            window.renderCart();
-        };
-        
-        window.renderCart = function () {
-            const cartItemsContainer = document.getElementById("cart-items");
-            const emptyMessage = document.getElementById("empty-cart-message");
-            let grandTotal = 0;
-
-            window.updateMobileCartCount();
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = "";
-                emptyMessage.style.display = "flex";
-                document.getElementById("final-total-price").textContent = "0.00 ر.س";
-                document.getElementById("send-order-btn").disabled = true;
-                return;
-            }
-
-            emptyMessage.style.display = "none";
-            document.getElementById("send-order-btn").disabled = false;
-
-            cartItemsContainer.innerHTML = cart
-                .map((item, index) => {
-                    const itemTotal = item.unitPrice * item.quantity;
-                    grandTotal += itemTotal;
-
-                    const modsList =
-                        item.modifiers && item.modifiers.length > 0
-                            ? '<div class="cart-item__mods">التعديلات: ' +
-                              item.modifiers
-                                  .map(
-                                      (m) =>
-                                          m.name +
-                                          (m.price > 0
-                                              ? ` (+${m.price.toFixed(2)} ر.س)`
-                                              : "")
-                                  )
-                                  .join(" / ") +
-                              "</div>"
-                            : "";
-
-                    return `
-                    <div class="cart-item" data-index="${index}">
-                        <div class="cart-item__details">
-                            <strong>${item.name}</strong>
-                            <span class="cart-item__unit-price">(${item.unitPrice.toFixed(
-                                2
-                            )} ر.س/الواحدة)</span>
-                            ${modsList}
-                        </div>
-                        <div class="cart-item__controls">
-                            <button onclick="window.updateCartItemQuantity(${index}, -1)" ${
-                        item.quantity === 1 ? "disabled" : ""
-                    }>−</button>
-                            <span style="font-weight:700;">x${item.quantity}</span>
-                            <button onclick="window.updateCartItemQuantity(${index}, 1)">+</button>
-                            <span style="margin-right: 10px; font-weight: 700;">${itemTotal.toFixed(2)} ر.س</span>
-                            <button class="cart-item__delete" onclick="window.deleteCartItem(${index})">🗑️</button>
-                        </div>
-                    </div>
-                `;
-                })
-                .join("");
-
-            document.getElementById("final-total-price").textContent =
-                grandTotal.toFixed(2) + ' ر.س';
-        };
-
-        // =========================================================
-        // 6. البوب أب
-        // =========================================================
-        window.calculatePopupTotal = function() {
-            if (!activeItemInPopup) return 0;
-
-            let basePrice = activeItemInPopup.price;
-
-            const selectedMods = Array.from(document.querySelectorAll('#popup-options-container input:checked'));
-            const modifiersTotal = selectedMods.reduce((total, input) => {
-                const price = parseFloat(input.dataset.price) || 0;
-                return total + price;
-            }, 0);
-
-            const unitTotal = basePrice + modifiersTotal;
-            const finalTotal = unitTotal * popupQuantity;
-
-            document.getElementById('popup-item-total').textContent = unitTotal.toFixed(2) + ' ر.س';
-            document.getElementById('add-to-cart-btn').textContent = `إضافة ${popupQuantity} طبق (${finalTotal.toFixed(2)} ر.س)`;
-            return finalTotal;
-        };
-
-        window.updatePopupQuantity = function(change) {
-            popupQuantity += change;
-            if (popupQuantity < 1) popupQuantity = 1;
-
-            document.getElementById('popup-quantity').textContent = popupQuantity;
-            window.calculatePopupTotal();
-        };
-
-        window.renderModifiers = function() {
-            const container = document.getElementById('popup-options-container');
-            container.innerHTML = '';
-
-            if (!activeItemInPopup || !activeItemInPopup.modifiers || activeItemInPopup.modifiers.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#888;">هذا الطبق لا يتطلب تعديلات.</p>';
-                window.calculatePopupTotal();
-                return;
-            }
-
-            activeItemInPopup.modifiers.forEach(group => {
-                const type = group.type;
-                const requiredText = group.min > 0 ? '(مطلوب)' : '(اختياري)';
-                const groupHtml = `
-                    <div class="modifier-group" data-min="${group.min}" data-max="${group.max}" data-type="${type}">
-                        <h4>${group.group} <small style="color: #888;">${requiredText}</small></h4>
-                        ${group.options.map(option => `
-                            <label class="modifier-option">
-                                <input 
-                                    type="${type === 'radio' ? 'radio' : 'checkbox'}" 
-                                    name="mod_${group.group}" 
-                                    value="${option.name}" 
-                                    data-price="${option.price.toFixed(2)}"
-                                    ${option.default ? 'checked' : ''}
-                                    onchange="window.calculatePopupTotal()"
-                                >
-                                <span class="modifier-option__label">${option.name}</span>
-                                <span class="modifier-option__price" style="font-weight: 600;">
-                                    ${
-                                        option.price > 0 
-                                        ? '+' + option.price.toFixed(2) + ' ر.س' 
-                                        : (option.price < 0 ? option.price.toFixed(2) + ' ر.س' : '')
-                                    }
-                                </span>
-                            </label>
-                        `).join('')}
-                    </div>
-                `;
-                container.innerHTML += groupHtml;
-            });
-
-            window.calculatePopupTotal();
-        };
-
-        window.openModifierPopup = function(itemId) {
-            activeItemInPopup = window.findMenuItemById(itemId);
-            if (!activeItemInPopup) return;
-
-            document.getElementById('popup-item-name').textContent = activeItemInPopup.name;
-            popupQuantity = 1;
-            document.getElementById('popup-quantity').textContent = popupQuantity;
-
-            window.renderModifiers();
-            document.getElementById('modifier-popup-overlay').classList.add('active');
-        };
-
-        window.closeModifierPopup = function() {
-            document.getElementById('modifier-popup-overlay').classList.remove('active');
-            activeItemInPopup = null;
-        };
-
-        // =========================================================
-        // 7. واتساب
-        // =========================================================
-        window.generateWhatsAppMessage = function (orderType, tableNumber, cart, clientName, clientPhone, clientNotes) {
-            if (cart.length === 0) return "";
-            
-            let message = `*✨ طلب جديد - LANO PASTA ✨*\n\n`;
-            
-            message += `*نوع الطلب:* ${orderType === 'dinein' ? `محلي (طاولة ${tableNumber})` : 'سفري (استلام من الفرع)'}\n`;
-            message += `*العميل:* ${clientName || 'غير محدد'}\n`;
-            message += `*الجوال:* ${clientPhone || 'غير محدد'}\n\n`;
-
-            let grandTotal = 0;
-            message += `*📋 تفاصيل الطلبات (${cart.length} صنف):*\n`;
-
-            cart.forEach((item, index) => {
-                const itemTotal = item.unitPrice * item.quantity;
-                grandTotal += itemTotal;
-                
-                message += `${index + 1}. *${item.name}* (x${item.quantity}) - ${itemTotal.toFixed(2)} ر.س\n`;
-
-                if (item.modifiers && item.modifiers.length > 0) {
-                    const mods = item.modifiers.map(m => m.name + (m.price > 0 ? ` (+${m.price.toFixed(2)})` : '')).join(' / ');
-                    message += `   - التعديلات: ${mods}\n`;
-                }
-            });
-
-            message += `\n*💰 الإجمالي الكلي:* ${grandTotal.toFixed(2)} ر.س\n`;
-            if (clientNotes) {
-                message += `\n*📝 ملاحظات العميل:* ${clientNotes}\n`;
-            }
-            
-            message += `\n_تم إرسال الطلب عبر نظام لانو للطلبات_`;
-
-            return encodeURIComponent(message);
-        };
-
-        window.handleOrderTypeChange = function() {
-            const orderType = document.querySelector('input[name="orderType"]:checked').value;
-            const tableSelectBox = document.getElementById('table-select-box');
-            
-            if (orderType === 'dinein') {
-                tableSelectBox.style.display = 'block';
-            } else {
-                tableSelectBox.style.display = 'none';
-            }
-        };
-
-        window.sendWhatsAppOrder = function () {
-            const orderType = document.querySelector('input[name="orderType"]:checked').value;
-            const tableNumber = document.getElementById('tableNumber').value;
-            const clientName = document.getElementById('clientNameCart').value.trim();
-            const clientPhone = document.getElementById('clientPhoneCart').value.trim();
-            const clientNotes = document.getElementById('clientNotesCart').value.trim();
-            const statusMessage = document.getElementById('cart-status-message');
-            
-            statusMessage.style.display = 'none'; 
-
-            if (cart.length === 0) {
-                statusMessage.textContent = 'الرجاء إضافة أصناف إلى السلة أولاً.';
-                statusMessage.className = 'error';
-                statusMessage.style.display = 'block';
-                return;
-            }
-
-            if (!clientName || !clientPhone) {
-                statusMessage.textContent = 'الرجاء إدخال الاسم ورقم الجوال لإكمال الطلب.';
-                statusMessage.className = 'error';
-                statusMessage.style.display = 'block';
-                return;
-            }
-            
-            if (orderType === 'dinein' && tableNumber === "") {
-                statusMessage.textContent = 'الرجاء اختيار رقم الطاولة لطلبكم المحلي.';
-                statusMessage.className = 'error';
-                statusMessage.style.display = 'block';
-                return;
-            }
-
-            const message = window.generateWhatsAppMessage(orderType, tableNumber, cart, clientName, clientPhone, clientNotes);
-            const phoneNumber = '966582003125';
-
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-            
-            window.open(whatsappUrl, '_blank');
-
-            statusMessage.textContent = 'تم توجيهك إلى واتساب لإرسال الطلب!';
-            statusMessage.className = 'success';
-            statusMessage.style.display = 'block';
-        };
-
-        // =========================================================
-        // 8. شريط السلة في الجوال
-        // =========================================================
-        window.updateMobileCartCount = function() {
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            const mobileCountSpan = document.getElementById('mobile-cart-count');
-            
-            mobileCountSpan.textContent = count;
-            mobileCountSpan.style.display = count > 0 ? 'block' : 'none';
-        };
-
-        // =========================================================
-        // 9. تهيئة الأحداث + التمرير لأعلى الصفحة عند التحميل
-        // =========================================================
-        function setupEventListeners() {
-            document.getElementById("qty-plus").addEventListener('click', () => window.updatePopupQuantity(1));
-            document.getElementById("qty-minus").addEventListener('click', () => window.updatePopupQuantity(-1));
-            document.getElementById("add-to-cart-btn").addEventListener('click', window.addToCartFromPopup);
-            document.getElementById("popup-close").addEventListener('click', window.closeModifierPopup);
-            
-            document.querySelectorAll('input[name="orderType"]').forEach(radio => {
-                radio.addEventListener('change', window.handleOrderTypeChange);
-            });
-            window.handleOrderTypeChange(); 
-
-            document.getElementById("send-order-btn").addEventListener('click', window.sendWhatsAppOrder);
-
-            // فلترة من كرت "شاهد المقبلات الأكثر مبيعاً"
-            const showAppetizersLink = document.getElementById("show-appetizers");
-            if (showAppetizersLink) {
-                showAppetizersLink.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
-                    setTimeout(() => window.filterMenu('appetizer'), 400);
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // دايماً أول ما تفتح أو تحدّث يرجع لأعلى الصفحة
-            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-
-            setupEventListeners();
-            window.renderRecommender(); 
-            window.renderMenu(); 
-            window.renderCart(); 
-        });
-    </script>
+    <header>
+        <div class="header-content">
+            <div class="logo"> مطعم لانو نهئ باستا LANO BY NOHA PASTA </div>
+            <nav class="nav">
+                <a href="#about">من نحن</a>
+                <a href="#menu">المنيو (Eat)</a>
+                <a href="#recommender">توصية ذكية (Learn)</a>
+                <a href="#location">تواصل</a>
+                <a href="#cart-section" style="margin-left: 25px; color: var(--primary-red);"><i class="fas fa-shopping-cart"></i> اطلب الآن</a>
+            </nav>
+            <div class="header-actions"></div>
+        </div>
+    </header>
+    
+    <section class="carousel-section">
+        <img src="images/سباغيتي_17511257342315958.webp" alt="نكهات إيطالية أصيلة" class="carousel-img">
+        <div class="carousel-content">
+            <h2>نكهات إيطالية أصيلة</h2>
+        </div>
+    </section>
+
+    <section id="about" class="about-us">
+        <div class="l-container">
+            <h2 class="section-title">من نحن</h2>
+            <p>
+تأسست LANO PASTA على يد الشيف نُهى عام 2017، لتقديم تجربة طعام إيطالية بطابع عصري وبجودة عالية. نختار مكوناتنا بعناية ونقدّم وصفات بسيطة ومحضّرة بإتقان، في أجواء مريحة تناسب العائلات والأصدقاء. هدفنا هو تقديم نكهات إيطالية محلية بلمسة حديثة تجعل زيارتك تجربة لا تُنسى.            </p>
+        </div>
+    </section>
+
+    <div class="core-sections">
+        <div class="core-card">
+            <img src="images/فتوتشيني_17511258546063978.jpg" alt="Eat">
+            <h3>Eat | تذوق</h3>
+            <p>نؤمن بتقديم عدد قليل من الأطباق، لكن بمكونات عالية الجودة، لتقديم روائع تذوق حقيقية. أطلب باستا لانو أو اللازانيا الآن.</p>
+            <a href="#menu" class="cta-link">استعرض المنيو الكامل <i class="fas fa-arrow-left"></i></a>
+        </div>
+        
+        <div class="core-card">
+            <img src="images/كرات_البطاطس_المحشوة_17511262735610694.jpg" alt="Shop">
+            <h3>Shop | تميز</h3>
+            <p>نقدم مجموعة من أجود المنتجات الإيطالية والمقبلات المصنوعة يدوياً مثل كرات البطاطس، لتتمكن من تكرار نكهاتنا في منزلك.</p>
+            <a href="#menu" id="show-appetizers" class="cta-link">شاهد المقبلات الأكثر مبيعاً <i class="fas fa-arrow-left"></i></a>
+        </div>
+        
+        <div class="core-card">
+            <img src="images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg" alt="Learn">
+            <h3>Learn | اكتشف</h3>
+            <p>كلما عرفت أكثر، كلما استمتعت أكثر. اكتشف تاريخ طعامنا، وجرب نظام التوصية الذكية لتكتشف طبقك المفضل.</p>
+            <a href="#recommender" class="cta-link">جرب التوصية الذكية <i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <section id="menu" class="menu-section">
+        <div class="l-container menu-layout">
+            
+            <div class="menu-grid-wrapper">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> قائمة المأكولات</h2>
+                <p class="section-subtitle">تشكيلة واسعة من الباستا والبيتزا المحضرة بمكونات يومية طازجة، اختر وجبتك وخصصها كما تحب.</p>
+
+                <div class="order-type-box" style="margin-bottom: 30px; background-color: var(--white); border: 1px solid var(--border-color); padding: 20px; border-radius: 4px;">
+                    <h4><i class="fas fa-shopping-basket"></i> حدد نوع الطلب</h4>
+                    <div class="order-options-group">
+                        <label class="order-option">
+                            <input type="radio" name="orderType" value="pickup" checked>
+                            <span><i class="fas fa-box"></i> سفري (استلام من الفرع)</span>
+                        </label>
+                        <label class="order-option">
+                            <input type="radio" name="orderType" value="dinein">
+                            <span><i class="fas fa-chair"></i> محلي </span>
+                        </label>
+                    </div>
+                    <div id="table-select-box" style="display: none;">
+                        <label for="tableNumber"><i class="fas fa-hashtag"></i> رقم الطاولة:</label>
+                        <select id="tableNumber">
+                            <option value="">اختر رقم الطاولة...</option>
+                            <option value="T01">طاولة 01</option>
+                            <option value="T02">طاولة 02</option>
+                            <option value="T03">طاولة 03</option>
+                            <option value="T04">طاولة 04</option>
+                            <option value="T05">طاولة 05</option>
+                        </select>
+                        <p class="table-note">يرجى التأكد من رقم الطاولة لضمان وصول طلبك بشكل صحيح.</p>
+                    </div>
+                </div>
+
+                                <div class="menu-filter">
+                    <button data-category="all" class="active" onclick="window.filterMenu('all')">
+                        <i class="fas fa-star"></i> الكل
+                    </button>
+                    <button data-category="pasta" onclick="window.filterMenu('pasta')">
+                        <i class="fas fa-bowl-food"></i> الباستا
+                    </button>
+                    <button data-category="pizza" onclick="window.filterMenu('pizza')">
+                        <i class="fas fa-pizza-slice"></i> البيتزا
+                    </button>
+                    <button data-category="salad" onclick="window.filterMenu('salad')">
+                        <i class="fas fa-seedling"></i> السلطات
+                    </button>
+                    <button data-category="appetizer" onclick="window.filterMenu('appetizer')">
+                        <i class="fas fa-cheese"></i> المقبلات
+                    </button>
+                    <button data-category="drinks" onclick="window.filterMenu('drinks')">
+                        <i class="fas fa-glass-martini-alt"></i> المشروبات
+                    </button>
+                </div>
+
+                <div id="interactive-menu-grid" class="interactive-menu-grid"></div>
+
+            </div>
+
+            <div class="cart-wrapper">
+                <div class="cart-section" id="cart-section">
+                    <h2><i class="fas fa-shopping-cart"></i> سلة طلباتك</h2>
+                    
+                    <div id="empty-cart-message" style="text-align: center; color: #888; padding: 20px; display: flex; flex-direction: column; align-items: center;">
+                        <i class="fas fa-box-open" style="font-size: 30px; margin-bottom: 10px;"></i>
+                        <span>سلتك فارغة حالياً. ابدأ بإضافة الأطباق اللذيذة!</span>
+                    </div>
+
+                    <div id="cart-items"></div>
+
+                    <div id="total-price">
+                        <span>الإجمالي الكلي:</span>
+                        <span id="final-total-price">0.00 ر.س</span>
+                    </div>
+                    
+                    <div class="client-info-fields">
+                        <h3><i class="fas fa-user-check"></i> بيانات العميل</h3>
+                        <div class="input-group">
+                            <label for="clientNameCart">الاسم:</label>
+                            <input type="text" id="clientNameCart" placeholder="الاسم الكريم" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="clientPhoneCart">رقم الجوال (واتساب):</label>
+                            <input type="tel" id="clientPhoneCart" placeholder="9665xxxxxxxx" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="clientNotesCart">ملاحظات على الطلب:</label>
+                            <textarea id="clientNotesCart" placeholder="اكتب أي ملاحظات إضافية هنا"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div id="cart-status-message"></div>
+
+                    <button class="send-order-btn" id="send-order-btn"><i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recommender" class="recommender" style="padding: var(--section-padding); background-color: var(--white);">
+        <div class="l-container">
+            <h2 class="section-title"><i class="fas fa-brain"></i> نقترح الوجبة بذكاء</h2>
+            <p class="section-subtitle">أجب عن أسئلة بسيطة لنقترح عليك أفضل طبق يناسب مزاجك ومجموعتك!</p>
+            <div id="smart-box" class="smart-box" style="background-color: var(--light-gray); padding: 40px; border-radius: 4px; text-align: center;">
+                <div id="question-box"></div>
+                <div id="result" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="location-section" style="padding: var(--section-padding); background-color: var(--light-gray);">
+        <div class="l-container">
+            <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> تواصل معنا</h2>
+            <p class="section-subtitle">نحن بانتظارك في موقعنا الأنيق للاستمتاع بأجواء إيطالية فريدة.</p>
+            
+            <div class="location-card" style="display: flex; gap: 30px; background-color: var(--white); border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
+                <div class="location-details" style="flex: 1; padding: 30px; text-align: right;">
+                    <h3>Lano Pasta - صبيا</h3>
+                    <div class="location-info">
+                        <p style="margin-bottom: 10px;"><span><i class="fas fa-road" style="color: var(--primary-red);"></i></span> <strong>العنوان:</strong> طريق الملك فهد، حي الصفا، صبيا، السعودية.</p>
+                        <p style="margin-bottom: 10px;"><span><i class="fas fa-clock" style="color: var(--primary-red);"></i></span> <strong>ساعات العمل:</strong> يومياً من 5:00 مساءً حتى 2:00 صباحاً.</p>
+                        <p><span><i class="fas fa-phone-volume" style="color: var(--primary-red);"></i></span> <strong>للتواصل:</strong> 0582003125</p>
+                    </div>
+                </div>
+                <iframe 
+                    class="map-embed"
+                    style="flex: 1; height: 350px; border: none; min-width: 50%;"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11790.64160459346!2d42.637159938555135!3d17.15174092429643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1600863806a6c471%3A0x6a21820464673193!2z2LTYqtmG2Yog2YjYp9ix2YUg2KfZhNiy2YrYp9i5!5e0!3m2!1sar!2ssa!4v1700496000000!5m2!1sar!2ssa" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="موقع مطعم لانو نها باستا">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <div id="modifier-popup-overlay">
+        <div id="modifier-popup">
+            <span id="popup-close" title="إغلاق" style="position: absolute; top: 10px; left: 10px; font-size: 20px; cursor: pointer; color: #888;"><i class="fas fa-times"></i></span>
+            <h2>تخصيص طبق <span id="popup-item-name"></span></h2>
+
+            <div id="popup-options-container"></div>
+
+            <div class="popup-total-bar">
+                <span>سعر الوحدة مع الإضافات:</span>
+                <span id="popup-item-total">0.00 ر.س</span>
+            </div>
+
+            <div class="popup-quantity-control">
+                <button id="qty-minus"><i class="fas fa-minus"></i></button>
+                <span id="popup-quantity">1</span>
+                <button id="qty-plus"><i class="fas fa-plus"></i></button>
+            </div>
+            
+            <button class="send-order-btn" id="add-to-cart-btn" style="background-color: var(--dark-text);"><i class="fas fa-cart-plus"></i> إضافة إلى السلة</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="l-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">مطعم لانو نها باستا LANO BY NOHA PASTA</div>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                        نحتفل بنكهات إيطاليا العظيمة ومكوناتها المستدامة.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/lano_pasta/?hl=ar" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/966582003125" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+966582003125" target="_blank"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>أقسام الموقع</h4>
+                    <ul>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#menu">المنيو</a></li>
+                        <li><a href="#recommender">التوصية الذكية</a></li>
+                        <li><a href="#location">الموقع وساعات العمل</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <ul>
+                        <li><a href="tel:0582003125">هاتف: 0582003125</a></li>
+                        <li><a href="mailto:info@lanopasta.com">إيميل: info@lanopasta.com</a></li>
+                        <li><a href="#location">صبيا، طريق الملك فهد</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-nav-bar">
+        <a href="#menu"><i class="fas fa-utensils"></i> المنيو</a>
+        <a href="#recommender"><i class="fas fa-brain"></i> اكتشف</a>
+        <a href="#cart-section" class="mobile-cart-link">
+            <i class="fas fa-shopping-cart"></i> السلة
+            <span id="mobile-cart-count" class="mobile-nav-cart-count">0</span>
+        </a>
+        <a href="https://wa.me/966582003125" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+    </div>
+
+    <script>
+        // =========================================================
+        // 1. تعريف بيانات المنيو (القائمة) مع التصنيف (category)
+        // =========================================================
+        const menuItems = [
+            // (1 - 6) الباستا
+            {
+                id: 1,
+                category: "pasta",
+                name: "باستا لانو",
+                price: 35.0,
+                desc: "باستا لانو الشهيرة مع الدجاج والكريمة والبروكلي.",
+                image: "images/باستا_17511257850852190.webp",
+                isFeatured: true,
+                modifiers: [
+                    {
+                        group: "النوع",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "الاصليه", price: 0.0, default: true },
+                            { name: "بدون سبايسي", price: 0.0 },
+                        ],
+                    },
+                    {
+                        group: "إضافات إختيارية",
+                        type: "checkbox",
+                        min: 0,
+                        max: 3,
+                        options: [
+                            { name: " دجاج", price: 5.0 },
+                            { name: "بروكلي ", price: 5.0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 2,
+                category: "pasta",
+                name: "سباغيتي بولونيز",
+                price: 32.0,
+                desc: "سباغيتي بصلصة البولونيز مع جبنة البارميزان.",
+                image: "images/سباغيتي_17511257342315958.webp",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "إضافات اختيارية",
+                        type: "checkbox",
+                        min: 0,
+                        max: 2,
+                        options: [
+                            { name: "لحم بقري إضافي", price: 8.0 },
+                            { name: "جبنة موزاريلا", price: 5.0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 3,
+                category: "pasta",
+                name: "لازانيا باللحم",
+                price: 45.0,
+                desc: "طبقات من اللازانيا مع اللحم المفروم وصلصة البشاميل.",
+                image: "images/لازانيا_17511258169131666.jpg",
+                isFeatured: true,
+                modifiers: [], // لا توجد إضافات لهذا الصنف
+            },
+            // (7 - 9) البيتزا
+            {
+                id: 7,
+                category: "pizza",
+                name: "بيتزا مارجريتا",
+                price: 28.0,
+                desc: "صلصة الطماطم وجبنة الموزاريلا وأوراق الريحان الطازجة.",
+                image: "images/مارجريتا_17511258546063978.jpg",
+                isFeatured: false,
+                modifiers: [
+                    {
+                        group: "الحجم",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "صغير", price: 0.0, default: true },
+                            { name: "كبير", price: 10.0 },
+                        ],
+                    },
+                    {
+                        group: "إضافات",
+                        type: "checkbox",
+                        min: 0,
+                        max: 3,
+                        options: [
+                            { name: "زيتون", price: 4.0 },
+                            { name: "فلفل حار", price: 3.0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 8,
+                category: "pizza",
+                name: "بيتزا الترافل",
+                price: 55.0,
+                desc: "بيتزا فاخرة بصلصة الكريمة ومغطاة بجبن البارميزان وشرائح الترافل.",
+                image: "images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg",
+                isFeatured: true,
+                modifiers: [],
+            },
+            // (10 - 11) المقبلات
+            {
+                id: 10,
+                category: "appetizer",
+                name: "كرات البطاطس المحشوة",
+                price: 22.0,
+                desc: "كرات بطاطس مقلية محشوة بالجبنة وتقدم مع صوص خاص.",
+                image: "images/كرات_البطاطس_المحشوة_17511262735610694.jpg",
+                isFeatured: true,
+                modifiers: [
+                    {
+                        group: "صوص جانبي",
+                        type: "radio",
+                        min: 1,
+                        max: 1,
+                        options: [
+                            { name: "صوص الرانش", price: 0.0, default: true },
+                            { name: "صوص حار", price: 3.0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 11,
+                category: "appetizer",
+                name: "خبز بالثوم",
+                price: 15.0,
+                desc: "خبز إيطالي محمص بالزبدة والثوم والأعشاب.",
+                image: "images/خبز_بالثوم_17511257850852190.webp",
+                isFeatured: false,
+                modifiers: [],
+            },
+            // (12 - 13) السلطات
+            {
+                id: 12,
+                category: "salad",
+                name: "سلطة سيزر بالدجاج",
+                price: 28.0,
+                desc: "خس روماني، دجاج مشوي، جبن بارميزان، خبز محمص وصوص سيزر.",
+                image: "images/سلطة_سيزر_17511257342315958.webp",
+                isFeatured: false,
+                modifiers: [],
+            },
+            // (14) المشروبات
+            {
+                id: 14,
+                category: "drinks",
+                name: "عصير برتقال طبيعي",
+                price: 12.0,
+                desc: "عصير برتقال طازج مع الثلج.",
+                image: "images/عصير_برتقال_17511257850852190.webp",
+                isFeatured: false,
+                modifiers: [],
+            },
+        ];
+
+
+        // =========================================================
+        // 2. تعريف هيكل السلة وعناصر DOM الرئيسية
+        // =========================================================
+        const cart = [];
+        let currentPopupItem = null;
+        let popupQuantity = 1;
+
+        const DOM = {
+            menuGrid: document.getElementById('interactive-menu-grid'),
+            cartItemsContainer: document.getElementById('cart-items'),
+            finalTotalPrice: document.getElementById('final-total-price'),
+            emptyCartMessage: document.getElementById('empty-cart-message'),
+            popupOverlay: document.getElementById('modifier-popup-overlay'),
+            popupItemName: document.getElementById('popup-item-name'),
+            popupOptionsContainer: document.getElementById('popup-options-container'),
+            popupItemTotal: document.getElementById('popup-item-total'),
+            popupQuantitySpan: document.getElementById('popup-quantity'),
+            tableSelectBox: document.getElementById('table-select-box'),
+            cartStatusMessage: document.getElementById('cart-status-message'),
+            mobileCartCount: document.getElementById('mobile-cart-count'),
+        };
+
+        // =========================================================
+        // 3. وظائف المنيو والتصفية
+        // =========================================================
+
+        /**
+         * عرض قائمة الأطباق بناءً على التصنيف
+         */
+        window.renderMenu = function(category = 'all') {
+            DOM.menuGrid.innerHTML = '';
+            const filteredItems = menuItems.filter(item => category === 'all' || item.category === category);
+
+            if (filteredItems.length === 0) {
+                DOM.menuGrid.innerHTML = `<p style="text-align: center; grid-column: 1 / -1; color: #888;">لا توجد أصناف في هذا التصنيف.</p>`;
+                return;
+            }
+
+            filteredItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'menu-item';
+                div.setAttribute('data-id', item.id);
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="menu-item__image">
+                    <div>
+                        <h3 class="menu-item__name">${item.name} ${item.isFeatured ? '<i class="fas fa-certificate" style="color: var(--primary-red); font-size: 14px;"></i>' : ''}</h3>
+                        <p class="menu-item__desc">${item.desc}</p>
+                    </div>
+                    <div class="menu-item__price">${item.price.toFixed(2)} ر.س</div>
+                `;
+                div.addEventListener('click', () => openModifierPopup(item.id));
+                DOM.menuGrid.appendChild(div);
+            });
+        }
+
+        /**
+         * فلترة المنيو وتحديث الأزرار النشطة
+         */
+        window.filterMenu = function(category) {
+            document.querySelectorAll('.menu-filter button').forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-category') === category) {
+                    button.classList.add('active');
+                }
+            });
+            renderMenu(category);
+        }
+
+        // =========================================================
+        // 4. وظائف النافذة المنبثقة للتخصيص (Popup Modifiers)
+        // =========================================================
+
+        /**
+         * فتح النافذة المنبثقة وتحميل بيانات الصنف
+         */
+        function openModifierPopup(itemId) {
+            currentPopupItem = menuItems.find(item => item.id === itemId);
+            if (!currentPopupItem) return;
+
+            DOM.popupItemName.textContent = currentPopupItem.name;
+            DOM.popupOptionsContainer.innerHTML = '';
+            popupQuantity = 1;
+            DOM.popupQuantitySpan.textContent = popupQuantity;
+
+            // 1. إنشاء عناصر التخصيص
+            currentPopupItem.modifiers.forEach((modifierGroup, groupIndex) => {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'modifier-group';
+                groupDiv.innerHTML = `<h4>${modifierGroup.group} (${modifierGroup.min}-${modifierGroup.max})</h4>`;
+
+                modifierGroup.options.forEach((option, optionIndex) => {
+                    const optionId = `mod-${groupIndex}-${optionIndex}`;
+                    const inputType = modifierGroup.type;
+                    const inputName = `mod-group-${groupIndex}`; // لـ radio
+
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'modifier-option';
+                    optionDiv.innerHTML = `
+                        <label for="${optionId}">
+                            <input type="${inputType}" id="${optionId}" name="${inputName}" data-price="${option.price}" ${option.default ? 'checked' : ''}>
+                            ${option.name}
+                        </label>
+                        <span>${option.price > 0 ? '+' + option.price.toFixed(2) + ' ر.س' : 'مجاني'}</span>
+                    `;
+                    groupDiv.appendChild(optionDiv);
+
+                    // 2. ربط حدث التغيير
+                    optionDiv.querySelector('input').addEventListener('change', updatePopupTotal);
+                });
+
+                DOM.popupOptionsContainer.appendChild(groupDiv);
+            });
+
+            // 3. عرض النافذة وتحديث الإجمالي الأولي
+            updatePopupTotal();
+            DOM.popupOverlay.classList.add('active');
+        }
+
+        /**
+         * تحديث إجمالي سعر الوحدة في النافذة المنبثقة
+         */
+        function updatePopupTotal() {
+            let modifiersTotal = 0;
+            DOM.popupOptionsContainer.querySelectorAll('input:checked').forEach(input => {
+                modifiersTotal += parseFloat(input.getAttribute('data-price'));
+            });
+
+            const unitTotal = currentPopupItem.price + modifiersTotal;
+            DOM.popupItemTotal.textContent = (unitTotal * popupQuantity).toFixed(2) + ' ر.س';
+
+            // تحديث عرض الكمية
+            DOM.popupQuantitySpan.textContent = popupQuantity;
+        }
+
+        // ربط أحداث زيادة/إنقاص الكمية في البوب أب
+        document.getElementById('qty-plus').addEventListener('click', () => {
+            popupQuantity++;
+            updatePopupTotal();
+        });
+
+        document.getElementById('qty-minus').addEventListener('click', () => {
+            if (popupQuantity > 1) {
+                popupQuantity--;
+                updatePopupTotal();
+            }
+        });
+
+        // إغلاق النافذة المنبثقة
+        DOM.popupOverlay.addEventListener('click', (e) => {
+            if (e.target === DOM.popupOverlay || e.target.closest('#popup-close')) {
+                DOM.popupOverlay.classList.remove('active');
+                currentPopupItem = null;
+            }
+        });
+
+
+        // =========================================================
+        // 5. وظائف سلة المشتريات (Cart)
+        // =========================================================
+
+        /**
+         * إضافة صنف إلى السلة من النافذة المنبثقة
+         */
+        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+            if (!currentPopupItem) return;
+
+            const selectedMods = [];
+            let modifiersTotal = 0;
+
+            // جمع التعديلات المختارة وحساب سعرها
+            DOM.popupOptionsContainer.querySelectorAll('.modifier-group').forEach((groupDiv, groupIndex) => {
+                const groupName = currentPopupItem.modifiers[groupIndex].group;
+                const selectedOptions = [];
+
+                groupDiv.querySelectorAll('input:checked').forEach(input => {
+                    const price = parseFloat(input.getAttribute('data-price'));
+                    const name = input.closest('label').textContent.trim();
+                    modifiersTotal += price;
+                    selectedOptions.push({ name: name, price: price });
+                });
+                if (selectedOptions.length > 0) {
+                    selectedMods.push({ group: groupName, options: selectedOptions });
+                }
+            });
+
+            const unitPrice = currentPopupItem.price + modifiersTotal;
+
+            // إضافة الصنف للسلة
+            cart.push({
+                id: Date.now(), // Unique ID for cart item
+                baseItemId: currentPopupItem.id,
+                name: currentPopupItem.name,
+                unitPrice: unitPrice,
+                quantity: popupQuantity,
+                selectedMods: selectedMods,
+            });
+
+            DOM.popupOverlay.classList.remove('active');
+            renderCart();
+            showCartStatus('تم إضافة الصنف بنجاح إلى السلة!', 'success');
+        });
+
+        /**
+         * عرض محتويات السلة وتحديث الإجمالي الكلي
+         */
+        function renderCart() {
+            DOM.cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                DOM.emptyCartMessage.style.display = 'flex';
+                document.getElementById('send-order-btn').disabled = true;
+                DOM.mobileCartCount.style.display = 'none';
+            } else {
+                DOM.emptyCartMessage.style.display = 'none';
+                document.getElementById('send-order-btn').disabled = false;
+                DOM.mobileCartCount.style.display = 'block';
+                DOM.mobileCartCount.textContent = cart.length;
+
+
+                cart.forEach(item => {
+                    const itemTotal = item.unitPrice * item.quantity;
+                    total += itemTotal;
+
+                    const modsText = item.selectedMods.map(group =>
+                        group.options.map(opt => opt.name + (opt.price > 0 ? ` (+${opt.price.toFixed(1)})` : '')).join(', ')
+                    ).join(' | ');
+
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <div class="cart-item__details" style="flex-grow: 1;">
+                            <strong>${item.name}</strong>
+                            <p class="cart-item__mods" style="margin: 0;">${modsText}</p>
+                            <p class="cart-item__unit-price" style="margin: 0; font-weight: 600;">@ ${item.unitPrice.toFixed(2)} ر.س</p>
+                        </div>
+                        <div class="cart-item__controls">
+                            <button onclick="window.adjustCartItemQuantity(${item.id}, -1)">-</button>
+                            <span style="font-weight: 700;">${item.quantity}</span>
+                            <button onclick="window.adjustCartItemQuantity(${item.id}, 1)">+</button>
+                            <button class="cart-item__delete" onclick="window.removeFromCart(${item.id})"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    `;
+                    DOM.cartItemsContainer.appendChild(div);
+                });
+            }
+
+            DOM.finalTotalPrice.textContent = total.toFixed(2) + ' ر.س';
+        }
+
+        /**
+         * تعديل كمية صنف في السلة
+         */
+        window.adjustCartItemQuantity = function(itemId, change) {
+            const itemIndex = cart.findIndex(item => item.id === itemId);
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity += change;
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                    showCartStatus('تم حذف الصنف من السلة.', 'error');
+                } else {
+                    showCartStatus('تم تحديث الكمية في السلة.', 'success');
+                }
+                renderCart();
+            }
+        }
+
+        /**
+         * حذف صنف من السلة
+         */
+        window.removeFromCart = function(itemId) {
+            const itemIndex = cart.findIndex(item => item.id === itemId);
+            if (itemIndex > -1) {
+                cart.splice(itemIndex, 1);
+                renderCart();
+                showCartStatus('تم حذف الصنف من السلة.', 'error');
+            }
+        }
+
+        /**
+         * عرض رسالة حالة مؤقتة
+         */
+        function showCartStatus(message, type) {
+            DOM.cartStatusMessage.textContent = message;
+            DOM.cartStatusMessage.className = `status-message ${type}`;
+            DOM.cartStatusMessage.style.display = 'block';
+
+            setTimeout(() => {
+                DOM.cartStatusMessage.style.display = 'none';
+            }, 3000);
+        }
+
+
+        // =========================================================
+        // 6. إرسال الطلب عبر واتساب
+        // =========================================================
+
+        document.getElementById('send-order-btn').addEventListener('click', sendOrderViaWhatsApp);
+
+        function sendOrderViaWhatsApp() {
+            const clientName = document.getElementById('clientNameCart').value.trim();
+            const clientPhone = document.getElementById('clientPhoneCart').value.trim();
+            const clientNotes = document.getElementById('clientNotesCart').value.trim();
+            const orderTypeInput = document.querySelector('input[name="orderType"]:checked');
+            const orderType = orderTypeInput ? (orderTypeInput.value === 'dinein' ? 'محلي' : 'سفري (استلام)') : 'غير محدد';
+            const tableNumber = orderType === 'محلي' ? document.getElementById('tableNumber').value : null;
+
+            if (cart.length === 0) {
+                showCartStatus('السلة فارغة، يرجى إضافة أطباق أولاً.', 'error');
+                return;
+            }
+
+            if (!clientName || !clientPhone) {
+                showCartStatus('يرجى ملء الاسم ورقم الجوال أولاً.', 'error');
+                return;
+            }
+            if (orderType === 'محلي' && !tableNumber) {
+                showCartStatus('يرجى اختيار رقم الطاولة.', 'error');
+                return;
+            }
+
+            let totalAmount = 0;
+            const orderDetails = cart.map((item, index) => {
+                const mods = item.selectedMods.map(group =>
+                    ` *${group.group}:* ${group.options.map(o => o.name + (o.price > 0 ? ` (+${o.price.toFixed(1)})` : '')).join('، ')}`
+                ).join('\n');
+                const subtotal = item.unitPrice * item.quantity;
+                totalAmount += subtotal;
+
+                return `\n*${index + 1}.* ${item.name} (x${item.quantity})\n${mods}\nالسعر الكلي للصنف: ${subtotal.toFixed(2)} ر.س`;
+            }).join('\n' + '-'.repeat(30) + '\n');
+
+            // تجميع الرسالة
+            let whatsappMessage = `*📣 طلب جديد من الموقع 📣*\n`;
+            whatsappMessage += `*----------------------------------*\n`;
+            whatsappMessage += `*نوع الطلب:* ${orderType}\n`;
+            if (tableNumber) {
+                whatsappMessage += `*رقم الطاولة:* ${tableNumber}\n`;
+            }
+            whatsappMessage += `*اسم العميل:* ${clientName}\n`;
+            whatsappMessage += `*رقم الجوال:* ${clientPhone}\n`;
+            whatsappMessage += `*----------------------------------*\n`;
+            whatsappMessage += `*تفاصيل الأصناف:*\n${orderDetails}\n`;
+            whatsappMessage += `*----------------------------------*\n`;
+            whatsappMessage += `*الإجمالي الكلي:* ${totalAmount.toFixed(2)} ر.س\n`;
+            if (clientNotes) {
+                whatsappMessage += `*ملاحظات إضافية:* ${clientNotes}\n`;
+            }
+            whatsappMessage += `*----------------------------------*\n`;
+
+            // فتح رابط واتساب
+            const whatsappURL = `https://wa.me/966582003125?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank');
+
+            showCartStatus('جاري تحويلك إلى واتساب لإتمام الطلب...', 'success');
+            
+            // مسح السلة بعد إرسال الطلب (اختياري)
+            cart.length = 0;
+            renderCart();
+        }
+
+        // وظيفة للتبديل بين طلب سفري ومحلي
+        document.querySelectorAll('input[name="orderType"]').forEach(input => {
+            input.addEventListener('change', (e) => {
+                if (e.target.value === 'dinein') {
+                    DOM.tableSelectBox.style.display = 'block';
+                } else {
+                    DOM.tableSelectBox.style.display = 'none';
+                }
+            });
+        });
+
+        // =========================================================
+        // 7. نظام التوصية الذكية (Recommender)
+        // =========================================================
+
+        // السمات لكل طبق (Mapping: Item ID -> Attributes)
+        const menuAttributes = {
+            1: ['meat', 'creamy', 'spicy', 'single'],   // باستا لانو
+            2: ['meat', 'tomato', 'single'],       // سباغيتي بولونيز
+            3: ['meat', 'creamy', 'group'],       // لازانيا
+            7: ['tomato', 'veg', 'group'],         // بيتزا مارجريتا
+            8: ['creamy', 'veg', 'group', 'premium'],   // بيتزا الترافل
+            10: ['appetizer', 'group', 'creamy', 'spicy'], // كرات البطاطس
+            11: ['appetizer', 'veg', 'single'],     // خبز بالثوم
+            12: ['veg', 'single', 'meat'],         // سلطة سيزر
+            14: ['drinks', 'cold', 'veg'],         // عصير
+        };
+
+        const recommenderQuestions = [
+            {
+                question: "هل تفضل وجبة تحتوي على اللحم (دجاج/لحم بقري)؟",
+                options: [
+                    { text: "نعم، بالتأكيد (لحم/دجاج)", attributes: ['meat'] },
+                    { text: "أفضّلها نباتية/خفيفة", attributes: ['veg'] },
+                    { text: "لا يهم", attributes: [] },
+                ]
+            },
+            {
+                question: "ما نوع النكهة أو الصلصة التي تميل إليها؟",
+                options: [
+                    { text: "صلصة كريمة غنية (Creamy)", attributes: ['creamy'] },
+                    { text: "صلصة طماطم حمراء كلاسيكية (Tomato)", attributes: ['tomato'] },
+                    { text: "أريد طبقاً حاراً (Spicy)", attributes: ['spicy'] },
+                ]
+            },
+            {
+                question: "هل تبحث عن طبق رئيسي لشخص واحد، أم طبق للمشاركة مع مجموعة؟",
+                options: [
+                    { text: "وجبة فردية (Single)", attributes: ['single'] },
+                    { text: "طبق للمشاركة (Group)", attributes: ['group', 'appetizer'] },
+                    { text: "لا يهم", attributes: [] },
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let attributeScores = {};
+
+        function startRecommender() {
+            currentQuestionIndex = 0;
+            attributeScores = {};
+            document.getElementById('result').style.display = 'none';
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const questionBox = document.getElementById('question-box');
+            if (currentQuestionIndex < recommenderQuestions.length) {
+                const currentQ = recommenderQuestions[currentQuestionIndex];
+                questionBox.innerHTML = `
+                    <h4>السؤال ${currentQuestionIndex + 1} من ${recommenderQuestions.length}</h4>
+                    <h3>${currentQ.question}</h3>
+                    <div class="options">
+                        ${currentQ.options.map((option, index) =>
+                            `<button onclick="handleAnswer(${currentQuestionIndex}, ${index})">${option.text}</button>`
+                        ).join('')}
+                    </div>
+                `;
+            } else {
+                calculateResult();
+            }
+        }
+
+        function handleAnswer(qIndex, oIndex) {
+            const selectedOption = recommenderQuestions[qIndex].options[oIndex];
+
+            // إضافة نقاط السمات
+            selectedOption.attributes.forEach(attr => {
+                attributeScores[attr] = (attributeScores[attr] || 0) + 1;
+            });
+
+            currentQuestionIndex++;
+            displayQuestion();
+        }
+
+        function calculateResult() {
+            let itemScores = {};
+
+            // 1. حساب نقاط المطابقة لكل طبق
+            menuItems.forEach(item => {
+                const attributes = menuAttributes[item.id] || [];
+                let score = 0;
+                attributes.forEach(attr => {
+                    score += (attributeScores[attr] || 0);
+                });
+                itemScores[item.id] = score;
+            });
+
+            // 2. إيجاد الطبق ذو أعلى نقاط
+            let bestMatchId = null;
+            let maxScore = -1;
+            let tieBreakers = [];
+
+            for (const id in itemScores) {
+                const score = itemScores[id];
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestMatchId = parseInt(id);
+                    tieBreakers = [bestMatchId];
+                } else if (score === maxScore && score > 0) {
+                    tieBreakers.push(parseInt(id));
+                }
+            }
+
+            const resultBox = document.getElementById('result');
+            const questionBox = document.getElementById('question-box');
+            questionBox.innerHTML = '';
+            resultBox.style.display = 'block';
+
+            if (maxScore <= 0 || tieBreakers.length === 0) {
+                resultBox.innerHTML = `
+                    <h3>لم نتمكن من تحديد طبق مثالي! 😞</h3>
+                    <p>نظراً لعدم وجود تطابق واضح، ننصحك بتصفح قائمة الأطباق المميزة.</p>
+                    <button onclick="startRecommender()" class="send-order-btn" style="background-color: var(--dark-text);">جرب مرة أخرى</button>
+                `;
+            } else if (tieBreakers.length === 1) {
+                // نتيجة واحدة واضحة
+                const recommendedItem = menuItems.find(item => item.id === bestMatchId);
+                resultBox.innerHTML = `
+                    <h3>🎉 طبقك المثالي هو: ${recommendedItem.name} 🎉</h3>
+                    <p>${recommendedItem.desc}</p>
+                    <a href="#menu" class="cta-link">اذهب للمنيو لطلب ${recommendedItem.name}</a>
+                    <p><button onclick="startRecommender()" class="send-order-btn" style="margin-top: 15px;">أعد المحاولة</button></p>
+                `;
+            } else {
+                // نتائج متعددة بنفس النقاط
+                const tieMatches = tieBreakers.map(id => menuItems.find(item => item.id === id));
+                resultBox.innerHTML = `
+                    <h3>تطابق مثالي! نوصي بهذه الأطباق:</h3>
+                    <ul>
+                        ${tieMatches.map(item => `<li><a href="#menu" onclick="window.filterMenu('${item.category}')">${item.name}</a> - ${item.price.toFixed(2)} ر.س</li>`).join('')}
+                    </ul>
+                    <p><button onclick="startRecommender()" class="send-order-btn" style="margin-top: 15px;">أعد المحاولة</button></p>
+                `;
+            }
+        }
+
+        // =========================================================
+        // 8. التهيئة الأولية (Initialization)
+        // =========================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu('all');
+            renderCart();
+            startRecommender(); // تهيئة نظام التوصية
+        });
+    </script>
+
 </body>
 </html>
-
