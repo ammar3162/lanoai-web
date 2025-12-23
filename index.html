@@ -410,6 +410,181 @@
             font-weight: 700; display: none; 
         }
 
+
+        
+
+         ================================================= */
+/* ❄️ Snowman Luxury Easter Egg – FINAL VERSION ❄️ */
+/* ================================================= */
+
+.snowman-wrapper {
+    position: fixed;
+    bottom: -80px;              /* فوق شريط الجوال */
+    right: 20px;
+    z-index: 1100;              /* أعلى من mobile-nav-bar */
+    pointer-events: none;
+    animation: snowmanPeek 22s ease-in-out infinite;
+}
+
+/* جسم رجل الثلج */
+.snowman {
+    position: relative;
+    width: 56px;
+    height: 90px;
+}
+
+/* الرأس */
+.snow-head {
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.08);
+}
+
+/* الجسم */
+.snow-body {
+    width: 46px;
+    height: 46px;
+    background: #fdfdfd;
+    border-radius: 50%;
+    margin: -6px auto 0;
+    box-shadow: inset -3px -3px 6px rgba(0,0,0,0.1);
+}
+
+/* العيون */
+.snow-eye {
+    position: absolute;
+    top: 11px;
+    width: 4px;
+    height: 4px;
+    background: #333;
+    border-radius: 50%;
+}
+.snow-eye.left { left: 20px; }
+.snow-eye.right { right: 20px; }
+
+/* الفم */
+.snow-mouth {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 12px;
+    height: 5px;
+    border-bottom: 2px solid #b55;
+    border-radius: 0 0 12px 12px;
+    transform: translateX(-50%);
+}
+
+/* شريحة البيتزا */
+.pizza-slice {
+    position: absolute;
+    right: -12px;
+    bottom: 18px;
+    width: 14px;
+    height: 14px;
+    background: #f5c16c;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    box-shadow: inset 0 -2px 2px rgba(0,0,0,0.18);
+    transform-origin: bottom left;
+    animation: pizzaBite 1.6s ease-in-out infinite alternate;
+}
+
+/* حركة الأكل */
+@keyframes pizzaBite {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-14deg); }
+}
+
+/* حركة الظهور والاختفاء */
+@keyframes snowmanPeek {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(-95px);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(-95px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+}
+/* ============================================ */
+/* ❄️ Winter Luxury Peek Message – FINAL ❄️ */
+/* ============================================ */
+
+.winter-peek {
+    position: fixed;
+    bottom: -120px;
+    right: 20px;
+    z-index: 1100;
+    pointer-events: none;
+    animation: winterPeek 24s ease-in-out infinite;
+}
+
+/* فقاعة الكلام */
+.winter-bubble {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(214,181,107,0.35);
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    max-width: 200px;
+    text-align: right;
+    position: relative;
+}
+
+/* ذيل الفقاعة */
+.winter-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 22px;
+    width: 16px;
+    height: 16px;
+    background: rgba(255,255,255,0.92);
+    border-left: 1px solid rgba(214,181,107,0.35);
+    border-bottom: 1px solid rgba(214,181,107,0.35);
+    transform: rotate(45deg);
+}
+
+/* الحركة */
+@keyframes winterPeek {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    12% {
+        transform: translateY(-110px);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(-110px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+}
+
+
+
+
+        
+
     </style>
 </head>
 <body>
@@ -670,6 +845,39 @@
         </a>
         <a href="https://wa.me/966582003125" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
     </div>
+
+
+
+
+
+
+    
+<!-- ❄️ Snowman Easter Egg -->
+<div class="snowman-wrapper">
+    <div class="snowman">
+        <div class="snow-head"></div>
+        <div class="snow-body"></div>
+
+        <div class="snow-eye left"></div>
+        <div class="snow-eye right"></div>
+        <div class="snow-mouth"></div>
+
+        <div class="pizza-slice"></div>
+    </div>
+</div>
+<!-- ❄️ Winter Message Easter Egg -->
+<div class="winter-peek">
+    <div class="winter-bubble">
+شتاء و لانو<br>
+        <strong> تصنع لحظات تُخلَّد</strong>
+    </div>
+</div>
+
+
+
+
+
+    
 
     <script>
         // =========================================================
