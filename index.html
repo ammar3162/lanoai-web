@@ -599,9 +599,9 @@
     </header>
     
     <section class="carousel-section">
-        <img src="images/سباغيتي_17511257342315958.webp" alt="نكهات إيطالية أصيلة" class="carousel-img">
+        <img src="images/new logo.png" alt="نكهات إيطالية أصيلة" class="carousel-img">
         <div class="carousel-content">
-            <h2>نكهات إيطالية أصيلة</h2>
+            <h2>   </h2>
         </div>
     </section>
 
@@ -613,28 +613,35 @@
         </div>
     </section>
 
-    <div class="core-sections">
-        <div class="core-card">
-            <img src="images/فتوتشيني_17511258546063978.jpg" alt="Eat">
-            <h3>Eat | تذوق</h3>
-            <p>نؤمن بتقديم عدد قليل من الأطباق، لكن بمكونات عالية الجودة، لتقديم روائع تذوق حقيقية. أطلب باستا لانو أو اللازانيا الآن.</p>
-            <a href="#menu" class="cta-link">استعرض المنيو الكامل <i class="fas fa-arrow-left"></i></a>
-        </div>
         
-        <div class="core-card">
-            <img src="images/كرات_البطاطس_المحشوة_17511262735610694.jpg" alt="Shop">
-            <h3>Shop | تميز</h3>
-            <p>نقدم مجموعة من أجود المنتجات الإيطالية والمقبلات المصنوعة يدوياً مثل كرات البطاطس، لتتمكن من تكرار نكهاتنا في منزلك.</p>
-            <a href="#menu" id="show-appetizers" class="cta-link">شاهد المقبلات الأكثر مبيعاً <i class="fas fa-arrow-left"></i></a>
-        </div>
-        
-        <div class="core-card">
-            <img src="images/بيتزا_ترافل_مع_الكريمة_17511260790757324 (1).jpg" alt="Learn">
-            <h3>Learn | اكتشف</h3>
-            <p>كلما عرفت أكثر، كلما استمتعت أكثر. اكتشف تاريخ طعامنا، وجرب نظام التوصية الذكية لتكتشف طبقك المفضل.</p>
-            <a href="#recommender" class="cta-link">جرب التوصية الذكية <i class="fas fa-arrow-left"></i></a>
-        </div>
-    </div>
+       
+
+                <!-- شريط الفلترة بالأيقونات -->
+                <div class="menu-filter">
+                    <button data-category="all" class="active" onclick="window.filterMenu('all')">
+                        <i class="fas fa-star"></i> الكل
+                    </button>
+                    <button data-category="pasta" onclick="window.filterMenu('pasta')">
+                        <i class="fas fa-bowl-food"></i> الباستا
+                    </button>
+                    <button data-category="pizza" onclick="window.filterMenu('pizza')">
+                        <i class="fas fa-pizza-slice"></i> البيتزا
+                    </button>
+                    <button data-category="salad" onclick="window.filterMenu('salad')">
+                        <i class="fas fa-seedling"></i> السلطات
+                    </button>
+                    <button data-category="appetizer" onclick="window.filterMenu('appetizer')">
+                        <i class="fas fa-cheese"></i> المقبلات
+                    </button>
+                    <button data-category="drinks" onclick="window.filterMenu('drinks')">
+                        <i class="fas fa-glass-martini-alt"></i> المشروبات
+                    </button>
+                </div>
+
+                <div id="interactive-menu-grid" class="interactive-menu-grid"></div>
+
+            </div>
+
 
     <section id="menu" class="menu-section">
         <div class="l-container menu-layout">
@@ -669,31 +676,6 @@
                     </div>
                 </div>
 
-                <!-- شريط الفلترة بالأيقونات -->
-                <div class="menu-filter">
-                    <button data-category="all" class="active" onclick="window.filterMenu('all')">
-                        <i class="fas fa-star"></i> الكل
-                    </button>
-                    <button data-category="pasta" onclick="window.filterMenu('pasta')">
-                        <i class="fas fa-bowl-food"></i> الباستا
-                    </button>
-                    <button data-category="pizza" onclick="window.filterMenu('pizza')">
-                        <i class="fas fa-pizza-slice"></i> البيتزا
-                    </button>
-                    <button data-category="salad" onclick="window.filterMenu('salad')">
-                        <i class="fas fa-seedling"></i> السلطات
-                    </button>
-                    <button data-category="appetizer" onclick="window.filterMenu('appetizer')">
-                        <i class="fas fa-cheese"></i> المقبلات
-                    </button>
-                    <button data-category="drinks" onclick="window.filterMenu('drinks')">
-                        <i class="fas fa-glass-martini-alt"></i> المشروبات
-                    </button>
-                </div>
-
-                <div id="interactive-menu-grid" class="interactive-menu-grid"></div>
-
-            </div>
 
             <div class="cart-wrapper">
                 <div class="cart-section" id="cart-section">
@@ -1781,3 +1763,4 @@
     </script>
 </body>
 </html>
+
